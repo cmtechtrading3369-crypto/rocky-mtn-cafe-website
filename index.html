@@ -3,440 +3,727 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rocky Mountain Cafe - LaPorte, IN | Coffee & Community</title>
+    <title>Rocky Mountain Cafe — LaPorte's Community Coffee House</title>
+    <meta name="description" content="Premium community cafe in LaPorte, Indiana. Fresh coffee, fresh pastries, live music, gaming, and WiFi. Open 7 days a week.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Stylesheet -->
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <!-- ============================================
+         NAVBAR
+         ============================================ -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <img src="images/logo.png" alt="Rocky Mountain Cafe" class="logo-image">
+                <span class="logo-text">Rocky Mountain</span>
+            </div>
+            
+            <div class="navbar-toggle" id="navbarToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#menu" class="nav-link">Menu</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
 
-    <!-- Cart Sidebar -->
-    <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
-    <div class="cart-sidebar" id="cartSidebar">
-        <div class="cart-header">
-            <h3>Your Order</h3>
-            <button class="cart-close" onclick="closeCart()"><i class="fas fa-times"></i></button>
-        </div>
-        <div class="cart-items" id="cartItems">
-            <div class="cart-empty">
-                <i class="fas fa-shopping-bag"></i>
-                <p>Your cart is empty</p>
-            </div>
-        </div>
-        <div class="cart-totals">
-            <div class="cart-row"><span>Subtotal:</span><span id="cartSubtotal">$0.00</span></div>
-            <div class="cart-row"><span>Tax (estimated):</span><span id="cartTax">$0.00</span></div>
-            <div class="cart-row cart-total"><span>Total:</span><span id="cartTotal">$0.00</span></div>
-        </div>
-        <div class="cart-actions">
-            <button class="btn-primary btn-full" id="checkoutBtn" onclick="checkout()" disabled>Proceed to Checkout</button>
-            <a href="https://www.doordash.com/store/rocky-mountain-cafe-la-porte-25329657/" target="_blank" class="btn-secondary btn-full">Order via DoorDash</a>
-        </div>
-    </div>
-
-    <!-- Navigation Bar -->
-    <nav class="fb-nav sticky-nav">
-        <div class="container nav-container">
-            <div class="nav-logo">
-                <i class="fas fa-mountain"></i>
-                <span>Rocky Mountain</span>
-            </div>
-            <div class="nav-links">
-                <a href="#hero" class="nav-link active">Home</a>
-                <a href="#menu" class="nav-link">Menu</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#contact" class="nav-link">Contact</a>
-            </div>
-            <div class="nav-cta">
-                <button class="cart-btn" onclick="toggleCart()">
-                    <i class="fas fa-shopping-bag"></i>
-                    <span class="cart-count" id="cartCount">0</span>
-                </button>
-            </div>
+            <!-- Cart Button -->
+            <button class="cart-button" id="cartButton">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count" id="cartCount">0</span>
+            </button>
         </div>
     </nav>
 
-    <!-- Hero / Header -->
-    <header class="fb-header" id="hero">
-        <div class="header-bg"></div>
-        <div class="container">
-            <div class="profile-section">
-                <div class="profile-pic">
-                    <img src="images/logo.png" alt="Rocky Mountain Cafe Logo" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'fas fa-mountain\'></i>'">
+    <!-- ============================================
+         HERO SECTION
+         ============================================ -->
+    <section id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Rocky Mountain Cafe</h1>
+            <div class="hero-divider"></div>
+            <p class="hero-tagline">LaPorte's Community Coffee House</p>
+            
+            <!-- Stats -->
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">4.9</span>
+                    <span class="stat-icon">★</span>
+                    <span class="stat-label">Rating</span>
                 </div>
-                <div class="profile-info">
-                    <h1>Rocky Mountain Cafe</h1>
-                    <p class="tagline">LAPORTE'S COMMUNITY COFFEE HOUSE</p>
-                    <div class="hero-stats">
-                        <div class="hero-stat">
-                            <span class="stat-value">4.9 <i class="fas fa-star"></i></span>
-                            <span class="stat-label">RATING</span>
-                        </div>
-                        <div class="hero-stat">
-                            <span class="stat-value">84</span>
-                            <span class="stat-label">REVIEWS</span>
-                        </div>
-                        <div class="hero-stat">
-                            <span class="stat-value">98%</span>
-                            <span class="stat-label">RECOMMEND</span>
-                        </div>
-                    </div>
-                    <div class="header-cta-buttons">
-                        <a href="#about" class="btn-primary"><i class="fas fa-store"></i> Visit Our Cafe</a>
-                        <a href="https://www.doordash.com/store/rocky-mountain-cafe-la-porte-25329657/" target="_blank" class="btn-secondary"><i class="fas fa-shopping-bag"></i> Order via DoorDash</a>
-                    </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-number">84</span>
+                    <span class="stat-label">Reviews</span>
                 </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-number">98%</span>
+                    <span class="stat-label">Recommend</span>
+                </div>
+            </div>
+
+            <!-- CTAs -->
+            <div class="hero-cta">
+                <a href="#contact" class="btn btn-primary">Visit Our Cafe</a>
+                <a href="https://www.doordash.com/" target="_blank" class="btn btn-secondary">Order via DoorDash</a>
             </div>
         </div>
-    </header>
 
-    <!-- Info Bar -->
-    <div class="info-bar">
-        <div class="container info-bar-inner">
-            <div class="info-bar-item">
-                <i class="fas fa-map-marker-alt"></i>
-                <div>
-                    <strong>Location</strong>
-                    <p>209 Lincolnway<br>LaPorte, IN 46350</p>
-                </div>
-            </div>
-            <div class="info-bar-divider"></div>
-            <div class="info-bar-item">
-                <i class="fas fa-clock"></i>
-                <div>
-                    <strong>Hours</strong>
-                    <p>6:00 AM – 5:00 PM<br>7 Days a Week<br><small>Closed major holidays</small></p>
-                </div>
-            </div>
-            <div class="info-bar-divider"></div>
-            <div class="info-bar-item">
-                <i class="fas fa-phone"></i>
-                <div>
-                    <strong>Contact</strong>
-                    <p><a href="tel:+12195701234">(219) 570-1234</a><br><a href="mailto:rockymountaincoffee@yahoo.com">rockymountaincoffee@yahoo.com</a></p>
-                </div>
-            </div>
-            <div class="info-bar-directions">
-                <a href="https://maps.google.com/?q=209+Lincolnway+LaPorte+IN+46350" target="_blank">Get Directions <i class="fas fa-arrow-right"></i></a>
-            </div>
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
         </div>
-    </div>
+    </section>
 
-    <main class="container">
+    <main>
+        <!-- ============================================
+             LOCATION & HOURS
+             ============================================ -->
+        <section id="visit" class="info-section">
+            <div class="container">
+                <div class="info-grid">
+                    <div class="info-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Location</h3>
+                        <p>209 Lincolnway<br>LaPorte, IN 46350</p>
+                        <a href="https://maps.google.com/?q=209+Lincolnway+LaPorte+Indiana" target="_blank" class="link-arrow">Get Directions →</a>
+                    </div>
+                    
+                    <div class="info-card">
+                        <i class="fas fa-clock"></i>
+                        <h3>Hours</h3>
+                        <p>6:00 AM – 5:00 PM<br>7 Days a Week</p>
+                        <p class="text-muted">Closed major holidays</p>
+                    </div>
+                    
+                    <div class="info-card">
+                        <i class="fas fa-phone"></i>
+                        <h3>Contact</h3>
+                        <p><a href="tel:+12195701234">(219) 570-1234</a><br>
+                        <a href="mailto:rockymountaincoffee@yahoo.com">rockymountaincoffee@yahoo.com</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ============================================
+             MENU SECTION
+             ============================================ -->
+        <section id="menu" class="menu-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Our Menu</h2>
+                    <p>Fresh-brewed coffee, premium pastries, and community vibes</p>
+                </div>
 
-        <!-- Menu Section -->
-        <section class="menu-section" id="menu">
-            <div class="card premium-card">
-                <h2>Our Menu</h2>
-                <p class="section-subtitle">Fresh-brewed coffee, premium pastries, and community vibes</p>
                 <div class="menu-tabs">
-                    <button class="menu-tab active" data-category="drinks"><i class="fas fa-coffee"></i> Drinks</button>
-                    <button class="menu-tab" data-category="food"><i class="fas fa-utensils"></i> Food</button>
-                    <button class="menu-tab" data-category="pastries"><i class="fas fa-cookie-bite"></i> Pastries</button>
+                    <button class="menu-tab active" data-tab="drinks">
+                        <i class="fas fa-mug-hot"></i> Drinks
+                    </button>
+                    <button class="menu-tab" data-tab="food">
+                        <i class="fas fa-utensils"></i> Food
+                    </button>
+                    <button class="menu-tab" data-tab="pastries">
+                        <i class="fas fa-cookie"></i> Pastries
+                    </button>
                 </div>
 
-                <div class="menu-category" id="drinks-menu">
-                    <div class="menu-item">
-                        <div class="menu-item-info"><h3>Mountain Peak Espresso</h3><p>Double shot of rich, bold espresso</p></div>
-                        <div class="menu-item-actions"><span class="price">$2.50</span><button class="add-btn" onclick="addToCart('Mountain Peak Espresso', 2.50)">+ Add</button></div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-item-info"><h3>Cappuccino</h3><p>Espresso with velvety steamed milk</p></div>
-                        <div class="menu-item-actions"><span class="price">$4.00</span><button class="add-btn" onclick="addToCart('Cappuccino', 4.00)">+ Add</button></div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-item-info"><h3>Latte</h3><p>Smooth espresso and steamed milk</p></div>
-                        <div class="menu-item-actions"><span class="price">$4.50</span><button class="add-btn" onclick="addToCart('Latte', 4.50)">+ Add</button></div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-item-info"><h3>Americano</h3><p>Double shot espresso with hot water</p></div>
-                        <div class="menu-item-actions"><span class="price">$2.75</span><button class="add-btn" onclick="addToCart('Americano', 2.75)">+ Add</button></div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-item-info"><h3>Cold Brew</h3><p>Smooth 24-hour cold brew</p></div>
-                        <div class="menu-item-actions"><span class="price">$3.50</span><button class="add-btn" onclick="addToCart('Cold Brew', 3.50)">+ Add</button></div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-item-info"><h3>Hot Chocolate</h3><p>Rich, creamy hot chocolate</p></div>
-                        <div class="menu-item-actions"><span class="price">$3.75</span><button class="add-btn" onclick="addToCart('Hot Chocolate', 3.75)">+ Add</button></div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-item-info"><h3>Peanut Butter Avalanche</h3><p>Our signature drink — rich peanut butter perfection</p><span class="badge">⭐ Most Popular</span></div>
-                        <div class="menu-item-actions"><span class="price">$5.49</span><button class="add-btn" onclick="addToCart('Peanut Butter Avalanche', 5.49)">+ Add</button></div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-item-info"><h3>Toasted Marshmallow Latte</h3><p>Warm and cozy — seasonal favorite</p><span class="badge">🔥 Returning Favorite</span></div>
-                        <div class="menu-item-actions"><span class="price">$5.99</span><button class="add-btn" onclick="addToCart('Toasted Marshmallow Latte', 5.99)">+ Add</button></div>
-                    </div>
-                </div>
-
-                <div class="menu-category hidden" id="food-menu">
-                    <div class="menu-item">
-                        <div class="menu-item-info"><h3>Asiago Cheddar Bagel</h3><p>Turkey, bacon, egg, garlic &amp; sriracha sauces</p><span class="badge">⭐ Most Popular</span></div>
-                        <div class="menu-item-actions"><span class="price">$6.99</span><button class="add-btn" onclick="addToCart('Asiago Cheddar Bagel', 6.99)">+ Add</button></div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-item-info"><h3>Turbo Turkey Sandwich</h3><p>Extra turkey, cheddar, mayo &amp; garlic sauce on ciabatta</p></div>
-                        <div class="menu-item-actions"><span class="price">$7.49</span><button class="add-btn" onclick="addToCart('Turbo Turkey Sandwich', 7.49)">+ Add</button></div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-item-info"><h3>Classic BLT</h3><p>Bacon, lettuce &amp; tomato on your choice of bread</p></div>
-                        <div class="menu-item-actions"><span class="price">$5.99</span><button class="add-btn" onclick="addToCart('Classic BLT', 5.99)">+ Add</button></div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-item-info"><h3>Chicken Club</h3><p>Grilled chicken, bacon, Swiss &amp; herb mayo</p></div>
-                        <div class="menu-item-actions"><span class="price">$7.99</span><button class="add-btn" onclick="addToCart('Chicken Club', 7.99)">+ Add</button></div>
-                    </div>
-                </div>
-
-                <div class="menu-category hidden" id="pastries-menu">
-                    <div class="menu-item">
-                        <div class="menu-item-info"><h3>Giant Cheese Danish</h3><p>Large, flaky &amp; delicious cheese-filled pastry</p><span class="badge">⭐ Must Try</span></div>
-                        <div class="menu-item-actions"><span class="price">$3.99</span><button class="add-btn" onclick="addToCart('Giant Cheese Danish', 3.99)">+ Add</button></div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-item-info"><h3>Chocolate Croissant</h3><p>Buttery croissant with rich chocolate filling</p></div>
-                        <div class="menu-item-actions"><span class="price">$3.49</span><button class="add-btn" onclick="addToCart('Chocolate Croissant', 3.49)">+ Add</button></div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-item-info"><h3>Cinnamon Roll</h3><p>Fresh baked with gooey cinnamon swirls</p></div>
-                        <div class="menu-item-actions"><span class="price">$3.99</span><button class="add-btn" onclick="addToCart('Cinnamon Roll', 3.99)">+ Add</button></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section class="about-section" id="about">
-            <div class="card">
-                <h2>About Rocky Mountain</h2>
-                <p class="section-subtitle">More than just coffee — we're your community gathering place</p>
-                <div class="about-grid">
-                    <div class="about-feature"><i class="fas fa-coffee"></i><h3>Premium Coffee</h3><p>Carefully sourced beans, expertly brewed. Every cup matters.</p></div>
-                    <div class="about-feature"><i class="fas fa-wifi"></i><h3>Free WiFi &amp; Workspace</h3><p>Fast, reliable WiFi perfect for remote work and study sessions.</p></div>
-                    <div class="about-feature"><i class="fas fa-gamepad"></i><h3>Gaming &amp; Entertainment</h3><p>Board games, video games, and space to hang out with friends.</p></div>
-                    <div class="about-feature"><i class="fas fa-music"></i><h3>Live Music Events</h3><p>Local musicians perform regularly. Check our Facebook for schedule.</p></div>
-                    <div class="about-feature"><i class="fas fa-leaf"></i><h3>Sustainable Practices</h3><p>Compostable cups, recyclables, and eco-friendly sourcing.</p></div>
-                    <div class="about-feature"><i class="fas fa-heart"></i><h3>Community First</h3><p>Local business, local love. Supporting LaPorte since 2010.</p></div>
-                </div>
-                <div class="our-space">
-                    <h3>Our Space</h3>
-                    <div class="space-tabs">
-                        <button class="space-tab active" data-space="interior">Interior</button>
-                        <button class="space-tab" data-space="coffee-bar">Coffee Bar</button>
-                        <button class="space-tab" data-space="seating">Seating</button>
-                        <button class="space-tab" data-space="live-music">Live Music</button>
-                    </div>
-                    <div class="space-content">
-                        <div class="space-panel active" id="space-interior"><div class="space-placeholder"><i class="fas fa-store"></i><p>Warm, welcoming interior designed for comfort and community</p></div></div>
-                        <div class="space-panel hidden" id="space-coffee-bar"><div class="space-placeholder"><i class="fas fa-coffee"></i><p>Our fully-equipped coffee bar where the magic happens</p></div></div>
-                        <div class="space-panel hidden" id="space-seating"><div class="space-placeholder"><i class="fas fa-chair"></i><p>Comfortable seating for work, study, or catching up with friends</p></div></div>
-                        <div class="space-panel hidden" id="space-live-music"><div class="space-placeholder"><i class="fas fa-guitar"></i><p>Our live music stage featuring local artists every weekend</p></div></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Reviews Section -->
-        <section class="reviews-section" id="reviews">
-            <div class="card premium-card">
-                <h2>What Our Customers Say</h2>
-                <p class="section-subtitle">Real reviews from real people who love Rocky Mountain Cafe</p>
-                <div class="reviews-container">
-                    <div class="review">
-                        <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                        <p class="review-text">"Best coffee spot in LaPorte. The staff remembers my order, and the atmosphere is perfect for getting work done."</p>
-                        <div class="reviewer-name">— Edward Nunn</div>
-                    </div>
-                    <div class="review">
-                        <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                        <p class="review-text">"Amazing pastries and consistently great coffee. This is where I meet my friends every Saturday morning."</p>
-                        <div class="reviewer-name">— Mary Loeffler</div>
-                    </div>
-                    <div class="review">
-                        <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                        <p class="review-text">"The live music events are fantastic, and the coffee is always top-notch. A real gem in our community."</p>
-                        <div class="reviewer-name">— James Rodriguez</div>
-                    </div>
-                    <div class="review">
-                        <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                        <p class="review-text">"Perfect workspace with excellent WiFi. The staff is friendly and the coffee is exceptional. Highly recommend!"</p>
-                        <div class="reviewer-name">— Sarah Chen</div>
-                    </div>
-                </div>
-                <div class="reviews-footer">
-                    <a href="https://www.facebook.com/rockymountaincafe219/" target="_blank" class="btn-secondary">Read more reviews on our Facebook page or Google Maps</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Latest Updates -->
-        <section class="updates-section" id="updates">
-            <div class="card premium-card">
-                <h2>Latest Updates</h2>
-                <p class="section-subtitle">Follow us on Facebook for events, specials, and community news</p>
-                <div class="fb-updates-box">
-                    <div class="fb-page-info">
-                        <div class="fb-page-icon"><i class="fab fa-facebook"></i></div>
-                        <div>
-                            <strong>Rocky Mountain Cafe</strong>
-                            <p>@rockymountaincafe219</p>
+                <div class="menu-content">
+                    <div class="menu-tab-content active" id="drinks-tab">
+                        <div class="menu-grid">
+                            <div class="menu-item">
+                                <h4>Mountain Peak Espresso</h4>
+                                <p>Double shot of rich, bold espresso</p>
+                                <div class="menu-item-footer">
+                                    <span class="price">$2.50</span>
+                                    <button class="btn-add-cart" data-name="Mountain Peak Espresso" data-price="2.50"><i class="fas fa-plus"></i> Add</button>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <h4>Cappuccino</h4>
+                                <p>Espresso with velvety steamed milk</p>
+                                <div class="menu-item-footer">
+                                    <span class="price">$4.00</span>
+                                    <button class="btn-add-cart" data-name="Cappuccino" data-price="4.00"><i class="fas fa-plus"></i> Add</button>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <h4>Latte</h4>
+                                <p>Smooth espresso and steamed milk</p>
+                                <div class="menu-item-footer">
+                                    <span class="price">$4.50</span>
+                                    <button class="btn-add-cart" data-name="Latte" data-price="4.50"><i class="fas fa-plus"></i> Add</button>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <h4>Americano</h4>
+                                <p>Double shot espresso with hot water</p>
+                                <div class="menu-item-footer">
+                                    <span class="price">$2.75</span>
+                                    <button class="btn-add-cart" data-name="Americano" data-price="2.75"><i class="fas fa-plus"></i> Add</button>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <h4>Cold Brew</h4>
+                                <p>Smooth 24-hour cold brew</p>
+                                <div class="menu-item-footer">
+                                    <span class="price">$3.50</span>
+                                    <button class="btn-add-cart" data-name="Cold Brew" data-price="3.50"><i class="fas fa-plus"></i> Add</button>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <h4>Hot Chocolate</h4>
+                                <p>Rich, creamy hot chocolate</p>
+                                <div class="menu-item-footer">
+                                    <span class="price">$3.75</span>
+                                    <button class="btn-add-cart" data-name="Hot Chocolate" data-price="3.75"><i class="fas fa-plus"></i> Add</button>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <h4>Peanut Butter Avalanche</h4>
+                                <p>Our signature drink — rich peanut butter perfection</p>
+                                <div class="menu-item-footer">
+                                    <span class="price">$5.49</span>
+                                    <button class="btn-add-cart" data-name="Peanut Butter Avalanche" data-price="5.49"><i class="fas fa-plus"></i> Add</button>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <h4>Toasted Marshmallow Latte</h4>
+                                <p>Warm and cozy — seasonal favorite</p>
+                                <div class="menu-item-footer">
+                                    <span class="price">$5.99</span>
+                                    <button class="btn-add-cart" data-name="Toasted Marshmallow Latte" data-price="5.99"><i class="fas fa-plus"></i> Add</button>
+                                </div>
+                            </div>
                         </div>
-                        <a href="https://www.facebook.com/rockymountaincafe219/" target="_blank" class="btn-primary btn-sm">Follow on Facebook</a>
                     </div>
-                    <div class="fb-checklist">
-                        <p>Check our Facebook page for:</p>
-                        <ul>
-                            <li><i class="fas fa-check"></i> Live music event schedules</li>
-                            <li><i class="fas fa-check"></i> Daily specials and new items</li>
-                            <li><i class="fas fa-check"></i> Community announcements</li>
-                            <li><i class="fas fa-check"></i> Customer photos and stories</li>
-                        </ul>
+
+                    <div class="menu-tab-content" id="food-tab">
+                        <div class="menu-grid">
+                            <div class="menu-item">
+                                <h4>Breakfast Sandwich</h4>
+                                <p>Egg, cheese, and choice of bacon or sausage</p>
+                                <div class="menu-item-footer">
+                                    <span class="price">$7.00</span>
+                                    <button class="btn-add-cart" data-name="Breakfast Sandwich" data-price="7.00"><i class="fas fa-plus"></i> Add</button>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <h4>Avocado Toast</h4>
+                                <p>Toasted sourdough with fresh avocado</p>
+                                <div class="menu-item-footer">
+                                    <span class="price">$8.50</span>
+                                    <button class="btn-add-cart" data-name="Avocado Toast" data-price="8.50"><i class="fas fa-plus"></i> Add</button>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <h4>Turkey Club</h4>
+                                <p>Turkey, bacon, lettuce, tomato</p>
+                                <div class="menu-item-footer">
+                                    <span class="price">$9.00</span>
+                                    <button class="btn-add-cart" data-name="Turkey Club" data-price="9.00"><i class="fas fa-plus"></i> Add</button>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <h4>Veggie Wrap</h4>
+                                <p>Hummus, veggies, and fresh herbs</p>
+                                <div class="menu-item-footer">
+                                    <span class="price">$7.50</span>
+                                    <button class="btn-add-cart" data-name="Veggie Wrap" data-price="7.50"><i class="fas fa-plus"></i> Add</button>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <h4>Soup of the Day</h4>
+                                <p>Seasonal soups made fresh daily</p>
+                                <div class="menu-item-footer">
+                                    <span class="price">$5.50</span>
+                                    <button class="btn-add-cart" data-name="Soup of the Day" data-price="5.50"><i class="fas fa-plus"></i> Add</button>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <h4>Salad Bowl</h4>
+                                <p>Mixed greens with house vinaigrette</p>
+                                <div class="menu-item-footer">
+                                    <span class="price">$8.00</span>
+                                    <button class="btn-add-cart" data-name="Salad Bowl" data-price="8.00"><i class="fas fa-plus"></i> Add</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-tab-content" id="pastries-tab">
+                        <div class="menu-grid">
+                            <div class="menu-item">
+                                <h4>Croissant</h4>
+                                <p>Buttery French pastry, fresh daily</p>
+                                <div class="menu-item-footer">
+                                    <span class="price">$3.50</span>
+                                    <button class="btn-add-cart" data-name="Croissant" data-price="3.50"><i class="fas fa-plus"></i> Add</button>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <h4>Blueberry Muffin</h4>
+                                <p>Classic blueberry with a moist crumb</p>
+                                <div class="menu-item-footer">
+                                    <span class="price">$3.00</span>
+                                    <button class="btn-add-cart" data-name="Blueberry Muffin" data-price="3.00"><i class="fas fa-plus"></i> Add</button>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <h4>Chocolate Chip Cookie</h4>
+                                <p>Warm, chewy homemade cookies</p>
+                                <div class="menu-item-footer">
+                                    <span class="price">$2.50</span>
+                                    <button class="btn-add-cart" data-name="Chocolate Chip Cookie" data-price="2.50"><i class="fas fa-plus"></i> Add</button>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <h4>Cinnamon Roll</h4>
+                                <p>Swirled cinnamon with cream cheese frosting</p>
+                                <div class="menu-item-footer">
+                                    <span class="price">$4.00</span>
+                                    <button class="btn-add-cart" data-name="Cinnamon Roll" data-price="4.00"><i class="fas fa-plus"></i> Add</button>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <h4>Scone</h4>
+                                <p>Buttery scone served with jam</p>
+                                <div class="menu-item-footer">
+                                    <span class="price">$3.25</span>
+                                    <button class="btn-add-cart" data-name="Scone" data-price="3.25"><i class="fas fa-plus"></i> Add</button>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <h4>Fruit Danish</h4>
+                                <p>Flaky pastry with seasonal fruit</p>
+                                <div class="menu-item-footer">
+                                    <span class="price">$3.75</span>
+                                    <button class="btn-add-cart" data-name="Fruit Danish" data-price="3.75"><i class="fas fa-plus"></i> Add</button>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <h4>Giant Cheese Danish</h4>
+                                <p>Large, flaky & delicious cheese-filled pastry</p>
+                                <div class="menu-item-footer">
+                                    <span class="price">$3.99</span>
+                                    <button class="btn-add-cart" data-name="Giant Cheese Danish" data-price="3.99"><i class="fas fa-plus"></i> Add</button>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <h4>Chocolate Croissant</h4>
+                                <p>Buttery croissant with rich chocolate filling</p>
+                                <div class="menu-item-footer">
+                                    <span class="price">$3.49</span>
+                                    <button class="btn-add-cart" data-name="Chocolate Croissant" data-price="3.49"><i class="fas fa-plus"></i> Add</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section class="contact-section" id="contact">
-            <div class="card premium-card">
-                <h2>Get In Touch</h2>
-                <p class="section-subtitle">Questions? We'd love to hear from you.</p>
-                <form id="contactForm" class="contact-form">
-                    <div class="form-group">
-                        <label for="name">Name *</label>
-                        <input type="text" id="name" name="name" required>
+        <!-- ============================================
+             ABOUT SECTION
+             ============================================ -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>About Rocky Mountain</h2>
+                    <p>More than just coffee — we're your community gathering place</p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-fire"></i>
+                        <h3>Premium Coffee</h3>
+                        <p>Carefully sourced beans, expertly brewed. Every cup matters.</p>
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email *</label>
-                        <input type="email" id="email" name="email" required>
+
+                    <div class="feature-card">
+                        <i class="fas fa-wifi"></i>
+                        <h3>Free WiFi & Workspace</h3>
+                        <p>Fast, reliable WiFi perfect for remote work and study sessions.</p>
                     </div>
-                    <div class="form-group">
-                        <label for="phone">Phone</label>
-                        <input type="tel" id="phone" name="phone">
+
+                    <div class="feature-card">
+                        <i class="fas fa-gamepad"></i>
+                        <h3>Gaming & Entertainment</h3>
+                        <p>Board games, video games, and space to hang out with friends.</p>
                     </div>
-                    <div class="form-group">
-                        <label for="message">Message *</label>
-                        <textarea id="message" name="message" rows="4" required></textarea>
+
+                    <div class="feature-card">
+                        <i class="fas fa-music"></i>
+                        <h3>Live Music Events</h3>
+                        <p>Local musicians perform regularly. Check our Facebook for schedule.</p>
                     </div>
-                    <button type="submit" class="btn-primary">Send Message</button>
+
+                    <div class="feature-card">
+                        <i class="fas fa-leaf"></i>
+                        <h3>Sustainable Practices</h3>
+                        <p>Compostable cups, recyclables, and eco-friendly sourcing.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <i class="fas fa-people-arrows"></i>
+                        <h3>Community First</h3>
+                        <p>Local business, local love. Supporting LaPorte since 2010.</p>
+                    </div>
+                </div>
+
+                <!-- Gallery with real cafe photography -->
+                <div class="gallery-section">
+                    <h3>Our Space</h3>
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="images/cafe-interior.jpg" alt="Rocky Mountain Cafe welcoming interior" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                            <span class="gallery-placeholder" style="display:none"><i class="fas fa-store"></i><br>Interior</span>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images/coffee-bar.jpg" alt="Professional coffee bar setup" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                            <span class="gallery-placeholder" style="display:none"><i class="fas fa-coffee"></i><br>Coffee Bar</span>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images/seating-area.jpg" alt="Comfortable seating and community space" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                            <span class="gallery-placeholder" style="display:none"><i class="fas fa-chair"></i><br>Seating</span>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images/live-music.jpg" alt="Live music events at Rocky Mountain Cafe" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                            <span class="gallery-placeholder" style="display:none"><i class="fas fa-guitar"></i><br>Live Music</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             REVIEWS SECTION
+             ============================================ -->
+        <section id="reviews" class="reviews-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>What Our Customers Say</h2>
+                    <p>Real reviews from real people who love Rocky Mountain Cafe</p>
+                </div>
+
+                <div class="reviews-grid">
+                    <div class="review-card">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">"Best coffee spot in LaPorte. The staff remembers my order, and the atmosphere is perfect for getting work done."</p>
+                        <p class="review-author">— Edward Nunn</p>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">"Amazing pastries and consistently great coffee. This is where I meet my friends every Saturday morning."</p>
+                        <p class="review-author">— Mary Loeffler</p>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">"The live music events are fantastic, and the coffee is always top-notch. A real gem in our community."</p>
+                        <p class="review-author">— James Rodriguez</p>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">"Perfect workspace with excellent WiFi. The staff is friendly and the coffee is exceptional. Highly recommend!"</p>
+                        <p class="review-author">— Sarah Chen</p>
+                    </div>
+                </div>
+
+                <div class="reviews-cta">
+                    <p>Read more reviews on <a href="https://www.facebook.com/rockymountaincafe219/" target="_blank">our Facebook page</a> or Google Maps</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             FACEBOOK UPDATES
+             ============================================ -->
+        <section id="updates" class="updates-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Latest Updates</h2>
+                    <p>Follow us on Facebook for events, specials, and community news</p>
+                </div>
+
+                <div class="updates-content">
+                    <div class="social-link">
+                        <i class="fab fa-facebook"></i>
+                        <h3>Rocky Mountain Cafe</h3>
+                        <p>@rockymountaincafe219</p>
+                        <a href="https://www.facebook.com/rockymountaincafe219/" target="_blank" class="btn btn-secondary">
+                            Follow on Facebook <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+
+                    <p class="updates-note">
+                        Check our Facebook page for:<br>
+                        ✓ Live music event schedules<br>
+                        ✓ Daily specials and new items<br>
+                        ✓ Community announcements<br>
+                        ✓ Customer photos and stories
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             CONTACT SECTION
+             ============================================ -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Get In Touch</h2>
+                    <p>Questions? We'd love to hear from you.</p>
+                </div>
+
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="contact-name">Name *</label>
+                        <input type="text" id="contact-name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact-email">Email *</label>
+                        <input type="email" id="contact-email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact-phone">Phone</label>
+                        <input type="tel" id="contact-phone" name="phone">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact-message">Message *</label>
+                        <textarea id="contact-message" name="message" rows="6" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Send Message</button>
                     <div class="form-status" id="formStatus"></div>
                 </form>
             </div>
         </section>
-
     </main>
 
-    <footer class="fb-footer">
+    <!-- ============================================
+         CART MODAL
+         ============================================ -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-modal-content">
+            <div class="cart-modal-header">
+                <h2>Your Order</h2>
+                <button class="close-cart" id="closeCart">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="cart-items" id="cartItems"><p class="empty-cart">Your cart is empty</p></div>
+            <div class="cart-totals">
+                <div class="total-line">
+                    <span>Subtotal:</span>
+                    <span id="cartSubtotal">$0.00</span>
+                </div>
+                <div class="total-line">
+                    <span>Tax (estimated):</span>
+                    <span id="cartTax">$0.00</span>
+                </div>
+                <div class="total-line total">
+                    <span>Total:</span>
+                    <span id="cartTotal">$0.00</span>
+                </div>
+            </div>
+            <div class="cart-actions">
+                <button class="btn-primary" id="checkoutBtn" disabled>Proceed to Checkout</button>
+                <button class="btn-secondary" id="doordashBtn" disabled>Order via DoorDash</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         CHECKOUT MODAL
+         ============================================ -->
+    <div class="checkout-modal" id="checkoutModal">
+        <div class="checkout-modal-content">
+            <div class="checkout-header">
+                <h2>Complete Your Order</h2>
+                <button class="close-checkout" id="closeCheckout">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <!-- Pickup vs Delivery Selection -->
+            <div class="order-type-selector">
+                <button class="order-type-btn active" data-type="pickup">
+                    <i class="fas fa-store"></i> Pickup
+                </button>
+                <button class="order-type-btn" data-type="doordash">
+                    <i class="fas fa-truck"></i> Delivery via DoorDash
+                </button>
+            </div>
+
+            <!-- Pickup Form -->
+            <form class="checkout-form" id="pickupForm">
+                <h3>Pickup Order</h3>
+                
+                <div class="form-group">
+                    <label for="customer-name">Your Name *</label>
+                    <input type="text" id="customer-name" name="name" required placeholder="John Doe">
+                </div>
+
+                <div class="form-group">
+                    <label for="customer-phone">Phone Number *</label>
+                    <input type="tel" id="customer-phone" name="phone" required placeholder="(219) 570-1234" pattern="[0-9\-\(\)\s]+">
+                </div>
+
+                <div class="form-group">
+                    <label for="pickup-time">Preferred Pickup Time *</label>
+                    <select id="pickup-time" name="pickup_time" required>
+                        <option value="">Select a time...</option>
+                        <option value="15-min">In 15 minutes</option>
+                        <option value="30-min">In 30 minutes</option>
+                        <option value="45-min">In 45 minutes</option>
+                        <option value="1-hour">In 1 hour</option>
+                        <option value="2-hours">In 2 hours</option>
+                        <option value="next-day">Tomorrow morning</option>
+                    </select>
+                </div>
+
+                <div class="info-box">
+                    <i class="fas fa-info-circle"></i>
+                    <p><strong>209 Lincolnway, LaPorte, IN 46350</strong><br>
+                    We'll have your order ready at the counter!</p>
+                </div>
+
+                <!-- Order Summary -->
+                <div class="order-summary">
+                    <h4>Order Summary</h4>
+                    <div id="checkoutItems"></div>
+                    <div class="summary-total">
+                        <span>Total:</span>
+                        <span id="checkoutTotal">$0.00</span>
+                    </div>
+                </div>
+
+                <!-- Square Payment Form -->
+                <div class="payment-section">
+                    <h4>Payment Information</h4>
+                    <div id="sq-payment-form"></div>
+                    <div id="sq-error" class="error-message"></div>
+                </div>
+
+                <button type="submit" class="btn-primary btn-large" id="sq-checkout-button">Complete Order & Pay</button>
+            </form>
+
+            <!-- DoorDash Form -->
+            <form class="checkout-form hidden" id="doordashForm">
+                <h3>Order via DoorDash</h3>
+                <p>We're available on DoorDash! Click below to open the app or website.</p>
+                
+                <div class="order-summary">
+                    <h4>Your Items</h4>
+                    <div id="doordashItems"></div>
+                    <div class="summary-total">
+                        <span>Estimated Total:</span>
+                        <span id="doordashTotal">$0.00</span>
+                    </div>
+                </div>
+
+                <p class="doordash-note">Pricing on DoorDash may vary due to delivery fees and platform costs.</p>
+
+                <a href="https://www.doordash.com/" target="_blank" class="btn-primary btn-large">
+                    <i class="fab fa-doordash"></i> Open DoorDash
+                </a>
+
+                <p class="cart-link">
+                    <a href="#" id="backToCart">← Back to cart</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- ============================================
+         FOOTER
+         ============================================ -->
+    <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Rocky Mountain Cafe</h3>
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>Rocky Mountain Cafe</h4>
                     <p>Your community's favorite coffee shop in LaPorte, Indiana.</p>
                 </div>
-                <div class="footer-section">
+
+                <div class="footer-column">
                     <h4>Hours</h4>
                     <p>6:00 AM – 5:00 PM<br>Every Day of the Week</p>
                 </div>
-                <div class="footer-section">
+
+                <div class="footer-column">
                     <h4>Location</h4>
                     <p>209 Lincolnway<br>LaPorte, IN 46350<br><a href="tel:+12195701234">(219) 570-1234</a></p>
                 </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Rocky Mountain Cafe. All rights reserved. | <a href="#contact">Contact</a> | <a href="#menu">Menu</a></p>
-                <div class="social-links">
-                    <span>Follow Us</span>
-                    <a href="https://www.facebook.com/rockymountaincafe219/" target="_blank"><i class="fab fa-facebook"></i></a>
-                    <a href="https://www.doordash.com/store/rocky-mountain-cafe-la-porte-25329657/" target="_blank"><i class="fas fa-utensils"></i></a>
+
+                <div class="footer-column">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/rockymountaincafe219/" target="_blank" title="Facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://www.doordash.com/" target="_blank" title="DoorDash">
+                            <i class="fas fa-bike"></i>
+                        </a>
+                    </div>
                 </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2024 Rocky Mountain Cafe. All rights reserved. | <a href="#contact">Contact</a> | <a href="#menu">Menu</a></p>
             </div>
         </div>
     </footer>
 
-    <script>
-        let cart = [];
+    <!-- Square Web Payments SDK -->
+    <script type="text/javascript" src="https://js.squareup.com/v2/paymentform"></script>
 
-        function addToCart(name, price) {
-            const existing = cart.find(i => i.name === name);
-            if (existing) { existing.qty++; } else { cart.push({ name, price, qty: 1 }); }
-            updateCartUI();
-            openCart();
-        }
+    <script src="script.js"></script>
 
-        function removeFromCart(index) { cart.splice(index, 1); updateCartUI(); }
-
-        function changeQty(index, delta) {
-            cart[index].qty += delta;
-            if (cart[index].qty <= 0) cart.splice(index, 1);
-            updateCartUI();
-        }
-
-        function updateCartUI() {
-            const count = cart.reduce((sum, i) => sum + i.qty, 0);
-            const el = document.getElementById('cartCount');
-            el.textContent = count;
-            el.style.display = count > 0 ? 'flex' : 'none';
-            const itemsEl = document.getElementById('cartItems');
-            if (cart.length === 0) {
-                itemsEl.innerHTML = '<div class="cart-empty"><i class="fas fa-shopping-bag"></i><p>Your cart is empty</p></div>';
-                document.getElementById('checkoutBtn').disabled = true;
-            } else {
-                itemsEl.innerHTML = cart.map((item, i) => `
-                    <div class="cart-item">
-                        <div class="cart-item-info">
-                            <span class="cart-item-name">${item.name}</span>
-                            <span class="cart-item-price">$${(item.price * item.qty).toFixed(2)}</span>
-                        </div>
-                        <div class="cart-item-controls">
-                            <button onclick="changeQty(${i}, -1)">−</button>
-                            <span>${item.qty}</span>
-                            <button onclick="changeQty(${i}, 1)">+</button>
-                            <button class="remove-btn" onclick="removeFromCart(${i})"><i class="fas fa-trash"></i></button>
-                        </div>
-                    </div>`).join('');
-                document.getElementById('checkoutBtn').disabled = false;
-            }
-            const subtotal = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
-            const tax = subtotal * 0.07;
-            document.getElementById('cartSubtotal').textContent = '$' + subtotal.toFixed(2);
-            document.getElementById('cartTax').textContent = '$' + tax.toFixed(2);
-            document.getElementById('cartTotal').textContent = '$' + (subtotal + tax).toFixed(2);
-        }
-
-        function openCart() { document.getElementById('cartSidebar').classList.add('open'); document.getElementById('cartOverlay').classList.add('open'); }
-        function closeCart() { document.getElementById('cartSidebar').classList.remove('open'); document.getElementById('cartOverlay').classList.remove('open'); }
-        function toggleCart() { document.getElementById('cartSidebar').classList.contains('open') ? closeCart() : openCart(); }
-        function checkout() { alert('Thank you! Please call (219) 570-1234 or visit us to complete your order.'); }
-
-        document.querySelectorAll('.menu-tab').forEach(tab => {
-            tab.addEventListener('click', () => {
-                document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
-                document.querySelectorAll('.menu-category').forEach(c => c.classList.add('hidden'));
-                tab.classList.add('active');
-                document.getElementById(tab.dataset.category + '-menu').classList.remove('hidden');
-            });
-        });
-
-        document.querySelectorAll('.space-tab').forEach(tab => {
-            tab.addEventListener('click', () => {
-                document.querySelectorAll('.space-tab').forEach(t => t.classList.remove('active'));
-                document.querySelectorAll('.space-panel').forEach(p => { p.classList.add('hidden'); p.classList.remove('active'); });
-                tab.classList.add('active');
-                const panel = document.getElementById('space-' + tab.dataset.space);
-                panel.classList.remove('hidden');
-                panel.classList.add('active');
-            });
-        });
-
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const status = document.getElementById('formStatus');
-            status.textContent = "Thank you! We'll get back to you soon.";
-            status.style.color = 'green';
-            this.reset();
-        });
-
-        updateCartUI();
-    </script>
 </body>
 </html>
