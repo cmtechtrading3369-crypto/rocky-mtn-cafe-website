@@ -171,7 +171,7 @@ body {
     position: relative;
     height: 100vh;
     min-height: 600px;
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    background: url('images/IMG_6439.jpeg') center center / cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -186,7 +186,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0,0,0,0.3);
+    background: rgba(139, 69, 19, 0.7);
 }
 
 .hero-content {
@@ -213,8 +213,15 @@ body {
 
 .hero-tagline {
     font-size: 1.3rem;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     opacity: 0.95;
+}
+
+.hero-hours {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+    font-weight: 600;
 }
 
 .hero-stats {
