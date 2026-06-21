@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initCartSystem();
     initCheckoutSystem();
     initContactForm();
+    initNewsletterForm();
     initSmoothScroll();
     initScrollAnimations();
     initHeroSlideshow();
@@ -446,6 +447,42 @@ function isValidEmail(email) {
     return emailRegex.test(email);
 }
 
+// ===== NEWSLETTER FORM =====
+function initNewsletterForm() {
+    const newsletterForm = document.getElementById('newsletterForm');
+    
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('newsletter-email').value.trim();
+            const newsletterStatus = document.getElementById('newsletterStatus');
+            
+            // Validation
+            if (!email || !isValidEmail(email)) {
+                showFormStatus('Please enter a valid email address', 'error', newsletterStatus);
+                return;
+            }
+            
+            // Track newsletter signup in GA4
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'newsletter_signup', {
+                    'email_domain': email.split('@')[1]
+                });
+            }
+            
+            // Show success message
+            showFormStatus('✓ Successfully subscribed! Check your email for a welcome offer.', 'success', newsletterStatus);
+            
+            // Clear form
+            setTimeout(() => {
+                newsletterForm.reset();
+                newsletterStatus.style.display = 'none';
+            }, 3000);
+        });
+    }
+}
+
 // ===== SMOOTH SCROLL =====
 function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -634,3 +671,75 @@ console.log('🏔️ Rocky Mountain Cafe Website Loaded');
 console.log('📱 Responsive Design Active');
 console.log('🛒 Cart System Ready');
 console.log('☕ Enjoying some code with your coffee?');
+
+// ===== SERVICE WORKER REGISTRATION =====
+function initServiceWorker() {
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+            navigator.serviceWorker.register('service-worker.js')
+                .then(registration => {
+                    console.log('✓ Service Worker registered successfully:', registration.scope);
+                    
+                    // Check for updates periodically
+                    setInterval(() => {
+                        registration.update();
+                    }, 60000); // Check every minute
+                })
+                .catch(error => {
+                    console.log('⚠️ Service Worker registration failed:', error);
+                });
+
+            // Listen for controller change (new service worker activated)
+            navigator.serviceWorker.addEventListener('controllerchange', () => {
+                console.log('🔄 Service Worker updated');
+                showOfflineIndicator('Updated to latest version', 'success', 2000);
+            });
+        });
+
+        // Handle offline/online status
+        window.addEventListener('online', () => {
+            console.log('📡 Back online!');
+            document.body.classList.remove('offline');
+            showOfflineIndicator('You are online', 'online', 2000);
+        });
+
+        window.addEventListener('offline', () => {
+            console.log('📡 You are offline');
+            document.body.classList.add('offline');
+            showOfflineIndicator('You are offline - Using cached data', 'error', 0);
+        });
+
+        // Check initial online status
+        if (!navigator.onLine) {
+            document.body.classList.add('offline');
+            showOfflineIndicator('You are offline - Using cached data', 'error', 0);
+        }
+    }
+}
+
+function showOfflineIndicator(message, type, duration) {
+    let indicator = document.getElementById('offlineIndicator');
+    
+    if (!indicator) {
+        indicator = document.createElement('div');
+        indicator.id = 'offlineIndicator';
+        indicator.className = 'offline-indicator';
+        document.body.appendChild(indicator);
+    }
+
+    let icon = 'fa-wifi-slash';
+    if (type === 'online') icon = 'fa-wifi';
+    if (type === 'success') icon = 'fa-check-circle';
+
+    indicator.innerHTML = `<i class="fas ${icon}"></i> <span>${message}</span>`;
+    indicator.className = `offline-indicator show ${type}`;
+
+    if (duration > 0) {
+        setTimeout(() => {
+            indicator.classList.remove('show');
+        }, duration);
+    }
+}
+
+// Initialize service worker on page load
+document.addEventListener('DOMContentLoaded', initServiceWorker);

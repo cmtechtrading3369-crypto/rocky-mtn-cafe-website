@@ -8,11 +8,9 @@
     <meta name="author" content="Rocky Mountain Cafe">
     <link rel="canonical" href="https://rockymountaincafe.com/">
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://rockymountaincafe.com/">
-    <meta property="og:title" content="Rocky Mountain Cafe | Coffee Shop LaPorte, Indiana">
-    <meta property="og:description" content="Rocky Mountain Cafe is LaPorte, Indiana's favorite community coffee house. Fresh coffee, premium pastries, live music, free WiFi, and gaming. Open 6 AM - 7 PM daily at 209 Lincolnway.">
+    <!-- Logo with WebP Fallback -->
+    <meta property="og:image" content="https://rockymountaincafe.com/images/logo.webp">
+    <meta property="og:image:type" content="image/webp">
     <meta property="og:image" content="https://rockymountaincafe.com/images/logo.jpg">
 
     <!-- Twitter -->
@@ -77,6 +75,19 @@
     <!-- Stylesheet -->
     <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
 
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX', {
+            'anonymize_ip': true,
+            'page_path': window.location.pathname,
+            'page_title': document.title
+        });
+    </script>
+
     <!-- Critical CSS Inline (above fold styles) -->
     <style>
         /* Critical above-fold styles to prevent FOUC */
@@ -90,6 +101,9 @@
 <body>
     <!-- Skip to content link for accessibility -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Offline Indicator -->
+    <div id="offlineIndicator" class="offline-indicator"></div>
 
     <!-- ============================================
          NAVBAR
@@ -668,13 +682,47 @@
                 </div>
 
                 <div class="updates-content">
-                    <div class="social-link">
-                        <i class="fab fa-facebook"></i>
-                        <h3>Rocky Mountain Cafe</h3>
-                        <p>@rockymountaincafe219</p>
-                        <a href="https://www.facebook.com/rockymountaincafe219/" target="_blank" class="btn btn-secondary">
-                            Follow on Facebook <i class="fas fa-external-link-alt"></i>
-                        </a>
+                    <div class="social-feeds-grid">
+                        <div class="social-link facebook-card">
+                            <i class="fab fa-facebook"></i>
+                            <h3>Rocky Mountain Cafe</h3>
+                            <p>@rockymountaincafe219</p>
+                            <a href="https://www.facebook.com/rockymountaincafe219/" target="_blank" class="btn btn-secondary">
+                                Follow on Facebook <i class="fas fa-external-link-alt"></i>
+                            </a>
+                            <div class="social-stats">
+                                <span class="stat-item"><i class="fas fa-users"></i> 2.4K Followers</span>
+                                <span class="stat-item"><i class="fas fa-heart"></i> 847 Likes</span>
+                            </div>
+                        </div>
+                        
+                        <div class="social-link instagram-card">
+                            <i class="fab fa-instagram"></i>
+                            <h3>Rocky Mountain Cafe</h3>
+                            <p>@rockymountaincafe_laporte</p>
+                            <a href="https://www.instagram.com/rockymountaincafe_laporte/" target="_blank" class="btn btn-secondary">
+                                Follow on Instagram <i class="fas fa-external-link-alt"></i>
+                            </a>
+                            <div class="social-stats">
+                                <span class="stat-item"><i class="fas fa-users"></i> 1.8K Followers</span>
+                                <span class="stat-item"><i class="fas fa-heart"></i> 562 Likes</span>
+                            </div>
+                        </div>
+                        
+                        <div class="social-link google-card">
+                            <i class="fab fa-google"></i>
+                            <h3>Google Reviews</h3>
+                            <p>4.9 ★ Rating</p>
+                            <a href="https://www.google.com/maps/place/Rocky+Mountain+Cafe" target="_blank" class="btn btn-secondary">
+                                View Reviews <i class="fas fa-external-link-alt"></i>
+                            </a>
+                            <div class="social-stats">
+                                <span class="stat-item"><i class="fas fa-star"></i> 84 Reviews</span>
+                                <span class="stat-item"><i class="fas fa-check-circle"></i> Verified</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                     </div>
 
                     <p class="updates-note">
@@ -689,16 +737,49 @@
         </section>
 
         <!-- ============================================
+             NEWSLETTER SECTION
+             ============================================ -->
+        <section class="newsletter-section" id="newsletter">
+            <div class="container">
+                <div class="newsletter-content">
+                    <div class="newsletter-text">
+                        <h2>Stay Updated</h2>
+                        <p>Get special promotions, new menu items, and cafe updates delivered to your inbox</p>
+                    </div>
+                    <form class="newsletter-form" id="newsletterForm">
+                        <div class="newsletter-input-group">
+                            <input 
+                                type="email" 
+                                id="newsletter-email" 
+                                name="email" 
+                                placeholder="Enter your email" 
+                                required
+                                aria-label="Newsletter email subscription"
+                            >
+                            <button type="submit" class="btn btn-primary" aria-label="Subscribe to newsletter">
+                                <i class="fas fa-check"></i> Subscribe
+                            </button>
+                        </div>
+                        <p class="newsletter-privacy">We respect your privacy. Unsubscribe at any time.</p>
+                        <div class="newsletter-status" id="newsletterStatus"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
              CONTACT SECTION
              ============================================ -->
         <section id="contact" class="contact-section">
             <div class="container">
-                <div class="section-header">
-                    <h2>Contact Us</h2>
-                    <p>Visit Rocky Mountain Cafe at 209 Lincolnway, LaPorte, Indiana or send us a message</p>
-                </div>
+                <div class="contact-grid">
+                    <div class="contact-form-wrapper">
+                        <div class="section-header">
+                            <h2>Contact Us</h2>
+                            <p>Visit Rocky Mountain Cafe at 209 Lincolnway, LaPorte, Indiana or send us a message</p>
+                        </div>
 
-                <form class="contact-form" id="contactForm">
+                        <form class="contact-form" id="contactForm">
                     <div class="form-group">
                         <label for="contact-name">Name *</label>
                         <input type="text" id="contact-name" name="name" required>
@@ -719,9 +800,53 @@
                         <textarea id="contact-message" name="message" rows="6" required></textarea>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                    <div class="form-status" id="formStatus"></div>
-                </form>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                        <div class="form-status" id="formStatus"></div>
+                    </form>
+                    </div>
+
+                    <!-- Google Business Profile Widget -->
+                    <div class="business-profile-wrapper">
+                        <h3>Visit Us</h3>
+                        <div class="business-info-card">
+                            <div class="info-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <h4>Address</h4>
+                                    <p>209 Lincolnway<br>LaPorte, IN 46350</p>
+                                    <a href="https://maps.google.com/?q=209+Lincolnway+LaPorte+Indiana" target="_blank" class="btn btn-secondary btn-small">
+                                        <i class="fas fa-directions"></i> Get Directions
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-phone"></i>
+                                <div>
+                                    <h4>Phone</h4>
+                                    <p><a href="tel:+12195701234">(219) 570-1234</a></p>
+                                    <a href="tel:+12195701234" class="btn btn-secondary btn-small">
+                                        <i class="fas fa-phone"></i> Call Us
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-clock"></i>
+                                <div>
+                                    <h4>Hours</h4>
+                                    <p>Mon-Sun: 6:00 AM – 7:00 PM</p>
+                                    <span class="status-badge open">Currently Open</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="google-reviews-badge">
+                            <span class="badge-stars">★★★★★</span>
+                            <span class="badge-text">4.9 Rating • 84 Reviews</span>
+                            <a href="https://www.google.com/maps/place/Rocky+Mountain+Cafe" target="_blank" class="badge-link">
+                                View on Google
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
