@@ -2,7 +2,6 @@
 
 // ===== GLOBAL VARIABLES =====
 let cart = [];
-let squareCard;
 
 // ===== INITIALIZATION =====
 document.addEventListener('DOMContentLoaded', function() {
@@ -107,15 +106,24 @@ function initMenuTabs() {
 // ===== CART SYSTEM =====
 function initCartSystem() {
     const cartButton = document.getElementById('cartButton');
+    const cartButtonMobile = document.getElementById('cartButtonMobile');
     const cartModal = document.getElementById('cartModal');
     const closeCart = document.getElementById('closeCart');
     const addToCartButtons = document.querySelectorAll('.btn-add-cart');
     const checkoutBtn = document.getElementById('checkoutBtn');
     const doordashBtn = document.getElementById('doordashBtn');
-    
-    // Open cart modal
+
+    // Open cart modal (desktop)
     if (cartButton) {
         cartButton.addEventListener('click', function() {
+            cartModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    }
+
+    // Open cart modal (mobile)
+    if (cartButtonMobile) {
+        cartButtonMobile.addEventListener('click', function() {
             cartModal.classList.add('active');
             document.body.style.overflow = 'hidden';
         });
@@ -318,10 +326,9 @@ function initCheckoutSystem() {
     if (pickupForm) {
         pickupForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            // In a real implementation, this would process the Square payment
-            alert('Thank you for your order! In a real implementation, this would process your payment through Square.');
-            
+
+            alert('Thank you for your order! We will contact you to confirm payment and pickup details.');
+
             // Clear cart and close modal
             cart = [];
             updateCartUI();
@@ -506,6 +513,9 @@ document.addEventListener('keydown', function(e) {
 
 // ===== HERO SLIDESHOW =====
 function initHeroSlideshow() {
+    // Slideshow disabled - using static hero image
+    // To re-enable, uncomment the code below
+    /*
     const hero = document.querySelector('.hero');
     if (!hero) return;
 
@@ -555,6 +565,7 @@ function initHeroSlideshow() {
 
     // Change image every 3 seconds
     setInterval(changeBackgroundImage, 3000);
+    */
 }
 
 // ===== THEME TOGGLE =====

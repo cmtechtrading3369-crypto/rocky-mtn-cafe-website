@@ -7,6 +7,10 @@
     box-sizing: border-box;
 }
 
+.hidden {
+    display: none !important;
+}
+
 :root {
     /* Warm Premium Modern-Vintage Color Palette */
     --primary-color: #8B4513;
@@ -140,10 +144,11 @@ body {
 
 .logo-text {
     font-family: var(--font-heading);
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 700;
     color: var(--primary-color);
     letter-spacing: -0.01em;
+    line-height: 1.2;
 }
 
 .navbar-toggle {
@@ -171,15 +176,19 @@ body {
     align-items: center;
 }
 
+.nav-menu-cta {
+    display: none;
+}
+
 .nav-link {
     text-decoration: none;
     color: var(--text-color);
     font-family: var(--font-body);
-    font-weight: 500;
+    font-weight: 600;
     font-size: 0.95rem;
     transition: color var(--transition-base);
     position: relative;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.01em;
 }
 
 .nav-link:hover,
@@ -231,7 +240,21 @@ body {
 .navbar-actions {
     display: flex;
     align-items: center;
-    gap: var(--space-sm);
+    gap: var(--space-md);
+}
+
+.navbar-cta {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.btn-small {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
 }
 
 .cart-button {
@@ -310,7 +333,6 @@ body {
     color: var(--white);
     margin-top: 0;
     transition: background-image 1.2s ease-in-out;
-    aspect-ratio: 16/9;
     max-height: 100vh;
 }
 
@@ -585,7 +607,7 @@ body {
 
 /* ===== INFO SECTION ===== */
 .info-section {
-    padding: var(--space-3xl) 0;
+    padding: var(--space-2xl) 0 var(--space-3xl);
     background: var(--white);
 }
 
@@ -597,9 +619,9 @@ body {
 
 .info-card {
     text-align: center;
-    padding: var(--space-xl);
+    padding: var(--space-lg);
     background: var(--light-bg);
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-md);
     transition: all var(--transition-base);
     border: 1px solid var(--border-color);
 }
@@ -690,6 +712,7 @@ section {
 .menu-section {
     background: var(--light-bg);
     position: relative;
+    padding: var(--space-4xl) 0;
 }
 
 .menu-section::before {
@@ -866,6 +889,7 @@ section {
 /* ===== ABOUT SECTION ===== */
 .about-section {
     background: var(--white);
+    padding: var(--space-3xl) 0;
 }
 
 .features-grid {
@@ -878,10 +902,11 @@ section {
 .feature-card {
     text-align: center;
     padding: var(--space-xl);
-    background: var(--light-bg);
+    background: var(--white);
     border-radius: var(--radius-lg);
     transition: all var(--transition-base);
-    border: 1px solid var(--border-color);
+    border: 2px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
 }
 
 .feature-card:hover {
@@ -973,6 +998,7 @@ section {
 /* ===== REVIEWS SECTION ===== */
 .reviews-section {
     background: var(--light-bg);
+    padding: var(--space-2xl) 0 var(--space-3xl);
 }
 
 .reviews-grid {
@@ -984,9 +1010,9 @@ section {
 
 .review-card {
     background: var(--white);
-    padding: var(--space-xl);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow);
+    padding: var(--space-lg);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
     transition: all var(--transition-base);
     border: 1px solid var(--border-color);
 }
@@ -1039,6 +1065,7 @@ section {
 /* ===== UPDATES SECTION ===== */
 .updates-section {
     background: var(--white);
+    padding: var(--space-2xl) 0;
 }
 
 .updates-content {
@@ -1082,6 +1109,7 @@ section {
 /* ===== CONTACT SECTION ===== */
 .contact-section {
     background: var(--light-bg);
+    padding: var(--space-3xl) 0 var(--space-4xl);
 }
 
 .contact-form {
@@ -1580,7 +1608,8 @@ section {
         align-items: center;
         justify-content: center;
         transition: left var(--transition-base);
-        gap: var(--space-lg);
+        gap: var(--space-md);
+        padding: var(--space-lg);
     }
 
     .nav-menu.active {
@@ -1589,6 +1618,17 @@ section {
 
     .navbar-actions {
         display: none;
+    }
+
+    .nav-menu-cta {
+        display: block;
+        margin-top: var(--space-md);
+    }
+
+    .nav-menu-cta .btn {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
     }
 
     .nav-menu-cart {
@@ -1696,7 +1736,13 @@ section {
     }
 
     .logo-text {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
+    }
+
+    .nav-link {
+        font-size: 1.3rem;
+        font-weight: 600;
+        padding: var(--space-sm) 0;
     }
 
     .hero-title {

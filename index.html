@@ -3,10 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rocky Mountain Cafe — LaPorte's Community Coffee House</title>
-    <meta name="description" content="Premium community cafe in LaPorte, Indiana. Fresh coffee, fresh pastries, live music, gaming, and WiFi. Open 7 days a week.">
-    <meta name="keywords" content="coffee shop, cafe, LaPorte Indiana, fresh coffee, pastries, WiFi, live music, community cafe">
+    <title>Rocky Mountain Cafe | Coffee Shop LaPorte, Indiana | Fresh Coffee, Pastries, WiFi</title>
+    <meta name="description" content="Rocky Mountain Cafe is LaPorte, Indiana's favorite community coffee house. Fresh coffee, premium pastries, live music, free WiFi, and gaming. Open 6 AM - 7 PM daily at 209 Lincolnway.">
     <meta name="author" content="Rocky Mountain Cafe">
+    <link rel="canonical" href="https://rockymountaincafe.com/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rockymountaincafe.com/">
+    <meta property="og:title" content="Rocky Mountain Cafe | Coffee Shop LaPorte, Indiana">
+    <meta property="og:description" content="Rocky Mountain Cafe is LaPorte, Indiana's favorite community coffee house. Fresh coffee, premium pastries, live music, free WiFi, and gaming. Open 6 AM - 7 PM daily at 209 Lincolnway.">
+    <meta property="og:image" content="https://rockymountaincafe.com/images/logo.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://rockymountaincafe.com/">
+    <meta property="twitter:title" content="Rocky Mountain Cafe | Coffee Shop LaPorte, Indiana">
+    <meta property="twitter:description" content="Rocky Mountain Cafe is LaPorte, Indiana's favorite community coffee house. Fresh coffee, premium pastries, live music, free WiFi, and gaming.">
+    <meta property="twitter:image" content="https://rockymountaincafe.com/images/logo.jpg">
+
+    <!-- Local Business Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CoffeeShop",
+        "name": "Rocky Mountain Cafe",
+        "image": "https://rockymountaincafe.com/images/logo.jpg",
+        "description": "Rocky Mountain Cafe is LaPorte, Indiana's favorite community coffee house. Fresh coffee, premium pastries, live music, free WiFi, and gaming.",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "209 Lincolnway",
+            "addressLocality": "LaPorte",
+            "addressRegion": "IN",
+            "postalCode": "46350",
+            "addressCountry": "US"
+        },
+        "telephone": "+12195701234",
+        "email": "rockymountaincoffee@yahoo.com",
+        "url": "https://rockymountaincafe.com/",
+        "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                    "Saturday",
+                    "Sunday"
+                ],
+                "opens": "06:00",
+                "closes": "19:00"
+            }
+        ],
+        "priceRange": "$$",
+        "servesCuisine": "Coffee, Pastries",
+        "foundingDate": "2010",
+        "sameAs": [
+            "https://www.facebook.com/rockymountaincafe219/"
+        ]
+    }
+    </script>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,7 +82,7 @@
         /* Critical above-fold styles to prevent FOUC */
         body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
         .navbar { position: fixed; top: 0; left: 0; right: 0; background: #fff; z-index: 1000; }
-        .hero { position: relative; min-height: 700px; background: #2C2C2C; }
+        .hero { position: relative; min-height: 700px; }
         .hero-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(30, 20, 10, 0.72); }
         .hero-content { position: relative; z-index: 1; text-align: center; color: #fff; padding: 2rem; }
     </style>
@@ -36,8 +94,8 @@
     <nav class="navbar" id="navbar">
         <div class="navbar-container">
             <a href="#home" class="navbar-logo" aria-label="Rocky Mountain Cafe Home">
-                <img src="images/logo.jpg" alt="Rocky Mountain Cafe Logo" class="logo-image" width="50" height="50" decoding="async" fetchpriority="high">
-                <span class="logo-text">Rocky Mountain</span>
+                <img src="images/logo.jpg" alt="Rocky Mountain Cafe logo - coffee shop in LaPorte Indiana" class="logo-image" width="50" height="50" decoding="async" fetchpriority="high">
+                <span class="logo-text">Rocky Mountain Cafe</span>
             </a>
 
             <button class="navbar-toggle" id="navbarToggle" aria-label="Toggle navigation menu" aria-expanded="false">
@@ -47,10 +105,12 @@
             </button>
 
             <ul class="nav-menu" id="navMenu" role="navigation" aria-label="Main navigation">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#menu" class="nav-link">Menu</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#menu" class="nav-link">Coffee Menu</a></li>
+                <li><a href="#about" class="nav-link">About Us</a></li>
+                <li><a href="#contact" class="nav-link">Contact & Location</a></li>
+                <li class="nav-menu-cta">
+                    <a href="https://www.doordash.com/" target="_blank" class="btn btn-primary btn-small">Order Now</a>
+                </li>
                 <li class="nav-menu-cart">
                     <button class="cart-button nav-cart-button" id="cartButtonMobile" aria-label="View cart">
                         <i class="fas fa-shopping-cart"></i>
@@ -60,15 +120,20 @@
             </ul>
 
             <div class="navbar-actions">
+                <!-- Theme Toggle -->
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+
+                <!-- Order Button -->
+                <a href="https://www.doordash.com/" target="_blank" class="btn btn-primary btn-small navbar-cta">
+                    Order Now
+                </a>
+
                 <!-- Cart Button -->
                 <button class="cart-button" id="cartButton" aria-label="View cart">
                     <i class="fas fa-shopping-cart"></i>
                     <span class="cart-count" id="cartCount">0</span>
-                </button>
-
-                <!-- Theme Toggle Button -->
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark theme">
-                    <i class="fas fa-moon"></i>
                 </button>
             </div>
         </div>
@@ -176,7 +241,7 @@
             <div class="container">
                 <div class="section-header">
                     <h2>Our Menu</h2>
-                    <p>Fresh-brewed coffee, premium pastries, and community vibes</p>
+                    <p>Fresh-brewed coffee, premium pastries, and community vibes in LaPorte, Indiana</p>
                 </div>
 
                 <div class="menu-tabs">
@@ -436,8 +501,8 @@
         <section id="about" class="about-section">
             <div class="container">
                 <div class="section-header">
-                    <h2>About Rocky Mountain</h2>
-                    <p>More than just coffee — we're your community gathering place</p>
+                    <h2>About Rocky Mountain Cafe</h2>
+                    <p>Your community gathering place in LaPorte, Indiana since 2010</p>
                 </div>
 
                 <div class="features-grid">
@@ -483,39 +548,39 @@
                     <h3>Our Space</h3>
                     <div class="gallery-grid">
                         <div class="gallery-item gallery-item-desktop">
-                            <img src="images/IMG_4567.png" alt="Rocky Mountain Cafe exterior" loading="lazy" width="800" height="600" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                            <img src="images/IMG_4567.png" alt="Rocky Mountain Cafe exterior building at 209 Lincolnway LaPorte Indiana" loading="lazy" width="800" height="600" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                             <span class="gallery-placeholder" style="display:none"><i class="fas fa-store"></i><br>Exterior</span>
                         </div>
                         <div class="gallery-item gallery-item-mobile">
-                            <img src="images/IMG_6423.jpeg" alt="Rocky Mountain Cafe welcoming interior" loading="lazy" width="800" height="600" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                            <img src="images/IMG_6423.jpeg" alt="Rocky Mountain Cafe welcoming interior seating area in LaPorte Indiana" loading="lazy" width="800" height="600" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                             <span class="gallery-placeholder" style="display:none"><i class="fas fa-store"></i><br>Interior</span>
                         </div>
                         <div class="gallery-item gallery-item-mobile">
-                            <img src="images/IMG_6429.jpeg" alt="Coffee bar and counter area" loading="lazy" width="800" height="600" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                            <img src="images/IMG_6429.jpeg" alt="Coffee bar and counter area at Rocky Mountain Cafe LaPorte" loading="lazy" width="800" height="600" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                             <span class="gallery-placeholder" style="display:none"><i class="fas fa-coffee"></i><br>Coffee Bar</span>
                         </div>
                         <div class="gallery-item gallery-item-desktop">
-                            <img src="images/IMG_6430.jpeg" alt="Pastry display case" loading="lazy" width="800" height="600" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                            <img src="images/IMG_6430.jpeg" alt="Pastry display case with fresh baked goods at Rocky Mountain Cafe" loading="lazy" width="800" height="600" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                             <span class="gallery-placeholder" style="display:none"><i class="fas fa-cookie"></i><br>Pastries</span>
                         </div>
                         <div class="gallery-item gallery-item-desktop">
-                            <img src="images/IMG_6434.jpeg" alt="Seating area and community space" loading="lazy" width="800" height="600" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                            <img src="images/IMG_6434.jpeg" alt="Seating area and community space at Rocky Mountain Cafe LaPorte Indiana" loading="lazy" width="800" height="600" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                             <span class="gallery-placeholder" style="display:none"><i class="fas fa-chair"></i><br>Seating</span>
                         </div>
                         <div class="gallery-item gallery-item-desktop">
-                            <img src="images/IMG_6435.jpeg" alt="Professional coffee equipment" loading="lazy" width="800" height="600" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                            <img src="images/IMG_6435.jpeg" alt="Professional coffee equipment and espresso machines at Rocky Mountain Cafe" loading="lazy" width="800" height="600" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                             <span class="gallery-placeholder" style="display:none"><i class="fas fa-cog"></i><br>Equipment</span>
                         </div>
                         <div class="gallery-item gallery-item-desktop">
-                            <img src="images/IMG_6436.jpeg" alt="Cozy corner seating" loading="lazy" width="800" height="600" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                            <img src="images/IMG_6436.jpeg" alt="Cozy corner seating area for remote work at Rocky Mountain Cafe" loading="lazy" width="800" height="600" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                             <span class="gallery-placeholder" style="display:none"><i class="fas fa-couch"></i><br>Cozy Corner</span>
                         </div>
                         <div class="gallery-item gallery-item-desktop">
-                            <img src="images/IMG_6437.jpeg" alt="Main seating area" loading="lazy" width="800" height="600" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                            <img src="images/IMG_6437.jpeg" alt="Main seating area and community gathering space at Rocky Mountain Cafe LaPorte" loading="lazy" width="800" height="600" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                             <span class="gallery-placeholder" style="display:none"><i class="fas fa-users"></i><br>Community</span>
                         </div>
                         <div class="gallery-item gallery-item-desktop">
-                            <img src="images/IMG_6438.jpeg" alt="Coffee preparation station" loading="lazy" width="800" height="600" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                            <img src="images/IMG_6438.jpeg" alt="Coffee preparation station and barista area at Rocky Mountain Cafe" loading="lazy" width="800" height="600" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                             <span class="gallery-placeholder" style="display:none"><i class="fas fa-mug-hot"></i><br>Barista Station</span>
                         </div>
                     </div>
@@ -529,8 +594,8 @@
         <section id="reviews" class="reviews-section">
             <div class="container">
                 <div class="section-header">
-                    <h2>What Our Customers Say</h2>
-                    <p>Real reviews from real people who love Rocky Mountain Cafe</p>
+                    <h2>Customer Reviews</h2>
+                    <p>What people are saying about Rocky Mountain Cafe in LaPorte, Indiana</p>
                 </div>
 
                 <div class="reviews-grid">
@@ -626,8 +691,8 @@
         <section id="contact" class="contact-section">
             <div class="container">
                 <div class="section-header">
-                    <h2>Get In Touch</h2>
-                    <p>Questions? We'd love to hear from you.</p>
+                    <h2>Contact Us</h2>
+                    <p>Visit Rocky Mountain Cafe at 209 Lincolnway, LaPorte, Indiana or send us a message</p>
                 </div>
 
                 <form class="contact-form" id="contactForm">
@@ -756,14 +821,7 @@
                     </div>
                 </div>
 
-                <!-- Square Payment Form -->
-                <div class="payment-section">
-                    <h4>Payment Information</h4>
-                    <div id="sq-payment-form"></div>
-                    <div id="sq-error" class="error-message"></div>
-                </div>
-
-                <button type="submit" class="btn-primary btn-large" id="sq-checkout-button">Complete Order & Pay</button>
+                <button type="submit" class="btn-primary btn-large">Complete Order</button>
             </form>
 
             <!-- DoorDash Form -->
@@ -832,9 +890,6 @@
             </div>
         </div>
     </footer>
-
-    <!-- Square Web Payments SDK (deferred - only needed for checkout) -->
-    <script type="text/javascript" src="https://js.squareup.com/v2/paymentform" defer></script>
 
     <script src="script.js" defer></script>
 
