@@ -1,0 +1,1724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rocky Mountain Cafe — Preview of Proposed Changes</title>
+    <meta name="description" content="Premium community cafe in LaPorte, Indiana. Fresh coffee, fresh pastries, live music, gaming, and WiFi. Open 7 days a week.">
+    <meta name="theme-color" content="#8B4513">
+
+    <!-- Open Graph Tags (NEW) -->
+    <meta property="og:title" content="Rocky Mountain Cafe — LaPorte's Community Coffee House">
+    <meta property="og:description" content="Premium coffee, fresh pastries, live music, and free WiFi. Open 7 days a week in LaPorte, Indiana.">
+    <meta property="og:type" content="restaurant.cafe">
+    <meta property="og:image" content="images/IMG_6423.jpeg">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ===== RESET & BASE ===== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary-color: #8B4513;
+            --secondary-color: #D2691E;
+            --accent-color: #CD853F;
+            --text-color: #333;
+            --light-text: #666;
+            --white: #fff;
+            --light-bg: #f8f9fa;
+            --warm-bg: #faf7f2;
+            --border-color: #e0e0e0;
+            --shadow: 0 2px 10px rgba(0,0,0,0.1);
+            --shadow-lg: 0 5px 20px rgba(0,0,0,0.15);
+            --shadow-xl: 0 10px 40px rgba(0,0,0,0.12);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background: var(--light-bg);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== PREVIEW BANNER ===== */
+        .preview-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: #fff;
+            text-align: center;
+            padding: 10px 20px;
+            z-index: 2000;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        .preview-banner span {
+            color: #ffd700;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 38px;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-image {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary-color);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* NEW: Phone link in navbar */
+        .nav-phone {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 6px 14px;
+            border: 2px solid var(--primary-color);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-phone:hover {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        .cart-button {
+            position: relative;
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .cart-button:hover {
+            background: var(--secondary-color);
+            transform: scale(1.05);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #e74c3c;
+            color: var(--white);
+            font-size: 0.7rem;
+            font-weight: 700;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ===== HERO SECTION — CHANGED: real photo background ===== */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            background-image: url('images/storefront.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            margin-top: 38px;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                135deg,
+                rgba(139, 69, 19, 0.75) 0%,
+                rgba(210, 105, 30, 0.65) 50%,
+                rgba(139, 69, 19, 0.80) 100%
+            );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+        }
+
+        .hero-divider {
+            width: 80px;
+            height: 3px;
+            background: var(--accent-color);
+            margin: 0 auto 15px;
+        }
+
+        .hero-tagline {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            opacity: 0.95;
+        }
+
+        /* NEW: Open Now indicator */
+        .open-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            letter-spacing: 0.5px;
+        }
+
+        .open-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #4caf50;
+            animation: pulse-dot 2s infinite;
+        }
+
+        .open-dot.closed {
+            background: #e74c3c;
+            animation: none;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 35px;
+        }
+
+        .stat { text-align: center; }
+
+        .stat-number {
+            display: block;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .stat-icon {
+            color: #FFD700;
+            font-size: 1.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stat-divider {
+            width: 2px;
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* CHANGED: 3-tier CTA hierarchy */
+        .hero-cta {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: var(--white);
+            color: var(--primary-color);
+            padding: 14px 36px;
+            font-size: 1rem;
+        }
+
+        .btn-primary:hover {
+            background: var(--light-bg);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255,255,255,0.7);
+            padding: 12px 28px;
+            font-size: 0.9rem;
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--primary-color);
+            border-color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* NEW: Tertiary CTA style */
+        .btn-tertiary {
+            background: transparent;
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-tertiary:hover {
+            background: rgba(255,255,255,0.15);
+            color: var(--white);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--white);
+            font-size: 1.8rem;
+            animation: bounce 2s infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-15px); }
+            60% { transform: translateX(-50%) translateY(-8px); }
+        }
+
+        /* ===== INFO SECTION ===== */
+        .info-section {
+            padding: 60px 0;
+            background: var(--white);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .info-card {
+            text-align: center;
+            padding: 30px 25px;
+            background: var(--light-bg);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .info-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--border-color);
+        }
+
+        .info-card i {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+        }
+
+        .info-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            color: var(--primary-color);
+        }
+
+        .info-card p {
+            color: var(--light-text);
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+        }
+
+        .info-card a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .link-arrow:hover { text-decoration: underline; }
+
+        .text-muted { color: #999; font-size: 0.85rem; }
+
+        /* NEW: Open/Closed status in hours card */
+        .hours-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 4px;
+        }
+
+        .hours-status.open {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .hours-status.closed {
+            background: #fbe9e7;
+            color: #c62828;
+        }
+
+        .hours-status-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: currentColor;
+        }
+
+        /* ===== SECTIONS ===== */
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+        }
+
+        .section-header p {
+            color: var(--light-text);
+            font-size: 1.05rem;
+        }
+
+        /* ===== MENU SECTION ===== */
+        .menu-section {
+            position: relative;
+            background-image: url('images/menu-board.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 100px 0 80px;
+        }
+
+        .menu-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                180deg,
+                rgba(250, 247, 242, 0.92) 0%,
+                rgba(250, 247, 242, 0.88) 50%,
+                rgba(250, 247, 242, 0.92) 100%
+            );
+            z-index: 0;
+        }
+
+        .menu-section > .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .menu-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .menu-tab {
+            background: var(--white);
+            border: 2px solid var(--border-color);
+            padding: 10px 22px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+        }
+
+        .menu-tab:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .menu-tab.active {
+            background: var(--primary-color);
+            color: var(--white);
+            border-color: var(--primary-color);
+        }
+
+        /* NEW: Staff Picks spotlight */
+        .staff-picks {
+            margin-bottom: 40px;
+        }
+
+        .staff-picks-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .staff-picks-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--primary-color);
+        }
+
+        .staff-picks-badge {
+            background: var(--secondary-color);
+            color: var(--white);
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .staff-picks-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .staff-pick-card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--accent-color);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .staff-pick-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .staff-pick-card .pick-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: #FFF8E1;
+            color: var(--secondary-color);
+            padding: 2px 8px;
+            border-radius: 8px;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+
+        .staff-pick-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 6px;
+        }
+
+        .staff-pick-card .pick-description {
+            color: var(--light-text);
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        .staff-pick-card .pick-why {
+            color: var(--secondary-color);
+            font-size: 0.85rem;
+            font-style: italic;
+            margin-bottom: 12px;
+        }
+
+        .staff-pick-card .menu-item-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 12px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .menu-item {
+            background: var(--white);
+            padding: 22px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .menu-item h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+
+        .menu-item p {
+            color: var(--light-text);
+            margin-bottom: 12px;
+            line-height: 1.5;
+            font-size: 0.9rem;
+        }
+
+        .menu-item-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .btn-add-cart {
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 7px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.85rem;
+        }
+
+        .btn-add-cart:hover {
+            background: var(--secondary-color);
+            transform: scale(1.05);
+        }
+
+        /* ===== REVIEWS — CHANGED: moved up, warm background, quote styling ===== */
+        .reviews-section {
+            background: var(--warm-bg);
+            padding: 80px 0;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 35px;
+        }
+
+        .review-card {
+            background: var(--white);
+            padding: 28px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .review-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* NEW: Decorative quote mark */
+        .review-card::before {
+            content: '\201C';
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            color: var(--accent-color);
+            opacity: 0.3;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            line-height: 1;
+        }
+
+        .stars {
+            color: #FFD700;
+            font-size: 1rem;
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .review-text {
+            font-style: italic;
+            color: var(--light-text);
+            margin-bottom: 15px;
+            line-height: 1.6;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .review-author {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 0.9rem;
+        }
+
+        .reviews-cta {
+            text-align: center;
+        }
+
+        .reviews-cta p {
+            color: var(--light-text);
+            font-size: 0.95rem;
+        }
+
+        .reviews-cta a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .reviews-cta a:hover { text-decoration: underline; }
+
+        /* ===== ABOUT / FEATURES ===== */
+        .about-section {
+            background: var(--white);
+            padding: 100px 0 60px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 0;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 30px 20px;
+            background: var(--light-bg);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .feature-card i {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+        }
+
+        .feature-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            color: var(--light-text);
+            line-height: 1.5;
+            font-size: 0.9rem;
+        }
+
+        /* ===== GALLERY — CHANGED: standalone section, lazy loading, masonry-style ===== */
+        .gallery-section-standalone {
+            background: var(--light-bg);
+            padding: 80px 0;
+        }
+
+        .gallery-grid-masonry {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 200px;
+            gap: 15px;
+        }
+
+        .gallery-item-m {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #ddd;
+        }
+
+        .gallery-item-m.span-2 {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .gallery-item-m img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item-m:hover img {
+            transform: scale(1.08);
+        }
+
+        /* ===== CONTACT ===== */
+        .contact-section {
+            background: var(--white);
+            padding: 80px 0;
+        }
+
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .contact-info-side h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .contact-detail i {
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            margin-top: 3px;
+        }
+
+        .contact-detail p {
+            color: var(--light-text);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .contact-detail a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact-detail a:hover { text-decoration: underline; }
+
+        .contact-map-placeholder {
+            width: 100%;
+            height: 180px;
+            background: var(--light-bg);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light-text);
+            font-size: 0.9rem;
+            border: 2px dashed var(--border-color);
+            margin-top: 10px;
+        }
+
+        .contact-form {
+            background: var(--light-bg);
+            padding: 30px;
+            border-radius: 12px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px 14px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .btn-submit {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            width: 100%;
+        }
+
+        .btn-submit:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        /* ===== FOOTER — CHANGED: consolidated social, dynamic year ===== */
+        .footer {
+            background: linear-gradient(180deg, #2c3e50 0%, #1a252f 100%);
+            color: var(--white);
+            padding: 50px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 35px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--accent-color);
+        }
+
+        .footer-column p {
+            color: rgba(255,255,255,0.75);
+            line-height: 1.7;
+            font-size: 0.9rem;
+        }
+
+        .footer-column a {
+            color: rgba(255,255,255,0.75);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column a:hover { color: var(--white); }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 5px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        /* NEW: Social label text */
+        .social-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .social-label span {
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.5);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-bottom p {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.85rem;
+        }
+
+        .footer-bottom a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .footer-bottom a:hover { text-decoration: underline; }
+
+        /* ===== CHANGE ANNOTATIONS ===== */
+        .change-note {
+            position: relative;
+        }
+
+        .change-tag {
+            display: inline-block;
+            background: #1a1a2e;
+            color: #ffd700;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.4rem; }
+            .hero-stats { flex-direction: column; gap: 15px; }
+            .stat-divider { width: 60%; height: 1px; margin: 0 auto; }
+            .hero-cta { flex-direction: column; align-items: center; }
+            .info-grid { grid-template-columns: 1fr; }
+            .features-grid { grid-template-columns: 1fr; }
+            .staff-picks-grid { grid-template-columns: 1fr; }
+            .gallery-grid-masonry {
+                grid-template-columns: repeat(2, 1fr);
+                grid-auto-rows: 150px;
+            }
+            .gallery-item-m.span-2 {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+            .contact-layout { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .nav-menu { display: none; }
+            .nav-phone { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preview Banner -->
+    <div class="preview-banner">
+        <span>PREVIEW</span> — Proposed visual changes for Rocky Mountain Cafe. Not yet applied to the live site.
+    </div>
+
+    <!-- ============================================
+         NAVBAR — CHANGED: Added phone link, Reviews nav item
+         ============================================ -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <img src="images/logo.jpg" alt="Rocky Mountain Cafe" class="logo-image">
+                <span class="logo-text">Rocky Mountain</span>
+            </div>
+
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#menu" class="nav-link">Menu</a></li>
+                <li><a href="#reviews" class="nav-link">Reviews</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+
+            <!-- NEW: Phone link in navbar -->
+            <a href="tel:+12195701234" class="nav-phone">
+                <i class="fas fa-phone"></i> (219) 570-1234
+            </a>
+
+            <button class="cart-button">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ============================================
+         HERO — CHANGED: Real photo background, 3-tier CTAs, Open Now indicator
+         ============================================ -->
+    <section id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Rocky Mountain Cafe</h1>
+            <div class="hero-divider"></div>
+            <p class="hero-tagline">LaPorte's Community Coffee House</p>
+
+            <!-- NEW: Open/Closed indicator -->
+            <div class="open-indicator" id="openIndicator">
+                <span class="open-dot" id="openDot"></span>
+                <span id="openText">Open Now — Closes at 5:00 PM</span>
+            </div>
+
+            <!-- Stats -->
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">4.9</span>
+                    <span class="stat-icon">★</span>
+                    <span class="stat-label">Rating</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-number">84</span>
+                    <span class="stat-label">Reviews</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-number">98%</span>
+                    <span class="stat-label">Recommend</span>
+                </div>
+            </div>
+
+            <!-- CHANGED: 3-tier CTA hierarchy -->
+            <div class="hero-cta">
+                <a href="#menu" class="btn btn-primary">
+                    <i class="fas fa-utensils"></i> View Our Menu
+                </a>
+                <a href="https://www.doordash.com/" target="_blank" class="btn btn-secondary">
+                    <i class="fas fa-truck"></i> Order Delivery
+                </a>
+                <a href="https://maps.google.com/?q=209+Lincolnway+LaPorte+Indiana" target="_blank" class="btn-tertiary">
+                    <i class="fas fa-map-marker-alt"></i> Get Directions
+                </a>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <main>
+        <!-- ============================================
+             LOCATION & HOURS — CHANGED: Open/Closed status badge
+             ============================================ -->
+        <section id="visit" class="info-section">
+            <div class="container">
+                <div class="info-grid">
+                    <div class="info-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Location</h3>
+                        <p>209 Lincolnway<br>LaPorte, IN 46350</p>
+                        <a href="https://maps.google.com/?q=209+Lincolnway+LaPorte+Indiana" target="_blank" class="link-arrow">Get Directions →</a>
+                    </div>
+
+                    <div class="info-card">
+                        <i class="fas fa-clock"></i>
+                        <h3>Hours</h3>
+                        <p>6:00 AM – 5:00 PM<br>7 Days a Week</p>
+                        <!-- NEW: Dynamic open/closed badge -->
+                        <div class="hours-status open" id="hoursStatus">
+                            <span class="hours-status-dot"></span>
+                            <span id="hoursStatusText">Open Now</span>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <i class="fas fa-phone"></i>
+                        <h3>Contact</h3>
+                        <p><a href="tel:+12195701234">(219) 570-1234</a><br>
+                        <a href="mailto:rockymountaincoffee@yahoo.com">rockymountaincoffee@yahoo.com</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             MENU — CHANGED: Staff Picks spotlight above regular grid
+             ============================================ -->
+        <section id="menu" class="menu-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Our Menu</h2>
+                    <p>Fresh-brewed coffee, premium pastries, and community vibes</p>
+                </div>
+
+                <!-- NEW: Staff Picks -->
+                <div class="staff-picks">
+                    <div class="staff-picks-header">
+                        <span class="change-tag">New</span>
+                        <h3>Staff Picks</h3>
+                        <span class="staff-picks-badge">Must Try</span>
+                    </div>
+                    <div class="staff-picks-grid">
+                        <div class="staff-pick-card">
+                            <span class="pick-badge">★ Signature</span>
+                            <h4>Peanut Butter Avalanche</h4>
+                            <p class="pick-description">Our signature drink — rich peanut butter perfection</p>
+                            <p class="pick-why">"Our most popular drink — regulars order this every visit."</p>
+                            <div class="menu-item-footer">
+                                <span class="price">$5.49</span>
+                                <button class="btn-add-cart"><i class="fas fa-plus"></i> Add</button>
+                            </div>
+                        </div>
+                        <div class="staff-pick-card">
+                            <span class="pick-badge">★ Seasonal</span>
+                            <h4>Toasted Marshmallow Latte</h4>
+                            <p class="pick-description">Warm and cozy — seasonal favorite</p>
+                            <p class="pick-why">"Like a campfire in a cup. Perfect for Indiana mornings."</p>
+                            <div class="menu-item-footer">
+                                <span class="price">$5.99</span>
+                                <button class="btn-add-cart"><i class="fas fa-plus"></i> Add</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-tabs">
+                    <button class="menu-tab active" data-tab="drinks">
+                        <i class="fas fa-mug-hot"></i> Drinks
+                    </button>
+                    <button class="menu-tab" data-tab="food">
+                        <i class="fas fa-utensils"></i> Food
+                    </button>
+                    <button class="menu-tab" data-tab="pastries">
+                        <i class="fas fa-cookie"></i> Pastries
+                    </button>
+                </div>
+
+                <div class="menu-grid" id="menu-grid">
+                    <div class="menu-item">
+                        <h4>Mountain Peak Espresso</h4>
+                        <p>Double shot of rich, bold espresso</p>
+                        <div class="menu-item-footer">
+                            <span class="price">$2.50</span>
+                            <button class="btn-add-cart"><i class="fas fa-plus"></i> Add</button>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <h4>Cappuccino</h4>
+                        <p>Espresso with velvety steamed milk</p>
+                        <div class="menu-item-footer">
+                            <span class="price">$4.00</span>
+                            <button class="btn-add-cart"><i class="fas fa-plus"></i> Add</button>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <h4>Latte</h4>
+                        <p>Smooth espresso and steamed milk</p>
+                        <div class="menu-item-footer">
+                            <span class="price">$4.50</span>
+                            <button class="btn-add-cart"><i class="fas fa-plus"></i> Add</button>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <h4>Americano</h4>
+                        <p>Double shot espresso with hot water</p>
+                        <div class="menu-item-footer">
+                            <span class="price">$2.75</span>
+                            <button class="btn-add-cart"><i class="fas fa-plus"></i> Add</button>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <h4>Cold Brew</h4>
+                        <p>Smooth 24-hour cold brew</p>
+                        <div class="menu-item-footer">
+                            <span class="price">$3.50</span>
+                            <button class="btn-add-cart"><i class="fas fa-plus"></i> Add</button>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <h4>Hot Chocolate</h4>
+                        <p>Rich, creamy hot chocolate</p>
+                        <div class="menu-item-footer">
+                            <span class="price">$3.75</span>
+                            <button class="btn-add-cart"><i class="fas fa-plus"></i> Add</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             REVIEWS — CHANGED: Moved up (after menu), warm bg, quote styling
+             ============================================ -->
+        <section id="reviews" class="reviews-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="change-tag">Moved Up</span>
+                    <h2>What Our Customers Say</h2>
+                    <p>Real reviews from real people who love Rocky Mountain Cafe</p>
+                </div>
+
+                <div class="reviews-grid">
+                    <div class="review-card">
+                        <div class="stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">"Best coffee spot in LaPorte. The staff remembers my order, and the atmosphere is perfect for getting work done."</p>
+                        <p class="review-author">— Edward Nunn</p>
+                    </div>
+                    <div class="review-card">
+                        <div class="stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">"Amazing pastries and consistently great coffee. This is where I meet my friends every Saturday morning."</p>
+                        <p class="review-author">— Mary Loeffler</p>
+                    </div>
+                    <div class="review-card">
+                        <div class="stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">"The live music events are fantastic, and the coffee is always top-notch. A real gem in our community."</p>
+                        <p class="review-author">— James Rodriguez</p>
+                    </div>
+                    <div class="review-card">
+                        <div class="stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">"Perfect workspace with excellent WiFi. The staff is friendly and the coffee is exceptional. Highly recommend!"</p>
+                        <p class="review-author">— Sarah Chen</p>
+                    </div>
+                </div>
+
+                <div class="reviews-cta">
+                    <p>Read more reviews on <a href="https://www.facebook.com/rockymountaincafe219/" target="_blank">our Facebook page</a> or <a href="https://maps.google.com/?q=Rocky+Mountain+Cafe+LaPorte+Indiana" target="_blank">Google Maps</a></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             ABOUT / FEATURES
+             ============================================ -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>About Rocky Mountain</h2>
+                    <p>More than just coffee — we're your community gathering place</p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-fire"></i>
+                        <h3>Premium Coffee</h3>
+                        <p>Carefully sourced beans, expertly brewed. Every cup matters.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-wifi"></i>
+                        <h3>Free WiFi & Workspace</h3>
+                        <p>Fast, reliable WiFi perfect for remote work and study sessions.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-gamepad"></i>
+                        <h3>Gaming & Entertainment</h3>
+                        <p>Board games, video games, and space to hang out with friends.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-music"></i>
+                        <h3>Live Music Events</h3>
+                        <p>Local musicians perform regularly. Check our Facebook for schedule.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-leaf"></i>
+                        <h3>Sustainable Practices</h3>
+                        <p>Compostable cups, recyclables, and eco-friendly sourcing.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-people-arrows"></i>
+                        <h3>Community First</h3>
+                        <p>Local business, local love. Supporting LaPorte since 2010.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             GALLERY — CHANGED: Standalone section, masonry layout, lazy loading
+             ============================================ -->
+        <section id="gallery" class="gallery-section-standalone">
+            <div class="container">
+                <div class="section-header">
+                    <span class="change-tag">Standalone Section</span>
+                    <h2>Our Space</h2>
+                    <p>Step inside Rocky Mountain Cafe — your community gathering place</p>
+                </div>
+
+                <div class="gallery-grid-masonry">
+                    <div class="gallery-item-m span-2">
+                        <img src="images/IMG_6423.jpeg" alt="Rocky Mountain Cafe welcoming interior" loading="lazy">
+                    </div>
+                    <div class="gallery-item-m">
+                        <img src="images/IMG_6429.jpeg" alt="Coffee bar and counter area" loading="lazy">
+                    </div>
+                    <div class="gallery-item-m">
+                        <img src="images/IMG_6430.jpeg" alt="Pastry display case" loading="lazy">
+                    </div>
+                    <div class="gallery-item-m">
+                        <img src="images/IMG_6434.jpeg" alt="Seating area and community space" loading="lazy">
+                    </div>
+                    <div class="gallery-item-m">
+                        <img src="images/IMG_6435.jpeg" alt="Professional coffee equipment" loading="lazy">
+                    </div>
+                    <div class="gallery-item-m span-2">
+                        <img src="images/IMG_6436.jpeg" alt="Cozy corner seating" loading="lazy">
+                    </div>
+                    <div class="gallery-item-m">
+                        <img src="images/IMG_6437.jpeg" alt="Main seating area" loading="lazy">
+                    </div>
+                    <div class="gallery-item-m">
+                        <img src="images/IMG_6438.jpeg" alt="Coffee preparation station" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             CONTACT — CHANGED: Two-column layout with info + form
+             ============================================ -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="change-tag">Two-Column Layout</span>
+                    <h2>Get In Touch</h2>
+                    <p>Questions? We'd love to hear from you.</p>
+                </div>
+
+                <div class="contact-layout">
+                    <div class="contact-info-side">
+                        <h3>Visit Us</h3>
+
+                        <div class="contact-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p>209 Lincolnway<br>LaPorte, IN 46350<br>
+                            <a href="https://maps.google.com/?q=209+Lincolnway+LaPorte+Indiana" target="_blank">Get Directions →</a></p>
+                        </div>
+
+                        <div class="contact-detail">
+                            <i class="fas fa-clock"></i>
+                            <p>6:00 AM – 5:00 PM<br>7 Days a Week</p>
+                        </div>
+
+                        <div class="contact-detail">
+                            <i class="fas fa-phone"></i>
+                            <p><a href="tel:+12195701234">(219) 570-1234</a></p>
+                        </div>
+
+                        <div class="contact-detail">
+                            <i class="fas fa-envelope"></i>
+                            <p><a href="mailto:rockymountaincoffee@yahoo.com">rockymountaincoffee@yahoo.com</a></p>
+                        </div>
+
+                        <div class="contact-map-placeholder">
+                            <i class="fas fa-map" style="margin-right: 8px;"></i> Google Map embed would go here
+                        </div>
+                    </div>
+
+                    <form class="contact-form" onsubmit="event.preventDefault(); alert('Form submitted! (Preview only)');">
+                        <div class="form-group">
+                            <label for="contact-name">Name *</label>
+                            <input type="text" id="contact-name" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact-email">Email *</label>
+                            <input type="email" id="contact-email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact-phone">Phone</label>
+                            <input type="tel" id="contact-phone" name="phone">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact-message">Message *</label>
+                            <textarea id="contact-message" name="message" rows="5" required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- NOTE: "Latest Updates" section REMOVED — Facebook link consolidated into footer -->
+    </main>
+
+    <!-- ============================================
+         FOOTER — CHANGED: Consolidated social, dynamic year, fixed icon
+         ============================================ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>Rocky Mountain Cafe</h4>
+                    <p>Your community's favorite coffee shop in LaPorte, Indiana. Premium coffee, fresh pastries, live music, and free WiFi — 7 days a week.</p>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Hours</h4>
+                    <p>6:00 AM – 5:00 PM<br>Every Day of the Week</p>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Location</h4>
+                    <p>209 Lincolnway<br>LaPorte, IN 46350<br><a href="tel:+12195701234">(219) 570-1234</a></p>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <div class="social-label">
+                            <a href="https://www.facebook.com/rockymountaincafe219/" target="_blank" title="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <span>Facebook</span>
+                        </div>
+                        <div class="social-label">
+                            <a href="https://www.doordash.com/" target="_blank" title="DoorDash">
+                                <i class="fas fa-motorcycle"></i>
+                            </a>
+                            <span>DoorDash</span>
+                        </div>
+                    </div>
+                    <p style="margin-top: 15px; font-size: 0.85rem;">Check our Facebook for live music events, daily specials, and community news.</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <span id="footerYear"></span> Rocky Mountain Cafe. All rights reserved. | <a href="#contact">Contact</a> | <a href="#menu">Menu</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Dynamic copyright year
+        document.getElementById('footerYear').textContent = new Date().getFullYear();
+
+        // Open/Closed indicator logic (LaPorte, Indiana is Eastern Time)
+        function updateOpenStatus() {
+            const now = new Date();
+            const options = { timeZone: 'America/Indiana/Indianapolis', hour: '2-digit', minute: '2-digit', hour12: false };
+            const timeStr = now.toLocaleTimeString('en-US', options);
+            const [hours, minutes] = timeStr.split(':').map(Number);
+            const currentMinutes = hours * 60 + minutes;
+            const openTime = 6 * 60;   // 6:00 AM
+            const closeTime = 17 * 60; // 5:00 PM
+
+            const isOpen = currentMinutes >= openTime && currentMinutes < closeTime;
+            const heroIndicator = document.getElementById('openText');
+            const heroDot = document.getElementById('openDot');
+            const hoursStatus = document.getElementById('hoursStatus');
+            const hoursStatusText = document.getElementById('hoursStatusText');
+
+            if (isOpen) {
+                heroIndicator.textContent = 'Open Now — Closes at 5:00 PM';
+                heroDot.className = 'open-dot';
+                hoursStatus.className = 'hours-status open';
+                hoursStatusText.textContent = 'Open Now';
+            } else {
+                heroIndicator.textContent = 'Currently Closed — Opens at 6:00 AM';
+                heroDot.className = 'open-dot closed';
+                hoursStatus.className = 'hours-status closed';
+                hoursStatusText.textContent = 'Closed';
+            }
+        }
+
+        updateOpenStatus();
+        setInterval(updateOpenStatus, 60000);
+
+        // Simple menu tab switching (for preview)
+        document.querySelectorAll('.menu-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    const target = document.querySelector(href);
+                    if (target) {
+                        e.preventDefault();
+                        const navHeight = document.querySelector('.navbar').offsetHeight + 38;
+                        window.scrollTo({ top: target.offsetTop - navHeight, behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+
+        // Scroll animations
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.menu-item, .feature-card, .review-card, .info-card, .gallery-item-m, .staff-pick-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(25px)';
+            el.style.transition = 'all 0.5s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
