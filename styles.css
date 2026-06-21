@@ -2046,3 +2046,69 @@ section {
         font-size: 0.9rem;
     }
 }
+/* ===== LAZY LOADING ===== */
+img[data-src] {
+    background: linear-gradient(90deg, var(--warm-gray) 25%, transparent 25%, transparent 50%, var(--warm-gray) 50%, var(--warm-gray) 75%, transparent 75%, transparent) 0 0;
+    background-size: 40px 40px;
+    background-color: var(--light-bg);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 40px 40px;
+    }
+}
+
+img.lazy-loaded {
+    animation: fadeInImage 0.3s ease-in;
+}
+
+@keyframes fadeInImage {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ===== PERFORMANCE OPTIMIZATIONS ===== */
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Print styles for better printing experience */
+@media print {
+    .navbar,
+    .cart-modal,
+    .cart-button,
+    .theme-toggle,
+    .hero-cta {
+        display: none;
+    }
+    
+    body {
+        background: white;
+        color: black;
+    }
+    
+    a {
+        text-decoration: underline;
+    }
+    
+    .menu-item {
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+}

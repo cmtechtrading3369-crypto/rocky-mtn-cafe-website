@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initScrollAnimations();
     initHeroSlideshow();
     initThemeToggle();
+    initLazyLoading();
 });
 
 // ===== NAVBAR =====
@@ -496,6 +497,31 @@ function initScrollAnimations() {
         el.style.transition = 'all 0.6s ease-out';
         observer.observe(el);
     });
+}
+
+// ===== LAZY LOADING =====
+function initLazyLoading() {
+    // Support for native lazy loading attribute
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                        img.classList.add('lazy-loaded');
+                    }
+                    observer.unobserve(img);
+                }
+            });
+        });
+        
+        // Observe all images with data-src attribute
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            imageObserver.observe(img);
+        });
+    }
 }
 
 // ===== KEYBOARD ACCESSIBILITY =====
