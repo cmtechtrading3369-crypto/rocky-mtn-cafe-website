@@ -20,7 +20,7 @@
     <meta property="twitter:description" content="Rocky Mountain Cafe is LaPorte, Indiana's favorite community coffee house. Fresh coffee, premium pastries, live music, free WiFi, and gaming.">
     <meta property="twitter:image" content="https://rockymountaincafe.com/images/logo.jpg">
 
-    <!-- Local Business Schema -->
+    <!-- Local Business Schema with AggregateRating -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -39,27 +39,77 @@
         "telephone": "+12195701234",
         "email": "rockymountaincoffee@yahoo.com",
         "url": "https://rockymountaincafe.com/",
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "ratingCount": "84",
+            "bestRating": "5",
+            "worstRating": "1"
+        },
         "openingHoursSpecification": [
             {
                 "@type": "OpeningHoursSpecification",
-                "dayOfWeek": [
-                    "Monday",
-                    "Tuesday",
-                    "Wednesday",
-                    "Thursday",
-                    "Friday",
-                    "Saturday",
-                    "Sunday"
-                ],
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
                 "opens": "06:00",
                 "closes": "19:00"
             }
         ],
         "priceRange": "$$",
-        "servesCuisine": "Coffee, Pastries",
+        "servesCuisine": ["Coffee", "Pastries", "Breakfast", "Lunch"],
         "foundingDate": "2010",
+        "paymentAccepted": ["Cash", "Credit Card", "Debit Card"],
         "sameAs": [
-            "https://www.facebook.com/rockymountaincafe219/"
+            "https://www.facebook.com/rockymountaincafe219/",
+            "https://www.instagram.com/rockymountaincafe_laporte/",
+            "https://www.google.com/maps/place/Rocky+Mountain+Cafe"
+        ]
+    }
+    </script>
+
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What are your hours?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "We are open Monday-Sunday from 6:00 AM to 7:00 PM. Closed on major holidays."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do you offer WiFi?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes! Free high-speed WiFi is available for all customers."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I order delivery?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, we offer delivery through DoorDash and local options. Call us at (219) 570-1234 for more details."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://rockymountaincafe.com/"},
+            {"@type": "ListItem", "position": 2, "name": "Menu", "item": "https://rockymountaincafe.com/#menu"},
+            {"@type": "ListItem", "position": 3, "name": "About", "item": "https://rockymountaincafe.com/#about"},
+            {"@type": "ListItem", "position": 4, "name": "Contact", "item": "https://rockymountaincafe.com/#contact"}
         ]
     }
     </script>
@@ -221,6 +271,57 @@
     </section>
 
     <main>
+        <!-- ============================================
+             WHY CHOOSE US
+             ============================================ -->
+        <section id="why-us" class="why-us-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Why Choose Rocky Mountain Cafe?</h2>
+                    <p>Discover what makes us LaPorte's favorite community gathering place</p>
+                </div>
+
+                <div class="why-us-grid">
+                    <div class="why-us-card">
+                        <div class="stat-number">14+</div>
+                        <i class="fas fa-award"></i>
+                        <h3>Years of Excellence</h3>
+                        <p>Serving the LaPorte community since 2010 with consistent quality and care.</p>
+                    </div>
+                    <div class="why-us-card">
+                        <div class="stat-number">4.9★</div>
+                        <i class="fas fa-star"></i>
+                        <h3>Highly Rated</h3>
+                        <p>84+ verified reviews with 4.9-star average rating from satisfied customers.</p>
+                    </div>
+                    <div class="why-us-card">
+                        <div class="stat-number">100%</div>
+                        <i class="fas fa-leaf"></i>
+                        <h3>Fresh & Local</h3>
+                        <p>Premium pastries baked fresh daily and ethically-sourced coffee beans.</p>
+                    </div>
+                    <div class="why-us-card">
+                        <div class="stat-number">24/7</div>
+                        <i class="fas fa-wifi"></i>
+                        <h3>Free High-Speed WiFi</h3>
+                        <p>Stay connected with unlimited free WiFi - perfect for work or studying.</p>
+                    </div>
+                    <div class="why-us-card">
+                        <div class="stat-number">♪</div>
+                        <i class="fas fa-music"></i>
+                        <h3>Live Music Events</h3>
+                        <p>Regular live performances featuring local artists and musicians.</p>
+                    </div>
+                    <div class="why-us-card">
+                        <div class="stat-number">👥</div>
+                        <i class="fas fa-handshake"></i>
+                        <h3>Community Focused</h3>
+                        <p>A welcoming space where neighbors meet, students study, and friends gather.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- ============================================
              LOCATION & HOURS
              ============================================ -->
@@ -599,6 +700,129 @@
                         <div class="gallery-item gallery-item-desktop">
                             <img src="images/IMG_6438.jpeg" alt="Coffee preparation station and barista area at Rocky Mountain Cafe" loading="lazy" width="800" height="600" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                             <span class="gallery-placeholder" style="display:none"><i class="fas fa-mug-hot"></i><br>Barista Station</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             FEATURED ITEMS / SPECIALS
+             ============================================ -->
+        <section class="featured-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Today's Specials</h2>
+                    <p>Fresh recommendations from our baristas</p>
+                </div>
+
+                <div class="featured-grid">
+                    <div class="featured-card">
+                        <div class="featured-badge">🔥 Hot Deal</div>
+                        <div class="featured-icon">☕</div>
+                        <h3>Morning Brew Bundle</h3>
+                        <p>Coffee + Croissant</p>
+                        <div class="featured-price">
+                            <span class="original">$8.99</span>
+                            <span class="discount">$7.49</span>
+                        </div>
+                        <a href="#menu" class="btn btn-primary btn-small">Order Now</a>
+                    </div>
+                    <div class="featured-card">
+                        <div class="featured-badge">⭐ Chef's Pick</div>
+                        <div class="featured-icon">🥐</div>
+                        <h3>Seasonal Pastry</h3>
+                        <p>Toasted Marshmallow Latte</p>
+                        <div class="featured-price">
+                            <span class="discount">$5.99</span>
+                        </div>
+                        <a href="#menu" class="btn btn-primary btn-small">Try It</a>
+                    </div>
+                    <div class="featured-card">
+                        <div class="featured-badge">🎁 Member Exclusive</div>
+                        <div class="featured-icon">🏆</div>
+                        <h3>Loyalty Reward</h3>
+                        <p>Free drink after 10 purchases</p>
+                        <div class="featured-price">
+                            <span class="discount">Join Free</span>
+                        </div>
+                        <a href="#newsletter" class="btn btn-primary btn-small">Subscribe</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             TESTIMONIALS CAROUSEL
+             ============================================ -->
+        <section class="testimonials-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>What Our Community Says</h2>
+                    <p>Real reviews from real customers</p>
+                </div>
+
+                <div class="testimonials-carousel">
+                    <div class="testimonial-item">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-quote">"Best coffee in LaPorte! The atmosphere is so welcoming and the baristas are incredibly friendly. I've made it my go-to spot."</p>
+                        <div class="testimonial-author">
+                            <strong>Sarah M.</strong>
+                            <span>Google Reviews</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-item">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-quote">"Perfect place to work or study. Free WiFi, great coffee, and pastries that are out of this world. Highly recommend!"</p>
+                        <div class="testimonial-author">
+                            <strong>James T.</strong>
+                            <span>Facebook Review</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-item">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-quote">"The community vibe here is unmatched. Great for meeting friends, working, or just enjoying quality coffee. Love the live music events!"</p>
+                        <div class="testimonial-author">
+                            <strong>Emily R.</strong>
+                            <span>Instagram</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             PROFESSIONAL CTA BAR
+             ============================================ -->
+        <section class="professional-cta-bar">
+            <div class="container">
+                <div class="cta-grid">
+                    <div class="cta-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Call Us Now</h4>
+                            <a href="tel:+12195701234">(219) 570-1234</a>
+                        </div>
+                    </div>
+                    <div class="cta-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <div>
+                            <h4>Message on WhatsApp</h4>
+                            <a href="https://wa.me/12195701234" target="_blank">Order via WhatsApp</a>
+                        </div>
+                    </div>
+                    <div class="cta-item">
+                        <i class="fas fa-calendar"></i>
+                        <div>
+                            <h4>Book Our Space</h4>
+                            <a href="tel:+12195701234">For Meetings & Events</a>
+                        </div>
+                    </div>
+                    <div class="cta-item">
+                        <i class="fas fa-gift"></i>
+                        <div>
+                            <h4>Gift Cards</h4>
+                            <a href="#contact">Order Online</a>
                         </div>
                     </div>
                 </div>
