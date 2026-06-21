@@ -5,13 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rocky Mountain Cafe — LaPorte's Community Coffee House</title>
     <meta name="description" content="Premium community cafe in LaPorte, Indiana. Fresh coffee, fresh pastries, live music, gaming, and WiFi. Open 7 days a week.">
-    
+    <meta name="keywords" content="coffee shop, cafe, LaPorte Indiana, fresh coffee, pastries, WiFi, live music, community cafe">
+    <meta name="author" content="Rocky Mountain Cafe">
+
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+
     <!-- Stylesheet -->
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -21,29 +25,36 @@
          ============================================ -->
     <nav class="navbar" id="navbar">
         <div class="navbar-container">
-            <div class="navbar-logo">
-                <img src="images/logo.jpg" alt="Rocky Mountain Cafe" class="logo-image">
+            <a href="#home" class="navbar-logo" aria-label="Rocky Mountain Cafe Home">
+                <img src="images/logo.jpg" alt="Rocky Mountain Cafe Logo" class="logo-image" width="50" height="50">
                 <span class="logo-text">Rocky Mountain</span>
-            </div>
-            
-            <div class="navbar-toggle" id="navbarToggle">
+            </a>
+
+            <button class="navbar-toggle" id="navbarToggle" aria-label="Toggle navigation menu" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
-            
-            <ul class="nav-menu" id="navMenu">
+            </button>
+
+            <ul class="nav-menu" id="navMenu" role="navigation" aria-label="Main navigation">
                 <li><a href="#home" class="nav-link">Home</a></li>
                 <li><a href="#menu" class="nav-link">Menu</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
 
-            <!-- Cart Button -->
-            <button class="cart-button" id="cartButton">
-                <i class="fas fa-shopping-cart"></i>
-                <span class="cart-count" id="cartCount">0</span>
-            </button>
+            <div class="navbar-actions">
+                <!-- Cart Button -->
+                <button class="cart-button" id="cartButton" aria-label="View cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+
+                <!-- Theme Toggle Button -->
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -393,35 +404,39 @@
                     <h3>Our Space</h3>
                     <div class="gallery-grid">
                         <div class="gallery-item">
-                            <img src="images/IMG_6423.jpeg" alt="Rocky Mountain Cafe welcoming interior" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                            <img src="images/IMG_4567.png" alt="Rocky Mountain Cafe exterior" loading="lazy" width="400" height="300" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                            <span class="gallery-placeholder" style="display:none"><i class="fas fa-store"></i><br>Exterior</span>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images/IMG_6423.jpeg" alt="Rocky Mountain Cafe welcoming interior" loading="lazy" width="400" height="300" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                             <span class="gallery-placeholder" style="display:none"><i class="fas fa-store"></i><br>Interior</span>
                         </div>
                         <div class="gallery-item">
-                            <img src="images/IMG_6429.jpeg" alt="Coffee bar and counter area" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                            <img src="images/IMG_6429.jpeg" alt="Coffee bar and counter area" loading="lazy" width="400" height="300" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                             <span class="gallery-placeholder" style="display:none"><i class="fas fa-coffee"></i><br>Coffee Bar</span>
                         </div>
                         <div class="gallery-item">
-                            <img src="images/IMG_6430.jpeg" alt="Pastry display case" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                            <img src="images/IMG_6430.jpeg" alt="Pastry display case" loading="lazy" width="400" height="300" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                             <span class="gallery-placeholder" style="display:none"><i class="fas fa-cookie"></i><br>Pastries</span>
                         </div>
                         <div class="gallery-item">
-                            <img src="images/IMG_6434.jpeg" alt="Seating area and community space" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                            <img src="images/IMG_6434.jpeg" alt="Seating area and community space" loading="lazy" width="400" height="300" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                             <span class="gallery-placeholder" style="display:none"><i class="fas fa-chair"></i><br>Seating</span>
                         </div>
                         <div class="gallery-item">
-                            <img src="images/IMG_6435.jpeg" alt="Professional coffee equipment" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                            <img src="images/IMG_6435.jpeg" alt="Professional coffee equipment" loading="lazy" width="400" height="300" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                             <span class="gallery-placeholder" style="display:none"><i class="fas fa-cog"></i><br>Equipment</span>
                         </div>
                         <div class="gallery-item">
-                            <img src="images/IMG_6436.jpeg" alt="Cozy corner seating" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                            <img src="images/IMG_6436.jpeg" alt="Cozy corner seating" loading="lazy" width="400" height="300" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                             <span class="gallery-placeholder" style="display:none"><i class="fas fa-couch"></i><br>Cozy Corner</span>
                         </div>
                         <div class="gallery-item">
-                            <img src="images/IMG_6437.jpeg" alt="Main seating area" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                            <img src="images/IMG_6437.jpeg" alt="Main seating area" loading="lazy" width="400" height="300" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                             <span class="gallery-placeholder" style="display:none"><i class="fas fa-users"></i><br>Community</span>
                         </div>
                         <div class="gallery-item">
-                            <img src="images/IMG_6438.jpeg" alt="Coffee preparation station" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                            <img src="images/IMG_6438.jpeg" alt="Coffee preparation station" loading="lazy" width="400" height="300" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                             <span class="gallery-placeholder" style="display:none"><i class="fas fa-mug-hot"></i><br>Barista Station</span>
                         </div>
                     </div>

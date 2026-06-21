@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initContactForm();
     initSmoothScroll();
     initScrollAnimations();
+    initHeroSlideshow();
+    initThemeToggle();
 });
 
 // ===== NAVBAR =====
@@ -491,7 +493,7 @@ document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
         const cartModal = document.getElementById('cartModal');
         const checkoutModal = document.getElementById('checkoutModal');
-        
+
         if (checkoutModal.classList.contains('active')) {
             checkoutModal.classList.remove('active');
             document.body.style.overflow = '';
@@ -501,6 +503,90 @@ document.addEventListener('keydown', function(e) {
         }
     }
 });
+
+// ===== HERO SLIDESHOW =====
+function initHeroSlideshow() {
+    const hero = document.querySelector('.hero');
+    if (!hero) return;
+
+    const defaultImage = 'images/IMG_4567.png';
+    const heroImages = [
+        defaultImage,
+        'images/IMG_6439.jpeg',
+        'images/IMG_6440.jpeg',
+        'images/IMG_6441.jpeg',
+        'images/IMG_6442.jpeg',
+        'images/IMG_6423.jpeg',
+        'images/IMG_6429.jpeg',
+        'images/IMG_6430.jpeg',
+        'images/IMG_6434.jpeg',
+        'images/IMG_6435.jpeg',
+        'images/IMG_6436.jpeg',
+        'images/IMG_6437.jpeg',
+        'images/IMG_6438.jpeg'
+    ];
+
+    let currentIndex = 0;
+    let cycleCount = 0;
+    let imagesShownInCycle = 0;
+
+    // Set initial background to default image
+    hero.style.backgroundImage = `url('${defaultImage}')`;
+
+    function changeBackgroundImage() {
+        currentIndex = (currentIndex + 1) % heroImages.length;
+        hero.style.backgroundImage = `url('${heroImages[currentIndex]}')`;
+
+        imagesShownInCycle++;
+
+        // Check if we've completed a full cycle
+        if (imagesShownInCycle >= heroImages.length) {
+            cycleCount++;
+            imagesShownInCycle = 0;
+
+            // After 2 full cycles, reset to default image
+            if (cycleCount >= 2) {
+                currentIndex = 0;
+                cycleCount = 0;
+                hero.style.backgroundImage = `url('${defaultImage}')`;
+            }
+        }
+    }
+
+    // Change image every 3 seconds
+    setInterval(changeBackgroundImage, 3000);
+}
+
+// ===== THEME TOGGLE =====
+function initThemeToggle() {
+    const themeToggle = document.getElementById('themeToggle');
+    if (!themeToggle) return;
+
+    // Check for saved theme preference or default to light
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateThemeIcon(savedTheme);
+
+    themeToggle.addEventListener('click', function() {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon(newTheme);
+    });
+
+    function updateThemeIcon(theme) {
+        const icon = themeToggle.querySelector('i');
+        if (theme === 'dark') {
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        } else {
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon');
+        }
+    }
+}
 
 // ===== DEBUGGING =====
 console.log('🏔️ Rocky Mountain Cafe Website Loaded');
