@@ -11,13 +11,23 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
+
+    <!-- Critical CSS Inline (above fold styles) -->
+    <style>
+        /* Critical above-fold styles to prevent FOUC */
+        body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+        .navbar { position: fixed; top: 0; left: 0; right: 0; background: #fff; z-index: 1000; }
+        .hero { position: relative; min-height: 700px; background: #2C2C2C; }
+        .hero-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(30, 20, 10, 0.72); }
+        .hero-content { position: relative; z-index: 1; text-align: center; color: #fff; padding: 2rem; }
+    </style>
 </head>
 <body>
     <!-- ============================================
@@ -26,7 +36,7 @@
     <nav class="navbar" id="navbar">
         <div class="navbar-container">
             <a href="#home" class="navbar-logo" aria-label="Rocky Mountain Cafe Home">
-                <img src="images/logo.jpg" alt="Rocky Mountain Cafe Logo" class="logo-image" width="50" height="50">
+                <img src="images/logo.jpg" alt="Rocky Mountain Cafe Logo" class="logo-image" width="50" height="50" decoding="async" fetchpriority="high">
                 <span class="logo-text">Rocky Mountain</span>
             </a>
 
@@ -41,6 +51,12 @@
                 <li><a href="#menu" class="nav-link">Menu</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li class="nav-menu-cart">
+                    <button class="cart-button nav-cart-button" id="cartButtonMobile" aria-label="View cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cartCountMobile">0</span>
+                    </button>
+                </li>
             </ul>
 
             <div class="navbar-actions">
@@ -64,36 +80,55 @@
     <section id="home" class="hero">
         <div class="hero-overlay"></div>
         <div class="hero-content">
+            <!-- Brand Badge -->
+            <div class="hero-brand">
+                <span class="hero-brand-text">Est. 2010</span>
+            </div>
+
             <h1 class="hero-title">Rocky Mountain Cafe</h1>
-            <div class="hero-divider"></div>
+            
+            <!-- Decorative Element -->
+            <div class="hero-accent">
+                <span class="hero-accent-line"></span>
+                <span class="hero-accent-icon">☕</span>
+                <span class="hero-accent-line"></span>
+            </div>
+            
             <p class="hero-tagline">LaPorte's Community Coffee House</p>
 
-            <!-- Hours Info -->
-            <p class="hero-hours">Open Now - Closes at 7:00 PM</p>
+            <!-- Hours Badge -->
+            <div class="hero-hours-badge">
+                <span class="hours-dot"></span>
+                <span class="hours-text">Open Now • Closes at 7:00 PM</span>
+            </div>
 
-            <!-- Stats -->
-            <div class="hero-stats">
-                <div class="stat">
-                    <span class="stat-number">4.9</span>
-                    <span class="stat-label">RATING</span>
+            <!-- Social Proof -->
+            <div class="hero-social-proof">
+                <div class="social-proof-item">
+                    <span class="social-proof-icon">★★★★★</span>
+                    <span class="social-proof-text">4.9 Rating</span>
                 </div>
-                <div class="stat-divider"></div>
-                <div class="stat">
-                    <span class="stat-number">84</span>
-                    <span class="stat-label">REVIEWS</span>
+                <span class="social-proof-separator">•</span>
+                <div class="social-proof-item">
+                    <span class="social-proof-text">84 Reviews</span>
                 </div>
-                <div class="stat-divider"></div>
-                <div class="stat">
-                    <span class="stat-number">98%</span>
-                    <span class="stat-label">RECOMMEND</span>
+                <span class="social-proof-separator">•</span>
+                <div class="social-proof-item">
+                    <span class="social-proof-text">Community Favorite</span>
                 </div>
             </div>
 
             <!-- CTAs -->
             <div class="hero-cta">
-                <a href="#menu" class="btn btn-primary">View Our Menu</a>
-                <a href="https://www.doordash.com/" target="_blank" class="btn btn-secondary">Order Delivery</a>
-                <a href="https://maps.google.com/?q=209+Lincolnway+LaPorte+Indiana" target="_blank" class="btn btn-secondary">Get Directions</a>
+                <a href="#menu" class="btn btn-primary btn-large">View Our Menu</a>
+                <div class="hero-cta-secondary">
+                    <a href="https://www.doordash.com/" target="_blank" class="btn btn-secondary">
+                        <i class="fas fa-truck"></i> Order Delivery
+                    </a>
+                    <a href="https://maps.google.com/?q=209+Lincolnway+LaPorte+Indiana" target="_blank" class="btn btn-secondary">
+                        <i class="fas fa-map-marker-alt"></i> Get Directions
+                    </a>
+                </div>
             </div>
         </div>
 
@@ -153,6 +188,9 @@
                     </button>
                     <button class="menu-tab" data-tab="pastries">
                         <i class="fas fa-cookie"></i> Pastries
+                    </button>
+                    <button class="menu-tab" data-tab="coffee-bags">
+                        <i class="fas fa-box"></i> Coffee Bags
                     </button>
                 </div>
 
@@ -347,6 +385,47 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="menu-tab-content" id="coffee-bags-tab">
+                        <div class="menu-grid">
+                            <div class="menu-item">
+                                <h4>Black Mountains</h4>
+                                <p>Dark, bold, and unapologetic. A full-bodied roast that hits like the first light over a summit — commanding, rich, and impossible to ignore.</p>
+                                <div class="menu-item-footer">
+                                    <span class="price">$15.00</span>
+                                    <button class="btn-add-cart" data-name="Black Mountains Coffee Bag (8oz)" data-price="15.00"><i class="fas fa-plus"></i> Add</button>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <h4>Ethiopian Mountain</h4>
+                                <p>Trace the origins of coffee itself. Bright floral notes and natural sweetness from the highland soils of East Africa. A single-sip journey to where it all began.</p>
+                                <div class="menu-item-footer">
+                                    <span class="price">$15.00</span>
+                                    <button class="btn-add-cart" data-name="Ethiopian Mountain Coffee Bag (8oz)" data-price="15.00"><i class="fas fa-plus"></i> Add</button>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <h4>Caffeine River</h4>
+                                <p>Keep the current going. A smooth, medium roast built for momentum — clean on the palate, steady on the grind. Whether you're in a flow state or pushing through the afternoon.</p>
+                                <div class="menu-item-footer">
+                                    <span class="price">$15.00</span>
+                                    <button class="btn-add-cart" data-name="Caffeine River Coffee Bag (8oz)" data-price="15.00"><i class="fas fa-plus"></i> Add</button>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <h4>Organic Beans</h4>
+                                <p>Pure. Simple. Intentional. USDA-certified and sourced with purpose, giving you a clean cup with nothing to hide. No shortcuts, no compromises — just great coffee the way nature intended.</p>
+                                <div class="menu-item-footer">
+                                    <span class="price">$15.00</span>
+                                    <button class="btn-add-cart" data-name="Organic Beans Coffee Bag (8oz)" data-price="15.00"><i class="fas fa-plus"></i> Add</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="coffee-bags-note">
+                            <p><strong>8 oz bags • $15 each</strong></p>
+                            <p>Crafted using premium beans from <strong>Intelligentsia Coffee</strong> — one of the world's most respected specialty roasters.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -403,40 +482,40 @@
                 <div class="gallery-section">
                     <h3>Our Space</h3>
                     <div class="gallery-grid">
-                        <div class="gallery-item">
-                            <img src="images/IMG_4567.png" alt="Rocky Mountain Cafe exterior" loading="lazy" width="400" height="300" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                        <div class="gallery-item gallery-item-desktop">
+                            <img src="images/IMG_4567.png" alt="Rocky Mountain Cafe exterior" loading="lazy" width="800" height="600" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                             <span class="gallery-placeholder" style="display:none"><i class="fas fa-store"></i><br>Exterior</span>
                         </div>
-                        <div class="gallery-item">
-                            <img src="images/IMG_6423.jpeg" alt="Rocky Mountain Cafe welcoming interior" loading="lazy" width="400" height="300" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                        <div class="gallery-item gallery-item-mobile">
+                            <img src="images/IMG_6423.jpeg" alt="Rocky Mountain Cafe welcoming interior" loading="lazy" width="800" height="600" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                             <span class="gallery-placeholder" style="display:none"><i class="fas fa-store"></i><br>Interior</span>
                         </div>
-                        <div class="gallery-item">
-                            <img src="images/IMG_6429.jpeg" alt="Coffee bar and counter area" loading="lazy" width="400" height="300" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                        <div class="gallery-item gallery-item-mobile">
+                            <img src="images/IMG_6429.jpeg" alt="Coffee bar and counter area" loading="lazy" width="800" height="600" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                             <span class="gallery-placeholder" style="display:none"><i class="fas fa-coffee"></i><br>Coffee Bar</span>
                         </div>
-                        <div class="gallery-item">
-                            <img src="images/IMG_6430.jpeg" alt="Pastry display case" loading="lazy" width="400" height="300" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                        <div class="gallery-item gallery-item-desktop">
+                            <img src="images/IMG_6430.jpeg" alt="Pastry display case" loading="lazy" width="800" height="600" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                             <span class="gallery-placeholder" style="display:none"><i class="fas fa-cookie"></i><br>Pastries</span>
                         </div>
-                        <div class="gallery-item">
-                            <img src="images/IMG_6434.jpeg" alt="Seating area and community space" loading="lazy" width="400" height="300" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                        <div class="gallery-item gallery-item-desktop">
+                            <img src="images/IMG_6434.jpeg" alt="Seating area and community space" loading="lazy" width="800" height="600" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                             <span class="gallery-placeholder" style="display:none"><i class="fas fa-chair"></i><br>Seating</span>
                         </div>
-                        <div class="gallery-item">
-                            <img src="images/IMG_6435.jpeg" alt="Professional coffee equipment" loading="lazy" width="400" height="300" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                        <div class="gallery-item gallery-item-desktop">
+                            <img src="images/IMG_6435.jpeg" alt="Professional coffee equipment" loading="lazy" width="800" height="600" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                             <span class="gallery-placeholder" style="display:none"><i class="fas fa-cog"></i><br>Equipment</span>
                         </div>
-                        <div class="gallery-item">
-                            <img src="images/IMG_6436.jpeg" alt="Cozy corner seating" loading="lazy" width="400" height="300" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                        <div class="gallery-item gallery-item-desktop">
+                            <img src="images/IMG_6436.jpeg" alt="Cozy corner seating" loading="lazy" width="800" height="600" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                             <span class="gallery-placeholder" style="display:none"><i class="fas fa-couch"></i><br>Cozy Corner</span>
                         </div>
-                        <div class="gallery-item">
-                            <img src="images/IMG_6437.jpeg" alt="Main seating area" loading="lazy" width="400" height="300" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                        <div class="gallery-item gallery-item-desktop">
+                            <img src="images/IMG_6437.jpeg" alt="Main seating area" loading="lazy" width="800" height="600" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                             <span class="gallery-placeholder" style="display:none"><i class="fas fa-users"></i><br>Community</span>
                         </div>
-                        <div class="gallery-item">
-                            <img src="images/IMG_6438.jpeg" alt="Coffee preparation station" loading="lazy" width="400" height="300" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                        <div class="gallery-item gallery-item-desktop">
+                            <img src="images/IMG_6438.jpeg" alt="Coffee preparation station" loading="lazy" width="800" height="600" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                             <span class="gallery-placeholder" style="display:none"><i class="fas fa-mug-hot"></i><br>Barista Station</span>
                         </div>
                     </div>
@@ -607,7 +686,7 @@
             </div>
             <div class="cart-actions">
                 <button class="btn-primary" id="checkoutBtn" disabled>Proceed to Checkout</button>
-                <button class="btn-secondary" id="doordashBtn" disabled>Order Now!</button>
+                <button class="btn-secondary" id="doordashBtn" disabled>Order via DoorDash</button>
             </div>
         </div>
     </div>
@@ -727,7 +806,7 @@
 
                 <div class="footer-column">
                     <h4>Hours</h4>
-                    <p>6:00 AM – 5:00 PM<br>Every Day of the Week</p>
+                    <p>6:00 AM – 7:00 PM<br>Every Day of the Week</p>
                 </div>
 
                 <div class="footer-column">
@@ -754,10 +833,10 @@
         </div>
     </footer>
 
-    <!-- Square Web Payments SDK -->
-    <script type="text/javascript" src="https://js.squareup.com/v2/paymentform"></script>
+    <!-- Square Web Payments SDK (deferred - only needed for checkout) -->
+    <script type="text/javascript" src="https://js.squareup.com/v2/paymentform" defer></script>
 
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 
 </body>
 </html>
