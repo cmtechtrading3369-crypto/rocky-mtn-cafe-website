@@ -1,0 +1,22 @@
+/* HUMANS.TXT - ATTRIBUTION */
+/* Website Section */
+    Last Update: 2026-06-21
+    Language: English
+    Charset: UTF-8
+    Designer: Rocky Mountain Cafe Team
+    Developer: Web Development Team
+
+/* Team Section */
+    Name: Rocky Mountain Cafe
+
+/* Contact Section */
+    Email: rockymountaincoffee@yahoo.com
+    Website: https://rockymountaincafe.com
+    Twitter: @rockymtncafe
+    Location: LaPorte, Indiana, USA
+
+/* Site Section */
+    Standards: HTML5, CSS3, JavaScript (Vanilla)
+    Components: Responsive Design, Accessibility (WCAG 2.1)
+    Hosting: Web Server
+    CMS: Custom Static Site

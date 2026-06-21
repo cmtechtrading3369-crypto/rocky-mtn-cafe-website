@@ -94,6 +94,25 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+/* Skip to content link */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 8px 16px;
+    text-decoration: none;
+    z-index: 100;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+}
+
+.skip-link:focus {
+    top: 10px;
+    left: 10px;
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
