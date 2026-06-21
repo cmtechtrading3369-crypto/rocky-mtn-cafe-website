@@ -83,16 +83,20 @@ function initMenuTabs() {
         tab.addEventListener('click', function() {
             const targetTab = this.getAttribute('data-tab');
             
-            // Remove active class from all tabs
-            menuTabs.forEach(t => t.classList.remove('active'));
+            // Remove active class from all tabs and update ARIA attributes
+            menuTabs.forEach(t => {
+                t.classList.remove('active');
+                t.setAttribute('aria-selected', 'false');
+            });
             
             // Hide all tab content
             document.querySelectorAll('.menu-tab-content').forEach(content => {
                 content.classList.remove('active');
             });
             
-            // Activate clicked tab
+            // Activate clicked tab and update ARIA
             this.classList.add('active');
+            this.setAttribute('aria-selected', 'true');
             
             // Show target content
             const targetContent = document.getElementById(targetTab + '-tab');

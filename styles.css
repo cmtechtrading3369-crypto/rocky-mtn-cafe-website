@@ -279,6 +279,13 @@ body {
     box-shadow: var(--shadow);
 }
 
+.cart-button:focus,
+.cart-button:focus-visible {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(139, 69, 19, 0.1);
+}
+
 .cart-count {
     position: absolute;
     top: -4px;
@@ -318,6 +325,13 @@ body {
     border-color: var(--primary-color);
     transform: scale(1.05);
     box-shadow: var(--shadow);
+}
+
+.theme-toggle:focus,
+.theme-toggle:focus-visible {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(139, 69, 19, 0.1);
 }
 
 /* ===== HERO SECTION ===== */
@@ -562,6 +576,13 @@ body {
     letter-spacing: 0.02em;
 }
 
+.btn:focus,
+.btn:focus-visible {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(139, 69, 19, 0.1);
+}
+
 .btn-primary {
     background: var(--white);
     color: var(--primary-color);
@@ -713,6 +734,18 @@ section {
     background: var(--light-bg);
     position: relative;
     padding: var(--space-4xl) 0;
+    animation: slideInUp 0.8s ease-out;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .menu-section::before {
@@ -722,8 +755,14 @@ section {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('images/IMG_6432.jpeg') center center / cover no-repeat;
-    opacity: 0.15;
+    background-image: 
+        url('images/IMG_3322.png'),
+        url('images/IMG_3355.png');
+    background-position: left center, right center;
+    background-size: contain, contain;
+    background-repeat: no-repeat, no-repeat;
+    background-attachment: fixed;
+    opacity: 0.3;
     z-index: 0;
 }
 
@@ -740,6 +779,13 @@ section {
     flex-wrap: wrap;
 }
 
+@media (max-width: 768px) {
+    .menu-tabs {
+        gap: var(--space-xs);
+        margin-bottom: var(--space-xl);
+    }
+}
+
 .menu-tab {
     background: var(--white);
     border: 2px solid var(--border-color);
@@ -754,11 +800,26 @@ section {
     align-items: center;
     gap: var(--space-sm);
     color: var(--text-color);
+    min-height: 48px;
+}
+
+@media (max-width: 768px) {
+    .menu-tab {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+        min-height: 44px;
+    }
 }
 
 .menu-tab:hover {
     border-color: var(--primary-color);
     color: var(--primary-color);
+}
+
+.menu-tab:focus,
+.menu-tab:focus-visible {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 2px;
 }
 
 .menu-tab.active {
@@ -862,6 +923,13 @@ section {
     background: var(--secondary-color);
     transform: scale(1.05);
     box-shadow: var(--shadow);
+}
+
+.btn-add-cart:focus,
+.btn-add-cart:focus-visible {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(139, 69, 19, 0.1);
 }
 
 .coffee-bags-note {
