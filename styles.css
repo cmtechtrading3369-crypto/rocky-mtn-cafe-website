@@ -591,6 +591,24 @@ section {
 /* ===== MENU SECTION ===== */
 .menu-section {
     background: var(--light-bg);
+    position: relative;
+}
+
+.menu-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('images/IMG_6432.jpeg') center center / cover no-repeat;
+    opacity: 0.15;
+    z-index: 0;
+}
+
+.menu-section > .container {
+    position: relative;
+    z-index: 1;
 }
 
 .menu-tabs {
