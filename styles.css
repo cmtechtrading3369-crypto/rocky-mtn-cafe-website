@@ -3287,12 +3287,6 @@ body.offline form textarea {
     color: rgba(255, 255, 255, 0.95);
 }
 
-.testimonial-quote::before {
-    content: '\\201C';
-    font-size: 2rem;
-    opacity: 0.3;
-    margin-right: 4px;
-}
 
 .testimonial-author {
     display: flex;
