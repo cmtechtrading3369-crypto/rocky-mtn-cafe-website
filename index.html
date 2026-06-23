@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rocky Mountain Cafe | Coffee Shop LaPorte, Indiana | Fresh Coffee, Pastries, WiFi</title>
-    <meta name="description" content="Rocky Mountain Cafe is LaPorte, Indiana's favorite community coffee house. Fresh coffee, premium pastries, live music, free WiFi, and gaming. Open 6 AM - 7 PM daily at 209 Lincolnway.">
+    <meta name="description" content="Rocky Mountain Cafe is LaPorte, Indiana's favorite community coffee house. Fresh coffee, premium pastries, live music, free WiFi, and gaming. Open 6 AM - 5 PM daily at 209 Lincolnway.">
     <meta name="author" content="Rocky Mountain Cafe">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <link rel="canonical" href="https://rockymountaincafe.com/">
 
     <!-- Logo with WebP Fallback -->
@@ -51,7 +54,7 @@
                 "@type": "OpeningHoursSpecification",
                 "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
                 "opens": "06:00",
-                "closes": "19:00"
+                "closes": "17:00"
             }
         ],
         "priceRange": "$$",
@@ -77,7 +80,7 @@
                 "name": "What are your hours?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "We are open Monday-Sunday from 6:00 AM to 7:00 PM. Closed on major holidays."
+                    "text": "We are open Monday-Sunday from 6:00 AM to 5:00 PM. Closed on major holidays."
                 }
             },
             {
@@ -123,7 +126,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="styles.css?v=3" media="print" onload="this.media='all'">
 
     <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
@@ -231,7 +234,7 @@
             <!-- Hours Badge -->
             <div class="hero-hours-badge">
                 <span class="hours-dot"></span>
-                <span class="hours-text">Open Now • Closes at 7:00 PM</span>
+                <span class="hours-text">Open Now • Closes at 5:00 PM</span>
             </div>
 
             <!-- Social Proof -->
@@ -265,9 +268,9 @@
         </div>
 
         <!-- Scroll Indicator -->
-        <div class="scroll-indicator">
+        <a href="#why-us" class="scroll-indicator" aria-label="Scroll down">
             <i class="fas fa-chevron-down"></i>
-        </div>
+        </a>
     </section>
 
     <main>
@@ -276,7 +279,7 @@
              ============================================ -->
         <section id="why-us" class="why-us-section">
             <div class="container">
-                <div class="section-header">
+                <div class="section-header reveal">
                     <h2>Why Choose Rocky Mountain Cafe?</h2>
                     <p>Discover what makes us LaPorte's favorite community gathering place</p>
                 </div>
@@ -327,7 +330,7 @@
              ============================================ -->
         <section id="visit" class="info-section">
             <div class="container">
-                <div class="info-grid">
+                <div class="info-grid reveal">
                     <div class="info-card">
                         <i class="fas fa-map-marker-alt"></i>
                         <h3>Location</h3>
@@ -338,7 +341,7 @@
                     <div class="info-card">
                         <i class="fas fa-clock"></i>
                         <h3>Hours</h3>
-                        <p>6:00 AM – 7:00 PM<br>7 Days a Week</p>
+                        <p>6:00 AM – 5:00 PM<br>7 Days a Week</p>
                         <p class="text-muted">Closed major holidays</p>
                     </div>
                     
@@ -357,7 +360,7 @@
              ============================================ -->
         <section id="menu" class="menu-section" role="main">
             <div class="container" id="main-content">
-                <div class="section-header">
+                <div class="section-header reveal">
                     <h2>Our Menu</h2>
                     <p>Fresh-brewed coffee, premium pastries, and community vibes in LaPorte, Indiana</p>
                 </div>
@@ -618,7 +621,7 @@
              ============================================ -->
         <section id="about" class="about-section">
             <div class="container">
-                <div class="section-header">
+                <div class="section-header reveal">
                     <h2>About Rocky Mountain Cafe</h2>
                     <p>Your community gathering place in LaPorte, Indiana since 2010</p>
                 </div>
@@ -707,16 +710,26 @@
         </section>
 
         <!-- ============================================
+             GALLERY LIGHTBOX
+             ============================================ -->
+        <div class="lightbox" id="galleryLightbox" role="dialog" aria-label="Image lightbox">
+            <button class="lightbox-close" id="lightboxClose" aria-label="Close lightbox">
+                <i class="fas fa-times"></i>
+            </button>
+            <img class="lightbox-image" id="lightboxImage" src="" alt="Gallery image enlarged view">
+        </div>
+
+        <!-- ============================================
              FEATURED ITEMS / SPECIALS
              ============================================ -->
         <section class="featured-section">
             <div class="container">
-                <div class="section-header">
+                <div class="section-header reveal">
                     <h2>Today's Specials</h2>
                     <p>Fresh recommendations from our baristas</p>
                 </div>
 
-                <div class="featured-grid">
+                <div class="featured-grid reveal">
                     <div class="featured-card">
                         <div class="featured-badge">🔥 Hot Deal</div>
                         <div class="featured-icon">☕</div>
@@ -757,12 +770,12 @@
              ============================================ -->
         <section class="testimonials-section">
             <div class="container">
-                <div class="section-header">
+                <div class="section-header reveal">
                     <h2>What Our Community Says</h2>
                     <p>Real reviews from real customers</p>
                 </div>
 
-                <div class="testimonials-carousel">
+                <div class="testimonials-carousel reveal">
                     <div class="testimonial-item">
                         <div class="testimonial-stars">★★★★★</div>
                         <p class="testimonial-quote">"Best coffee in LaPorte! The atmosphere is so welcoming and the baristas are incredibly friendly. I've made it my go-to spot."</p>
@@ -834,12 +847,12 @@
              ============================================ -->
         <section id="reviews" class="reviews-section">
             <div class="container">
-                <div class="section-header">
+                <div class="section-header reveal">
                     <h2>Customer Reviews</h2>
                     <p>What people are saying about Rocky Mountain Cafe in LaPorte, Indiana</p>
                 </div>
 
-                <div class="reviews-grid">
+                <div class="reviews-grid reveal">
                     <div class="review-card">
                         <div class="stars">
                             <i class="fas fa-star"></i>
@@ -900,13 +913,13 @@
              ============================================ -->
         <section id="updates" class="updates-section">
             <div class="container">
-                <div class="section-header">
+                <div class="section-header reveal">
                     <h2>Latest Updates</h2>
                     <p>Follow us on Facebook for events, specials, and community news</p>
                 </div>
 
                 <div class="updates-content">
-                    <div class="social-feeds-grid">
+                    <div class="social-feeds-grid reveal">
                         <div class="social-link facebook-card">
                             <i class="fab fa-facebook"></i>
                             <h3>Rocky Mountain Cafe</h3>
@@ -965,7 +978,7 @@
              ============================================ -->
         <section class="newsletter-section" id="newsletter">
             <div class="container">
-                <div class="newsletter-content">
+                <div class="newsletter-content reveal">
                     <div class="newsletter-text">
                         <h2>Stay Updated</h2>
                         <p>Get special promotions, new menu items, and cafe updates delivered to your inbox</p>
@@ -996,9 +1009,9 @@
              ============================================ -->
         <section id="contact" class="contact-section">
             <div class="container">
-                <div class="contact-grid">
+                <div class="contact-grid reveal">
                     <div class="contact-form-wrapper">
-                        <div class="section-header">
+                        <div class="section-header reveal">
                             <h2>Contact Us</h2>
                             <p>Visit Rocky Mountain Cafe at 209 Lincolnway, LaPorte, Indiana or send us a message</p>
                         </div>
@@ -1057,7 +1070,7 @@
                                 <i class="fas fa-clock"></i>
                                 <div>
                                     <h4>Hours</h4>
-                                    <p>Mon-Sun: 6:00 AM – 7:00 PM</p>
+                                    <p>Mon-Sun: 6:00 AM – 5:00 PM</p>
                                     <span class="status-badge open">Currently Open</span>
                                 </div>
                             </div>
@@ -1216,7 +1229,7 @@
 
                 <div class="footer-column">
                     <h4>Hours</h4>
-                    <p>6:00 AM – 7:00 PM<br>Every Day of the Week</p>
+                    <p>6:00 AM – 5:00 PM<br>Every Day of the Week</p>
                 </div>
 
                 <div class="footer-column">
@@ -1243,7 +1256,7 @@
         </div>
     </footer>
 
-    <script src="script.js" defer></script>
+    <script src="script.js?v=3" defer></script>
 
 </body>
 </html>

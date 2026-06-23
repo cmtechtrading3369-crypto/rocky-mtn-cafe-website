@@ -29,3 +29,5 @@ build/
 # Temporary
 *.tmp
 temp/
+.aider*
+styles.css.before-redesign
