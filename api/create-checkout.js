@@ -44,6 +44,12 @@ export async function POST(request) {
     process.env.SQUARE_REDIRECT_URL ||
     'https://cmtechtrading3369-crypto.github.io/rocky-mtn-cafe-website/thank-you.html';
 
+  // Ensure redirect URL has a protocol
+  let safeRedirectUrl = redirectUrl;
+  if (!/^https?:\/\//i.test(safeRedirectUrl)) {
+    safeRedirectUrl = 'https://' + safeRedirectUrl;
+  }
+
   if (!accessToken || !locationId) {
     return new Response(
       JSON.stringify({ error: 'Square credentials not configured' }),
@@ -69,7 +75,7 @@ export async function POST(request) {
       location_id: locationId
     },
     checkout_options: {
-      redirect_url: redirectUrl
+      redirect_url: safeRedirectUrl
     }
   };
 
@@ -114,7 +120,7 @@ export async function POST(request) {
 
     const checkoutUrl =
       data.payment_link?.checkout_url ||
-      data.checkout_url ||
+      data.payment_link?.url ||
       data.url;
     if (!checkoutUrl) {
       return new Response(
