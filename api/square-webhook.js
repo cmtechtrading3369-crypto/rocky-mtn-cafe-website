@@ -45,15 +45,16 @@ async function sendSms(message) {
       {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
+          'Content-Type': 'application/x-www-form-urlencoded',
+          Authorization:
+            'Basic ' +
+            Buffer.from(twilioSid + ':' + twilioToken).toString('base64')
         },
         body: new URLSearchParams({
           To: twilioTo,
           From: twilioFrom,
           Body: message
-        }),
-        // Twilio uses HTTP Basic Auth
-        // Node fetch supports the `user` option in some versions, but to be safe:
+        })
       }
     );
 
