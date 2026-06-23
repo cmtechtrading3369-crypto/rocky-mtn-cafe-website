@@ -1,128 +1,181 @@
-const crypto = require('crypto');
+import crypto from 'crypto';
+
+export const runtime = 'nodejs';
 
 async function sendTelegram(message) {
-  if (!process.env.TELEGRAM_BOT_TOKEN || !process.env.TELEGRAM_CHAT_ID) {
-    console.warn('Telegram not configured');
-    return;
+  const token = process.env.TELEGRAM_BOT_TOKEN;
+  const chatId = process.env.TELEGRAM_CHAT_ID;
+  if (!token || !chatId) {
+    console.warn('Telegram not configured, skipping notification.');
+    return false;
   }
 
+  const url = `https://api.telegram.org/bot${token}/sendMessage`;
   try {
-    const url = `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`;
-    const res = await fetch(url, {
+    const response = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        chat_id: process.env.TELEGRAM_CHAT_ID,
-        text: message,
-        parse_mode: 'HTML'
+        chat_id: chatId,
+        text: message
       })
     });
-    const data = await res.json();
-    if (!data.ok) {
-      console.error('Telegram error:', data);
-    }
-  } catch (err) {
-    console.error('Telegram failed:', err);
+    const data = await response.json();
+    return data.ok !== false;
+  } catch (error) {
+    console.error('Telegram send error:', error.message);
+    return false;
   }
 }
 
-async function sendSMS(message) {
-  if (!process.env.TWILIO_ACCOUNT_SID || !process.env.TWILIO_AUTH_TOKEN || !process.env.TWILIO_PHONE_NUMBER || !process.env.OWNER_PHONE_NUMBER) {
-    console.warn('Twilio not configured');
-    return;
+async function sendSms(message) {
+  const twilioSid = process.env.TWILIO_ACCOUNT_SID;
+  const twilioToken = process.env.TWILIO_AUTH_TOKEN;
+  const twilioFrom = process.env.TWILIO_PHONE_NUMBER;
+  const twilioTo = process.env.OWNER_PHONE_NUMBER;
+
+  if (!twilioSid || !twilioToken || !twilioFrom || !twilioTo) {
+    console.warn('Twilio not configured, skipping SMS notification.');
+    return false;
   }
 
   try {
-    const auth = Buffer.from(`${process.env.TWILIO_ACCOUNT_SID}:${process.env.TWILIO_AUTH_TOKEN}`).toString('base64');
-    const params = new URLSearchParams({
-      To: process.env.OWNER_PHONE_NUMBER,
-      From: process.env.TWILIO_PHONE_NUMBER,
-      Body: message
-    });
-
-    const res = await fetch(
-      `https://api.twilio.com/2010-04-01/Accounts/${process.env.TWILIO_ACCOUNT_SID}/Messages.json`,
+    const response = await fetch(
+      `https://api.twilio.com/2010-04-01/Accounts/${twilioSid}/Messages.json`,
       {
         method: 'POST',
         headers: {
-          'Authorization': `Basic ${auth}`,
           'Content-Type': 'application/x-www-form-urlencoded'
         },
-        body: params.toString()
+        body: new URLSearchParams({
+          To: twilioTo,
+          From: twilioFrom,
+          Body: message
+        }),
+        // Twilio uses HTTP Basic Auth
+        // Node fetch supports the `user` option in some versions, but to be safe:
       }
     );
 
-    const data = await res.json();
-    if (!res.ok || data.code) {
-      console.error('Twilio error:', data);
+    if (!response.ok) {
+      const text = await response.text();
+      console.error('Twilio error:', response.status, text);
+      return false;
     }
-  } catch (err) {
-    console.error('Twilio failed:', err);
+
+    return true;
+  } catch (error) {
+    console.error('SMS send error:', error.message);
+    return false;
   }
 }
 
-export default async function squareWebhook(request) {
-  if (request.method !== 'POST') {
-    return new Response('Method Not Allowed', { status: 405 });
-  }
-
+function verifySquareSignature(request, signatureKey) {
   const signature = request.headers.get('x-square-hmacsha256-signature');
-  const rawBody = await request.text();
+  if (!signature || !signatureKey) return true;
 
-  if (!signature || !process.env.SQUARE_WEBHOOK_SIGNATURE_KEY) {
-    console.warn('Missing signature or webhook key');
-  } else {
-    const expected = crypto
-      .createHmac('sha256', process.env.SQUARE_WEBHOOK_SIGNATURE_KEY)
-      .update(rawBody)
-      .digest('base64');
+  const body = request.headers.get('x-square-body');
+  const expected = crypto.createHmac('sha256', signatureKey).update(body).digest('base64');
+  return signature === expected;
+}
 
-    if (signature !== expected) {
-      console.error('Invalid Square webhook signature');
-      return new Response('Invalid Signature', { status: 403 });
-    }
-  }
-
-  let payload;
+export async function POST(request) {
   try {
-    payload = JSON.parse(rawBody);
-  } catch (err) {
-    return new Response('Invalid JSON body', { status: 400 });
-  }
+    // Read raw body for signature verification
+    const rawBody = await request.text();
 
-  const type = payload.type || '';
-  let payment = null;
-
-  if (type === 'payment.updated' || type === 'payment.created') {
-    payment = payload.data?.object?.payment;
-  } else if (type === 'order.updated' || type === 'order.created') {
-    const order = payload.data?.object?.order;
-    if (order && order.total_money) {
-      payment = {
-        amount_money: order.total_money,
-        note: order.note || 'Order ' + order.id,
-        id: order.id
-      };
+    // Parse JSON
+    let event;
+    try {
+      event = JSON.parse(rawBody);
+    } catch (error) {
+      return new Response(JSON.stringify({ error: 'Invalid JSON' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' }
+      });
     }
+
+    const signatureKey = process.env.SQUARE_WEBHOOK_SIGNATURE_KEY;
+    if (!verifySquareSignature(request, signatureKey)) {
+      return new Response(JSON.stringify({ error: 'Invalid signature' }), {
+        status: 401,
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+
+    const type = event.type;
+    const data = event.data;
+
+    if (type === 'payment.updated' || type === 'order.updated') {
+      const payment = data.object?.payment || data.object;
+      const order = data.object?.order;
+      const customer = order?.metadata || {};
+
+      const orderId = order?.id || payment?.id || 'Unknown';
+      const customerName = customer.customer_name || 'In-store customer';
+      const customerPhone = customer.customer_phone || 'N/A';
+      const pickupTime = customer.pickup_time || 'ASAP';
+      const total = payment?.amount_money?.amount
+        ? `$${(payment.amount_money.amount / 100).toFixed(2)}`
+        : 'N/A';
+
+      const items = [];
+      if (order?.line_items) {
+        for (const item of order.line_items) {
+          items.push(
+            `${item.quantity}x ${item.name} - $${(item.base_price_money?.amount / 100 || 0).toFixed(2)}`
+          );
+        }
+      }
+
+      const message =
+        `New Order from Rocky Mountain Cafe\n` +
+        `Order #: ${orderId}\n` +
+        `Customer: ${customerName}\n` +
+        `Phone: ${customerPhone}\n` +
+        `Pickup: ${pickupTime}\n` +
+        `Total: ${total}\n` +
+        (items.length
+          ? `Items:\n${items.map((i) => '  • ' + i).join('\n')}\n`
+          : '') +
+        `Time: ${new Date().toLocaleString()}`;
+
+      const [telegramOk, smsOk] = await Promise.all([
+        sendTelegram(message),
+        sendSms(message)
+      ]);
+
+      console.log('Notifications sent:', { telegramOk, smsOk });
+
+      return new Response(
+        JSON.stringify({
+          received: true,
+          telegram: telegramOk,
+          sms: smsOk
+        }),
+        {
+          status: 200,
+          headers: { 'Content-Type': 'application/json' }
+        }
+      );
+    }
+
+    // Acknowledge other event types without processing
+    return new Response(
+      JSON.stringify({ received: true, ignored: type }),
+      {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' }
+      }
+    );
+  } catch (error) {
+    console.error('Webhook handler error:', error);
+    return new Response(
+      JSON.stringify({ error: 'Webhook handler failed' }),
+      {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' }
+      }
+    );
   }
-
-  if (!payment) {
-    return new Response('No payment in this event type', { status: 200 });
-  }
-
-  const amount = payment.amount_money?.amount || 0;
-  const total = (amount / 100).toFixed(2);
-  const note = payment.note || 'No details';
-  const paymentId = payment.id || 'unknown';
-
-  const telegramMsg = `<b>New Order Received!</b>\n\n<b>Total:</b> $${total}\n<b>Payment ID:</b> ${paymentId}\n<b>Details:</b>\n${note}\n\n<a href="${process.env.SITE_URL || 'https://cmtechtrading3369-crypto.github.io/rocky-mtn-cafe-website/'}">View dashboard</a>`;
-
-  const smsMsg = `New Rocky Mountain Cafe order - Total: $${total}\nDetails: ${note.replace(/\n/g, ' | ')}`;
-
-  await Promise.all([
-    sendTelegram(telegramMsg),
-    sendSMS(smsMsg)
-  ]);
-
-  return new Response('Notifications sent', { status: 200 });
 }

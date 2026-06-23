@@ -1,6 +1,8 @@
-const crypto = require('crypto');
+import crypto from 'crypto';
 
-export default async function createCheckout(request) {
+export const runtime = 'nodejs';
+
+export async function POST(request) {
   if (request.method !== 'POST') {
     return new Response('Method Not Allowed', { status: 405 });
   }
@@ -9,85 +11,134 @@ export default async function createCheckout(request) {
   try {
     body = await request.json();
   } catch (err) {
-    return new Response('Invalid JSON', { status: 400 });
+    return new Response(JSON.stringify({ error: 'Invalid request body' }), {
+      status: 400,
+      headers: { 'Content-Type': 'application/json' }
+    });
   }
 
-  const { items, total, customer } = body;
+  const { items, total, customer } = body || {};
 
-  if (!items || !total || !Array.isArray(items) || items.length === 0) {
-    return new Response('Cart is empty', { status: 400 });
+  if (!items || !total || !customer) {
+    return new Response(
+      JSON.stringify({ error: 'Missing required fields: items, total, customer' }),
+      {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' }
+      }
+    );
   }
 
-  if (!process.env.SQUARE_ACCESS_TOKEN || !process.env.SQUARE_LOCATION_ID) {
-    return new Response('Square credentials not configured', { status: 500 });
-  }
-
+  const accessToken = process.env.SQUARE_ACCESS_TOKEN;
+  const locationId = process.env.SQUARE_LOCATION_ID;
   const isSandbox = process.env.SQUARE_SANDBOX !== 'false';
+  const redirectUrl =
+    process.env.SQUARE_REDIRECT_URL ||
+    'https://cmtechtrading3369-crypto.github.io/rocky-mtn-cafe-website/thank-you.html';
+
+  if (!accessToken || !locationId) {
+    return new Response(
+      JSON.stringify({ error: 'Square credentials not configured' }),
+      {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' }
+      }
+    );
+  }
+
   const squareUrl = isSandbox
     ? 'https://connect.squareupsandbox.com/v2/online-checkout/payment-links'
     : 'https://connect.squareup.com/v2/online-checkout/payment-links';
 
-  const itemLines = items
-    .map(item => `• ${item.name} x${item.quantity} — $${(item.price * item.quantity).toFixed(2)}`)
-    .join('\n');
-
-  const note = `Order for ${customer?.name || 'Customer'}${customer?.phone ? ' | ' + customer.phone : ''}${customer?.pickup_time ? ' | ' + customer.pickup_time : ''}\n\n${itemLines}`;
+  const lineItems = items.map((item) => {
+    const amount = Math.round(parseFloat(item.price) * 100);
+    return {
+      name: item.name,
+      quantity: String(item.quantity || 1),
+      base_price_money: {
+        amount,
+        currency: 'USD'
+      }
+    };
+  });
 
   const payload = {
     idempotency_key: crypto.randomUUID(),
-    description: 'Rocky Mountain Cafe In-Store Order',
     quick_pay: {
-      location_id: process.env.SQUARE_LOCATION_ID,
       name: 'Rocky Mountain Cafe Order',
       price_money: {
         amount: Math.round(parseFloat(total) * 100),
         currency: 'USD'
-      }
+      },
+      location_id: locationId
     },
     checkout_options: {
-      redirect_url: process.env.SQUARE_REDIRECT_URL || 'https://cmtechtrading3369-crypto.github.io/rocky-mtn-cafe-website/thank-you.html',
-      merchant_support_email: process.env.MERCHANT_EMAIL || 'orders@rockymountaincafe.com'
+      redirect_url: redirectUrl,
+      ask_for_shipping_address: false,
+      allow_tipping: false
     },
-    payment_note: note
+    order: {
+      location_id: locationId,
+      line_items: lineItems,
+      metadata: {
+        customer_name: customer.name || '',
+        customer_phone: customer.phone || '',
+        pickup_time: customer.pickup_time || ''
+      }
+    }
   };
 
   try {
-    const response = await fetch(squareUrl, {
+    const squareResponse = await fetch(squareUrl, {
       method: 'POST',
       headers: {
-        'Square-Version': '2025-06-18',
-        'Authorization': `Bearer ${process.env.SQUARE_ACCESS_TOKEN}`,
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Square-Version': '2024-06-20',
+        Authorization: `Bearer ${accessToken}`
       },
       body: JSON.stringify(payload)
     });
 
-    const data = await response.json();
+    const data = await squareResponse.json();
 
-    if (!response.ok || data.errors) {
-      console.error('Square API error:', data.errors);
+    if (!squareResponse.ok || data.errors) {
+      const message = data.errors
+        ?.map((e) => e.detail || e.category || 'Square API error')
+        .join(', ');
       return new Response(
-        JSON.stringify({ error: 'Failed to create checkout', details: data.errors }),
-        { status: response.status, headers: { 'Content-Type': 'application/json' } }
+        JSON.stringify({ error: message || 'Square API error' }),
+        {
+          status: squareResponse.status,
+          headers: { 'Content-Type': 'application/json' }
+        }
       );
     }
 
-    const checkoutUrl = data?.payment_link?.checkout_page_url;
-    const orderId = data?.payment_link?.order_id;
-
+    const checkoutUrl = data.payment_link?.checkout_url;
     if (!checkoutUrl) {
-      return new Response('No checkout URL returned', { status: 500 });
+      return new Response(
+        JSON.stringify({ error: 'Square did not return a checkout URL' }),
+        {
+          status: 500,
+          headers: { 'Content-Type': 'application/json' }
+        }
+      );
     }
 
     return new Response(
-      JSON.stringify({ success: true, checkoutUrl, orderId }),
-      { headers: { 'Content-Type': 'application/json' } }
+      JSON.stringify({ checkoutUrl }),
+      {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' }
+      }
     );
   } catch (error) {
-    console.error('Square request failed:', error);
     return new Response(
-      JSON.stringify({ error: 'Square connection failed', message: error.message }),
-      { status: 500, headers: { 'Content-Type': 'application/json' } }
+      JSON.stringify({ error: error.message || 'Failed to create checkout' }),
+      {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' }
+      }
     );
   }
 }
