@@ -370,18 +370,75 @@ function initCheckoutSystem() {
     
     // Pickup form submission
     if (pickupForm) {
-        pickupForm.addEventListener('submit', function(e) {
+        pickupForm.addEventListener('submit', async function(e) {
             e.preventDefault();
 
-            alert('Thank you for your order! We will contact you to confirm payment and pickup details.');
+            const submitBtn = pickupForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn ? submitBtn.textContent : '';
+            if (submitBtn) {
+                submitBtn.textContent = 'Redirecting to payment...';
+                submitBtn.disabled = true;
+            }
 
-            // Clear cart and close modal
-            cart = [];
-            updateCartUI();
-            updateCartCount();
-            checkoutModal.classList.remove('active');
-            document.body.style.overflow = '';
-            this.reset();
+            const customerName = document.getElementById('customer-name').value.trim();
+            const customerPhone = document.getElementById('customer-phone').value.trim();
+            const pickupTime = document.getElementById('pickup-time').value;
+
+            if (!customerName || !customerPhone || !pickupTime) {
+                alert('Please fill in all fields');
+                if (submitBtn) {
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }
+                return;
+            }
+
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const tax = subtotal * 0.07;
+            const total = subtotal + tax;
+
+            const requestData = {
+                items: cart.map(item => ({
+                    name: item.name,
+                    price: item.price,
+                    quantity: item.quantity
+                })),
+                total: total.toFixed(2),
+                customer: {
+                    name: customerName,
+                    phone: customerPhone,
+                    pickup_time: pickupTime
+                }
+            };
+
+            try {
+                const response = await fetch('/.netlify/functions/create-checkout', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(requestData)
+                });
+
+                const data = await response.json();
+
+                if (!response.ok || !data.checkoutUrl) {
+                    throw new Error(data.error || data.details || 'Failed to create checkout');
+                }
+
+                // Clear cart before leaving
+                cart = [];
+                updateCartUI();
+                updateCartCount();
+
+                // Redirect to Square hosted checkout
+                window.location.href = data.checkoutUrl;
+            } catch (err) {
+                console.error('Checkout error:', err);
+                alert('Payment setup failed. Please try again or call us directly.\n\n(' + err.message + ')');
+                if (submitBtn) {
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }
+            }
         });
     }
     
