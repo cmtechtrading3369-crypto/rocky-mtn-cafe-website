@@ -7,6 +7,7 @@ let cart = [];
 document.addEventListener('DOMContentLoaded', function() {
     initNavbar();
     initMenuTabs();
+    initTeaPricing();
     initCartSystem();
     initCheckoutSystem();
     initContactForm();
@@ -109,6 +110,41 @@ function initMenuTabs() {
     });
 }
 
+// ===== TEA PRICING =====
+function initTeaPricing() {
+    const teaTab = document.getElementById('tea-tab');
+    if (!teaTab) return;
+
+    const selects = teaTab.querySelectorAll('.flavor-select');
+    selects.forEach(select => {
+        const updatePrice = () => {
+            const menuItem = select.closest('.menu-item');
+            if (!menuItem) return;
+
+            const priceEl = menuItem.querySelector('.price');
+            const addBtn = menuItem.querySelector('.btn-add-cart');
+            const value = select.value;
+            const text = select.options[select.selectedIndex].text;
+
+            let price = null;
+            const match = text.match(/\$(\d+(?:\.\d+)?)/);
+            if (match) {
+                price = parseFloat(match[1]);
+            }
+
+            if (priceEl && price !== null) {
+                priceEl.textContent = '$' + price.toFixed(price % 1 === 0 ? 0 : 2);
+            }
+            if (addBtn && price !== null) {
+                addBtn.setAttribute('data-price', price);
+            }
+        };
+
+        select.addEventListener('change', updatePrice);
+        updatePrice();
+    });
+}
+
 // ===== CART SYSTEM =====
 function initCartSystem() {
     const cartButton = document.getElementById('cartButton');
@@ -158,12 +194,16 @@ function initCartSystem() {
         button.addEventListener('click', function() {
             const name = this.getAttribute('data-name');
             const price = parseFloat(this.getAttribute('data-price'));
-            addToCart(name, price);
-            
+            const menuItem = this.closest('.menu-item');
+            const flavorSelect = menuItem ? menuItem.querySelector('.flavor-select') : null;
+            const selectedFlavor = flavorSelect ? flavorSelect.value : null;
+            const cartName = selectedFlavor && selectedFlavor !== 'Regular' ? name + ' (' + selectedFlavor + ')' : name;
+            addToCart(cartName, price);
+
             // Visual feedback
             this.innerHTML = '<i class="fas fa-check"></i> Added';
             this.style.background = '#27ae60';
-            
+
             setTimeout(() => {
                 this.innerHTML = '<i class="fas fa-plus"></i> Add';
                 this.style.background = '';

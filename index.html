@@ -126,7 +126,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="styles.css?v=3" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="styles.css?v=14" media="print" onload="this.media='all'">
 
     <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
@@ -365,15 +365,26 @@
                     <p>Fresh-brewed coffee, premium pastries, and community vibes in LaPorte, Indiana</p>
                 </div>
 
+                <div class="menu-full-image reveal">
+                    <img src="images/menu-2025.png" alt="Rocky Mountain Cafe full menu 2025 including drinks and food" loading="lazy" width="1200" height="1600" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                    <span class="menu-placeholder" style="display:none"><i class="fas fa-utensils"></i><br>View our full menu in-store</span>
+                </div>
+
                 <div class="menu-tabs" role="tablist" aria-label="Menu categories">
-                    <button class="menu-tab active" data-tab="drinks" role="tab" aria-selected="true" aria-controls="drinks-tab">
-                        <i class="fas fa-mug-hot"></i> Drinks
+                    <button class="menu-tab active" data-tab="pastries" role="tab" aria-selected="true" aria-controls="pastries-tab">
+                        <i class="fas fa-cookie"></i> Pastries
                     </button>
                     <button class="menu-tab" data-tab="food" role="tab" aria-selected="false" aria-controls="food-tab">
                         <i class="fas fa-utensils"></i> Food
                     </button>
-                    <button class="menu-tab" data-tab="pastries" role="tab" aria-selected="false" aria-controls="pastries-tab">
-                        <i class="fas fa-cookie"></i> Pastries
+                    <button class="menu-tab" data-tab="coffee" role="tab" aria-selected="false" aria-controls="coffee-tab">
+                        <i class="fas fa-mug-hot"></i> Coffee
+                    </button>
+                    <button class="menu-tab" data-tab="tea" role="tab" aria-selected="false" aria-controls="tea-tab">
+                        <i class="fas fa-leaf"></i> Tea
+                    </button>
+                    <button class="menu-tab" data-tab="merchandise" role="tab" aria-selected="false" aria-controls="merchandise-tab">
+                        <i class="fas fa-shirt"></i> Merchandise
                     </button>
                     <button class="menu-tab" data-tab="coffee-bags" role="tab" aria-selected="false" aria-controls="coffee-bags-tab">
                         <i class="fas fa-box"></i> Coffee Bags
@@ -381,70 +392,38 @@
                 </div>
 
                 <div class="menu-content">
-                    <div class="menu-tab-content active" id="drinks-tab">
+                    <div class="menu-tab-content active" id="pastries-tab">
                         <div class="menu-grid">
                             <div class="menu-item">
-                                <h4>Mountain Peak Espresso</h4>
-                                <p>Double shot of rich, bold espresso</p>
+                                <h4>Cinnamon Roll</h4>
+                                <p>Swirled cinnamon with cream cheese frosting</p>
                                 <div class="menu-item-footer">
-                                    <span class="price">$2.50</span>
-                                    <button class="btn-add-cart" data-name="Mountain Peak Espresso" data-price="2.50"><i class="fas fa-plus"></i> Add</button>
+                                    <span class="price">$4</span>
+                                    <button class="btn-add-cart" data-name="Cinnamon Roll" data-price="4"><i class="fas fa-plus"></i> Add</button>
                                 </div>
                             </div>
                             <div class="menu-item">
-                                <h4>Cappuccino</h4>
-                                <p>Espresso with velvety steamed milk</p>
+                                <h4>Scone</h4>
+                                <p>Buttery scone served with jam</p>
                                 <div class="menu-item-footer">
-                                    <span class="price">$4.00</span>
-                                    <button class="btn-add-cart" data-name="Cappuccino" data-price="4.00"><i class="fas fa-plus"></i> Add</button>
+                                    <span class="price">$4</span>
+                                    <button class="btn-add-cart" data-name="Scone" data-price="4"><i class="fas fa-plus"></i> Add</button>
                                 </div>
                             </div>
                             <div class="menu-item">
-                                <h4>Latte</h4>
-                                <p>Smooth espresso and steamed milk</p>
+                                <h4>Giant Cheese Danish</h4>
+                                <p>Large, flaky cheese-filled pastry</p>
                                 <div class="menu-item-footer">
-                                    <span class="price">$4.50</span>
-                                    <button class="btn-add-cart" data-name="Latte" data-price="4.50"><i class="fas fa-plus"></i> Add</button>
+                                    <span class="price">$4</span>
+                                    <button class="btn-add-cart" data-name="Giant Cheese Danish" data-price="4"><i class="fas fa-plus"></i> Add</button>
                                 </div>
                             </div>
                             <div class="menu-item">
-                                <h4>Americano</h4>
-                                <p>Double shot espresso with hot water</p>
+                                <h4>Chocolate Chip Cookie</h4>
+                                <p>Warm, chewy homemade cookie</p>
                                 <div class="menu-item-footer">
-                                    <span class="price">$2.75</span>
-                                    <button class="btn-add-cart" data-name="Americano" data-price="2.75"><i class="fas fa-plus"></i> Add</button>
-                                </div>
-                            </div>
-                            <div class="menu-item">
-                                <h4>Cold Brew</h4>
-                                <p>Smooth 24-hour cold brew</p>
-                                <div class="menu-item-footer">
-                                    <span class="price">$3.50</span>
-                                    <button class="btn-add-cart" data-name="Cold Brew" data-price="3.50"><i class="fas fa-plus"></i> Add</button>
-                                </div>
-                            </div>
-                            <div class="menu-item">
-                                <h4>Hot Chocolate</h4>
-                                <p>Rich, creamy hot chocolate</p>
-                                <div class="menu-item-footer">
-                                    <span class="price">$3.75</span>
-                                    <button class="btn-add-cart" data-name="Hot Chocolate" data-price="3.75"><i class="fas fa-plus"></i> Add</button>
-                                </div>
-                            </div>
-                            <div class="menu-item">
-                                <h4>Peanut Butter Avalanche</h4>
-                                <p>Our signature drink — rich peanut butter perfection</p>
-                                <div class="menu-item-footer">
-                                    <span class="price">$5.49</span>
-                                    <button class="btn-add-cart" data-name="Peanut Butter Avalanche" data-price="5.49"><i class="fas fa-plus"></i> Add</button>
-                                </div>
-                            </div>
-                            <div class="menu-item">
-                                <h4>Toasted Marshmallow Latte</h4>
-                                <p>Warm and cozy — seasonal favorite</p>
-                                <div class="menu-item-footer">
-                                    <span class="price">$5.99</span>
-                                    <button class="btn-add-cart" data-name="Toasted Marshmallow Latte" data-price="5.99"><i class="fas fa-plus"></i> Add</button>
+                                    <span class="price">$3</span>
+                                    <button class="btn-add-cart" data-name="Chocolate Chip Cookie" data-price="3"><i class="fas fa-plus"></i> Add</button>
                                 </div>
                             </div>
                         </div>
@@ -456,117 +435,245 @@
                                 <h4>Breakfast Sandwich</h4>
                                 <p>Egg, cheese, and choice of bacon or sausage</p>
                                 <div class="menu-item-footer">
-                                    <span class="price">$7.00</span>
-                                    <button class="btn-add-cart" data-name="Breakfast Sandwich" data-price="7.00"><i class="fas fa-plus"></i> Add</button>
+                                    <span class="price">$8</span>
+                                    <button class="btn-add-cart" data-name="Breakfast Sandwich" data-price="8"><i class="fas fa-plus"></i> Add</button>
                                 </div>
                             </div>
                             <div class="menu-item">
-                                <h4>Avocado Toast</h4>
-                                <p>Toasted sourdough with fresh avocado</p>
+                                <h4>Grilled Cheese</h4>
+                                <p>Classic grilled cheese sandwich</p>
                                 <div class="menu-item-footer">
-                                    <span class="price">$8.50</span>
-                                    <button class="btn-add-cart" data-name="Avocado Toast" data-price="8.50"><i class="fas fa-plus"></i> Add</button>
+                                    <span class="price">$5</span>
+                                    <button class="btn-add-cart" data-name="Grilled Cheese" data-price="5"><i class="fas fa-plus"></i> Add</button>
                                 </div>
                             </div>
                             <div class="menu-item">
-                                <h4>Turkey Club</h4>
-                                <p>Turkey, bacon, lettuce, tomato</p>
+                                <h4>Bagel & Cream Cheese</h4>
+                                <p>Fresh bagel with cream cheese</p>
                                 <div class="menu-item-footer">
-                                    <span class="price">$9.00</span>
-                                    <button class="btn-add-cart" data-name="Turkey Club" data-price="9.00"><i class="fas fa-plus"></i> Add</button>
-                                </div>
-                            </div>
-                            <div class="menu-item">
-                                <h4>Veggie Wrap</h4>
-                                <p>Hummus, veggies, and fresh herbs</p>
-                                <div class="menu-item-footer">
-                                    <span class="price">$7.50</span>
-                                    <button class="btn-add-cart" data-name="Veggie Wrap" data-price="7.50"><i class="fas fa-plus"></i> Add</button>
-                                </div>
-                            </div>
-                            <div class="menu-item">
-                                <h4>Soup of the Day</h4>
-                                <p>Seasonal soups made fresh daily</p>
-                                <div class="menu-item-footer">
-                                    <span class="price">$5.50</span>
-                                    <button class="btn-add-cart" data-name="Soup of the Day" data-price="5.50"><i class="fas fa-plus"></i> Add</button>
-                                </div>
-                            </div>
-                            <div class="menu-item">
-                                <h4>Salad Bowl</h4>
-                                <p>Mixed greens with house vinaigrette</p>
-                                <div class="menu-item-footer">
-                                    <span class="price">$8.00</span>
-                                    <button class="btn-add-cart" data-name="Salad Bowl" data-price="8.00"><i class="fas fa-plus"></i> Add</button>
+                                    <span class="price">$5</span>
+                                    <button class="btn-add-cart" data-name="Bagel & Cream Cheese" data-price="5"><i class="fas fa-plus"></i> Add</button>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="menu-tab-content" id="pastries-tab">
+                    <div class="menu-tab-content" id="coffee-tab">
+                        <div class="menu-grid">
+                            <div class="menu-category-header">Hot Coffee</div>
+                            <div class="menu-item">
+                                <h4>Hot Coffee — Small</h4>
+                                <p>Freshly brewed hot coffee</p>
+                                <select class="flavor-select" aria-label="Hot Coffee Small flavor">
+                                    <option value="Regular">Regular</option>
+                                    <option value="Vanilla">Vanilla</option>
+                                    <option value="Caramel">Caramel</option>
+                                    <option value="Mocha">Mocha</option>
+                                    <option value="Pumpkin Spice">Pumpkin Spice</option>
+                                    <option value="Hazelnut">Hazelnut</option>
+                                    <option value="Andes">Andes</option>
+                                    <option value="Moose Track">Moose Track</option>
+                                    <option value="Peanut Butter Avalanche">Peanut Butter Avalanche</option>
+                                    <option value="Snow Cap">Snow Cap</option>
+                                    <option value="Oreo">Oreo</option>
+                                    <option value="Almond Joy">Almond Joy</option>
+                                </select>
+                                <div class="menu-item-footer">
+                                    <span class="price">$6</span>
+                                    <button class="btn-add-cart" data-name="Hot Coffee Small" data-price="6"><i class="fas fa-plus"></i> Add</button>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <h4>Hot Coffee — Medium</h4>
+                                <p>Freshly brewed hot coffee</p>
+                                <select class="flavor-select" aria-label="Hot Coffee Medium flavor">
+                                    <option value="Regular">Regular</option>
+                                    <option value="Vanilla">Vanilla</option>
+                                    <option value="Caramel">Caramel</option>
+                                    <option value="Mocha">Mocha</option>
+                                    <option value="Pumpkin Spice">Pumpkin Spice</option>
+                                    <option value="Hazelnut">Hazelnut</option>
+                                    <option value="Andes">Andes</option>
+                                    <option value="Moose Track">Moose Track</option>
+                                    <option value="Peanut Butter Avalanche">Peanut Butter Avalanche</option>
+                                    <option value="Snow Cap">Snow Cap</option>
+                                    <option value="Oreo">Oreo</option>
+                                    <option value="Almond Joy">Almond Joy</option>
+                                </select>
+                                <div class="menu-item-footer">
+                                    <span class="price">$7</span>
+                                    <button class="btn-add-cart" data-name="Hot Coffee Medium" data-price="7"><i class="fas fa-plus"></i> Add</button>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <h4>Hot Coffee — Large</h4>
+                                <p>Freshly brewed hot coffee</p>
+                                <select class="flavor-select" aria-label="Hot Coffee Large flavor">
+                                    <option value="Regular">Regular</option>
+                                    <option value="Vanilla">Vanilla</option>
+                                    <option value="Caramel">Caramel</option>
+                                    <option value="Mocha">Mocha</option>
+                                    <option value="Pumpkin Spice">Pumpkin Spice</option>
+                                    <option value="Hazelnut">Hazelnut</option>
+                                    <option value="Andes">Andes</option>
+                                    <option value="Moose Track">Moose Track</option>
+                                    <option value="Peanut Butter Avalanche">Peanut Butter Avalanche</option>
+                                    <option value="Snow Cap">Snow Cap</option>
+                                    <option value="Oreo">Oreo</option>
+                                    <option value="Almond Joy">Almond Joy</option>
+                                </select>
+                                <div class="menu-item-footer">
+                                    <span class="price">$8</span>
+                                    <button class="btn-add-cart" data-name="Hot Coffee Large" data-price="8"><i class="fas fa-plus"></i> Add</button>
+                                </div>
+                            </div>
+
+                            <div class="menu-category-header">Cold Coffee</div>
+                            <div class="menu-item">
+                                <h4>Cold Coffee — Small</h4>
+                                <p>Refreshing cold brew coffee</p>
+                                <select class="flavor-select" aria-label="Cold Coffee Small flavor">
+                                    <option value="Regular">Regular</option>
+                                    <option value="Vanilla">Vanilla</option>
+                                    <option value="Caramel">Caramel</option>
+                                    <option value="Mocha">Mocha</option>
+                                    <option value="Pumpkin Spice">Pumpkin Spice</option>
+                                    <option value="Hazelnut">Hazelnut</option>
+                                    <option value="Andes">Andes</option>
+                                    <option value="Moose Track">Moose Track</option>
+                                    <option value="Peanut Butter Avalanche">Peanut Butter Avalanche</option>
+                                    <option value="Snow Cap">Snow Cap</option>
+                                    <option value="Oreo">Oreo</option>
+                                    <option value="Almond Joy">Almond Joy</option>
+                                </select>
+                                <div class="menu-item-footer">
+                                    <span class="price">$7</span>
+                                    <button class="btn-add-cart" data-name="Cold Coffee Small" data-price="7"><i class="fas fa-plus"></i> Add</button>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <h4>Cold Coffee — Large</h4>
+                                <p>Refreshing cold brew coffee</p>
+                                <select class="flavor-select" aria-label="Cold Coffee Large flavor">
+                                    <option value="Regular">Regular</option>
+                                    <option value="Vanilla">Vanilla</option>
+                                    <option value="Caramel">Caramel</option>
+                                    <option value="Mocha">Mocha</option>
+                                    <option value="Pumpkin Spice">Pumpkin Spice</option>
+                                    <option value="Hazelnut">Hazelnut</option>
+                                    <option value="Andes">Andes</option>
+                                    <option value="Moose Track">Moose Track</option>
+                                    <option value="Peanut Butter Avalanche">Peanut Butter Avalanche</option>
+                                    <option value="Snow Cap">Snow Cap</option>
+                                    <option value="Oreo">Oreo</option>
+                                    <option value="Almond Joy">Almond Joy</option>
+                                </select>
+                                <div class="menu-item-footer">
+                                    <span class="price">$9</span>
+                                    <button class="btn-add-cart" data-name="Cold Coffee Large" data-price="9"><i class="fas fa-plus"></i> Add</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-tab-content" id="tea-tab">
+                        <div class="menu-grid">
+                            <div class="menu-category-header">Standard Teas</div>
+                            <div class="menu-item">
+                                <h4>Raspberry Tea</h4>
+                                <p>All teas available Hot or Cold</p>
+                                <select class="flavor-select" aria-label="Raspberry Tea type">
+                                    <option value="Hot">Hot — $4</option>
+                                    <option value="Cold">Cold — $6</option>
+                                </select>
+                                <div class="menu-item-footer">
+                                    <span class="price">$4</span>
+                                    <button class="btn-add-cart" data-name="Raspberry Tea" data-price="4"><i class="fas fa-plus"></i> Add</button>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <h4>Peppermint Tea</h4>
+                                <p>All teas available Hot or Cold</p>
+                                <select class="flavor-select" aria-label="Peppermint Tea type">
+                                    <option value="Hot">Hot — $4</option>
+                                    <option value="Cold">Cold — $6</option>
+                                </select>
+                                <div class="menu-item-footer">
+                                    <span class="price">$4</span>
+                                    <button class="btn-add-cart" data-name="Peppermint Tea" data-price="4"><i class="fas fa-plus"></i> Add</button>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <h4>Green Tea</h4>
+                                <p>All teas available Hot or Cold</p>
+                                <select class="flavor-select" aria-label="Green Tea type">
+                                    <option value="Hot">Hot — $4</option>
+                                    <option value="Cold">Cold — $6</option>
+                                </select>
+                                <div class="menu-item-footer">
+                                    <span class="price">$4</span>
+                                    <button class="btn-add-cart" data-name="Green Tea" data-price="4"><i class="fas fa-plus"></i> Add</button>
+                                </div>
+                            </div>
+
+                            <div class="menu-category-header">Premium Teas</div>
+                            <div class="menu-item">
+                                <h4>Chai Tea</h4>
+                                <p>All teas available Hot or Cold</p>
+                                <select class="flavor-select" aria-label="Chai Tea type">
+                                    <option value="Hot">Hot — $8</option>
+                                    <option value="Cold">Cold — $7</option>
+                                </select>
+                                <div class="menu-item-footer">
+                                    <span class="price">$8</span>
+                                    <button class="btn-add-cart" data-name="Chai Tea" data-price="8"><i class="fas fa-plus"></i> Add</button>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <h4>Matcha Tea</h4>
+                                <p>All teas available Hot or Cold</p>
+                                <select class="flavor-select" aria-label="Matcha Tea type">
+                                    <option value="Hot">Hot — $8</option>
+                                    <option value="Cold">Cold — $7</option>
+                                </select>
+                                <div class="menu-item-footer">
+                                    <span class="price">$8</span>
+                                    <button class="btn-add-cart" data-name="Matcha Tea" data-price="8"><i class="fas fa-plus"></i> Add</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-tab-content" id="merchandise-tab">
                         <div class="menu-grid">
                             <div class="menu-item">
-                                <h4>Croissant</h4>
-                                <p>Buttery French pastry, fresh daily</p>
+                                <h4>Hat</h4>
+                                <p>Rocky Mountain Cafe branded hat</p>
                                 <div class="menu-item-footer">
-                                    <span class="price">$3.50</span>
-                                    <button class="btn-add-cart" data-name="Croissant" data-price="3.50"><i class="fas fa-plus"></i> Add</button>
+                                    <span class="price">$20</span>
+                                    <button class="btn-add-cart" data-name="Hat" data-price="20"><i class="fas fa-plus"></i> Add</button>
                                 </div>
                             </div>
                             <div class="menu-item">
-                                <h4>Blueberry Muffin</h4>
-                                <p>Classic blueberry with a moist crumb</p>
+                                <h4>T-Shirt</h4>
+                                <p>Rocky Mountain Cafe branded T-Shirt</p>
+                                <select class="flavor-select" aria-label="T-Shirt size">
+                                    <option value="M">Size: M</option>
+                                    <option value="L">Size: L</option>
+                                    <option value="XL">Size: XL</option>
+                                    <option value="2XL">Size: 2XL</option>
+                                </select>
                                 <div class="menu-item-footer">
-                                    <span class="price">$3.00</span>
-                                    <button class="btn-add-cart" data-name="Blueberry Muffin" data-price="3.00"><i class="fas fa-plus"></i> Add</button>
+                                    <span class="price">$15</span>
+                                    <button class="btn-add-cart" data-name="T-Shirt" data-price="15"><i class="fas fa-plus"></i> Add</button>
                                 </div>
                             </div>
                             <div class="menu-item">
-                                <h4>Chocolate Chip Cookie</h4>
-                                <p>Warm, chewy homemade cookies</p>
+                                <h4>Mug</h4>
+                                <p>Rocky Mountain Cafe branded mug</p>
                                 <div class="menu-item-footer">
-                                    <span class="price">$2.50</span>
-                                    <button class="btn-add-cart" data-name="Chocolate Chip Cookie" data-price="2.50"><i class="fas fa-plus"></i> Add</button>
-                                </div>
-                            </div>
-                            <div class="menu-item">
-                                <h4>Cinnamon Roll</h4>
-                                <p>Swirled cinnamon with cream cheese frosting</p>
-                                <div class="menu-item-footer">
-                                    <span class="price">$4.00</span>
-                                    <button class="btn-add-cart" data-name="Cinnamon Roll" data-price="4.00"><i class="fas fa-plus"></i> Add</button>
-                                </div>
-                            </div>
-                            <div class="menu-item">
-                                <h4>Scone</h4>
-                                <p>Buttery scone served with jam</p>
-                                <div class="menu-item-footer">
-                                    <span class="price">$3.25</span>
-                                    <button class="btn-add-cart" data-name="Scone" data-price="3.25"><i class="fas fa-plus"></i> Add</button>
-                                </div>
-                            </div>
-                            <div class="menu-item">
-                                <h4>Fruit Danish</h4>
-                                <p>Flaky pastry with seasonal fruit</p>
-                                <div class="menu-item-footer">
-                                    <span class="price">$3.75</span>
-                                    <button class="btn-add-cart" data-name="Fruit Danish" data-price="3.75"><i class="fas fa-plus"></i> Add</button>
-                                </div>
-                            </div>
-                            <div class="menu-item">
-                                <h4>Giant Cheese Danish</h4>
-                                <p>Large, flaky & delicious cheese-filled pastry</p>
-                                <div class="menu-item-footer">
-                                    <span class="price">$3.99</span>
-                                    <button class="btn-add-cart" data-name="Giant Cheese Danish" data-price="3.99"><i class="fas fa-plus"></i> Add</button>
-                                </div>
-                            </div>
-                            <div class="menu-item">
-                                <h4>Chocolate Croissant</h4>
-                                <p>Buttery croissant with rich chocolate filling</p>
-                                <div class="menu-item-footer">
-                                    <span class="price">$3.49</span>
-                                    <button class="btn-add-cart" data-name="Chocolate Croissant" data-price="3.49"><i class="fas fa-plus"></i> Add</button>
+                                    <span class="price">$15</span>
+                                    <button class="btn-add-cart" data-name="Mug" data-price="15"><i class="fas fa-plus"></i> Add</button>
                                 </div>
                             </div>
                         </div>
@@ -611,6 +718,71 @@
                             <p><strong>8 oz bags • $15 each</strong></p>
                             <p>Crafted using premium beans from <strong>Intelligentsia Coffee</strong> — one of the world's most respected specialty roasters.</p>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             PRODUCT GALLERY
+             ============================================ -->
+        <section id="product-gallery" class="product-gallery-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2>Our Products</h2>
+                    <p>Coffee, food, chai, hot chocolate, and smoothies made with care</p>
+                </div>
+
+                <div class="product-gallery">
+                    <div class="product-gallery-item">
+                        <img src="images/gallery/coffee-reg.jpg" alt="Hot regular coffee at Rocky Mountain Cafe" loading="lazy" width="800" height="600" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                        <span class="gallery-placeholder" style="display:none"><i class="fas fa-mug-hot"></i><br>Hot Coffee</span>
+                        <span class="product-caption">Hot Coffee</span>
+                    </div>
+                    <div class="product-gallery-item">
+                        <img src="images/gallery/coffee-caramel-macchiato.jpg" alt="Caramel macchiato at Rocky Mountain Cafe" loading="lazy" width="800" height="600" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                        <span class="gallery-placeholder" style="display:none"><i class="fas fa-mug-hot"></i><br>Caramel Macchiato</span>
+                        <span class="product-caption">Caramel Macchiato</span>
+                    </div>
+                    <div class="product-gallery-item">
+                        <img src="images/gallery/coffee-iced-mocha.jpg" alt="Iced mocha at Rocky Mountain Cafe" loading="lazy" width="800" height="600" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                        <span class="gallery-placeholder" style="display:none"><i class="fas fa-glass-whiskey"></i><br>Iced Mocha</span>
+                        <span class="product-caption">Iced Mocha</span>
+                    </div>
+                    <div class="product-gallery-item">
+                        <img src="images/gallery/food-bagel-sandwich.jpg" alt="Bagel breakfast sandwich at Rocky Mountain Cafe" loading="lazy" width="800" height="600" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                        <span class="gallery-placeholder" style="display:none"><i class="fas fa-bread-slice"></i><br>Breakfast Sandwich</span>
+                        <span class="product-caption">Breakfast Sandwich</span>
+                    </div>
+                    <div class="product-gallery-item">
+                        <img src="images/gallery/food-cheese-danish.jpg" alt="Cheese danish at Rocky Mountain Cafe" loading="lazy" width="800" height="600" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                        <span class="gallery-placeholder" style="display:none"><i class="fas fa-cookie"></i><br>Cheese Danish</span>
+                        <span class="product-caption">Cheese Danish</span>
+                    </div>
+                    <div class="product-gallery-item">
+                        <img src="images/gallery/food-cinnamon-roll.jpg" alt="Cinnamon roll at Rocky Mountain Cafe" loading="lazy" width="800" height="600" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                        <span class="gallery-placeholder" style="display:none"><i class="fas fa-cookie-bite"></i><br>Cinnamon Roll</span>
+                        <span class="product-caption">Cinnamon Roll</span>
+                    </div>
+                    <div class="product-gallery-item">
+                        <img src="images/gallery/chai-hot.jpg" alt="Hot chai latte at Rocky Mountain Cafe" loading="lazy" width="800" height="600" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                        <span class="gallery-placeholder" style="display:none"><i class="fas fa-mug-hot"></i><br>Hot Chai</span>
+                        <span class="product-caption">Hot Chai</span>
+                    </div>
+                    <div class="product-gallery-item">
+                        <img src="images/gallery/hotchoc.jpg" alt="Hot chocolate at Rocky Mountain Cafe" loading="lazy" width="800" height="600" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                        <span class="gallery-placeholder" style="display:none"><i class="fas fa-ice-cream"></i><br>Hot Chocolate</span>
+                        <span class="product-caption">Hot Chocolate</span>
+                    </div>
+                    <div class="product-gallery-item">
+                        <img src="images/gallery/smoothies-peach.jpg" alt="Peach smoothie at Rocky Mountain Cafe" loading="lazy" width="800" height="600" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                        <span class="gallery-placeholder" style="display:none"><i class="fas fa-blender"></i><br>Peach Smoothie</span>
+                        <span class="product-caption">Peach Smoothie</span>
+                    </div>
+                    <div class="product-gallery-item">
+                        <img src="images/gallery/smoothies-mango-berry.jpg" alt="Mango and wildberry smoothie at Rocky Mountain Cafe" loading="lazy" width="800" height="600" decoding="async" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                        <span class="gallery-placeholder" style="display:none"><i class="fas fa-blender"></i><br>Mango Wildberry Smoothie</span>
+                        <span class="product-caption">Mango Wildberry Smoothie</span>
                     </div>
                 </div>
             </div>
@@ -718,52 +890,6 @@
             </button>
             <img class="lightbox-image" id="lightboxImage" src="" alt="Gallery image enlarged view">
         </div>
-
-        <!-- ============================================
-             FEATURED ITEMS / SPECIALS
-             ============================================ -->
-        <section class="featured-section">
-            <div class="container">
-                <div class="section-header reveal">
-                    <h2>Today's Specials</h2>
-                    <p>Fresh recommendations from our baristas</p>
-                </div>
-
-                <div class="featured-grid reveal">
-                    <div class="featured-card">
-                        <div class="featured-badge">🔥 Hot Deal</div>
-                        <div class="featured-icon">☕</div>
-                        <h3>Morning Brew Bundle</h3>
-                        <p>Coffee + Croissant</p>
-                        <div class="featured-price">
-                            <span class="original">$8.99</span>
-                            <span class="discount">$7.49</span>
-                        </div>
-                        <a href="#menu" class="btn btn-primary btn-small">Order Now</a>
-                    </div>
-                    <div class="featured-card">
-                        <div class="featured-badge">⭐ Chef's Pick</div>
-                        <div class="featured-icon">🥐</div>
-                        <h3>Seasonal Pastry</h3>
-                        <p>Toasted Marshmallow Latte</p>
-                        <div class="featured-price">
-                            <span class="discount">$5.99</span>
-                        </div>
-                        <a href="#menu" class="btn btn-primary btn-small">Try It</a>
-                    </div>
-                    <div class="featured-card">
-                        <div class="featured-badge">🎁 Member Exclusive</div>
-                        <div class="featured-icon">🏆</div>
-                        <h3>Loyalty Reward</h3>
-                        <p>Free drink after 10 purchases</p>
-                        <div class="featured-price">
-                            <span class="discount">Join Free</span>
-                        </div>
-                        <a href="#newsletter" class="btn btn-primary btn-small">Subscribe</a>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- ============================================
              TESTIMONIALS CAROUSEL
@@ -1256,7 +1382,7 @@
         </div>
     </footer>
 
-    <script src="script.js?v=3" defer></script>
+    <script src="script.js?v=14" defer></script>
 
 </body>
 </html>
