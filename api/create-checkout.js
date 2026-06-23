@@ -2,6 +2,14 @@ import crypto from 'crypto';
 
 export const runtime = 'nodejs';
 
+function generateIdempotencyKey() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+    const r = (Math.random() * 16) | 0;
+    const v = c === 'x' ? r : (r & 0x3) | 0x8;
+    return v.toString(16);
+  });
+}
+
 export async function POST(request) {
   if (request.method !== 'POST') {
     return new Response('Method Not Allowed', { status: 405 });
@@ -50,20 +58,8 @@ export async function POST(request) {
     ? 'https://connect.squareupsandbox.com/v2/online-checkout/payment-links'
     : 'https://connect.squareup.com/v2/online-checkout/payment-links';
 
-  const lineItems = items.map((item) => {
-    const amount = Math.round(parseFloat(item.price) * 100);
-    return {
-      name: item.name,
-      quantity: String(item.quantity || 1),
-      base_price_money: {
-        amount,
-        currency: 'USD'
-      }
-    };
-  });
-
   const payload = {
-    idempotency_key: crypto.randomUUID(),
+    idempotency_key: generateIdempotencyKey(),
     quick_pay: {
       name: 'Rocky Mountain Cafe Order',
       price_money: {
@@ -73,18 +69,7 @@ export async function POST(request) {
       location_id: locationId
     },
     checkout_options: {
-      redirect_url: redirectUrl,
-      ask_for_shipping_address: false,
-      allow_tipping: false
-    },
-    order: {
-      location_id: locationId,
-      line_items: lineItems,
-      metadata: {
-        customer_name: customer.name || '',
-        customer_phone: customer.phone || '',
-        pickup_time: customer.pickup_time || ''
-      }
+      redirect_url: redirectUrl
     }
   };
 
@@ -99,12 +84,25 @@ export async function POST(request) {
       body: JSON.stringify(payload)
     });
 
-    const data = await squareResponse.json();
+    const rawText = await squareResponse.text();
+    let data;
+    try {
+      data = JSON.parse(rawText);
+    } catch (e) {
+      data = { raw: rawText };
+    }
+
+    console.log('Square response status:', squareResponse.status);
+    console.log('Square response body:', JSON.stringify(data));
 
     if (!squareResponse.ok || data.errors) {
-      const message = data.errors
-        ?.map((e) => e.detail || e.category || 'Square API error')
-        .join(', ');
+      const message = Array.isArray(data.errors)
+        ? data.errors
+            .map((e) => e.detail || e.category || JSON.stringify(e))
+            .join(', ')
+        : typeof data === 'string'
+        ? data
+        : data.error || JSON.stringify(data);
       return new Response(
         JSON.stringify({ error: message || 'Square API error' }),
         {
@@ -114,10 +112,13 @@ export async function POST(request) {
       );
     }
 
-    const checkoutUrl = data.payment_link?.checkout_url;
+    const checkoutUrl =
+      data.payment_link?.checkout_url ||
+      data.checkout_url ||
+      data.url;
     if (!checkoutUrl) {
       return new Response(
-        JSON.stringify({ error: 'Square did not return a checkout URL' }),
+        JSON.stringify({ error: 'Square did not return a checkout URL', squareData: data }),
         {
           status: 500,
           headers: { 'Content-Type': 'application/json' }
