@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initNavbar();
     initMenuTabs();
     initTeaPricing();
+    initSmoothiesPricing();
     initCartSystem();
     initCheckoutSystem();
     initContactForm();
@@ -116,6 +117,40 @@ function initTeaPricing() {
     if (!teaTab) return;
 
     const selects = teaTab.querySelectorAll('.flavor-select');
+    selects.forEach(select => {
+        const updatePrice = () => {
+            const menuItem = select.closest('.menu-item');
+            if (!menuItem) return;
+
+            const priceEl = menuItem.querySelector('.price');
+            const addBtn = menuItem.querySelector('.btn-add-cart');
+            const value = select.value;
+            const text = select.options[select.selectedIndex].text;
+
+            let price = null;
+            const match = text.match(/\$(\d+(?:\.\d+)?)/);
+            if (match) {
+                price = parseFloat(match[1]);
+            }
+
+            if (priceEl && price !== null) {
+                priceEl.textContent = '$' + price.toFixed(price % 1 === 0 ? 0 : 2);
+            }
+            if (addBtn && price !== null) {
+                addBtn.setAttribute('data-price', price);
+            }
+        };
+
+        select.addEventListener('change', updatePrice);
+        updatePrice();
+    });
+}
+
+function initSmoothiesPricing() {
+    const smoothiesTab = document.getElementById('smoothies-tab');
+    if (!smoothiesTab) return;
+
+    const selects = smoothiesTab.querySelectorAll('.flavor-select');
     selects.forEach(select => {
         const updatePrice = () => {
             const menuItem = select.closest('.menu-item');
