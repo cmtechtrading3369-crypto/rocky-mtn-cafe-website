@@ -1,8 +1,0 @@
-[build]
-  publish = "."
-  functions = "netlify/functions"
-
-[functions]
-  node_version = "18"
-  external_node_modules = ["node-fetch"]
-  included_files = []
