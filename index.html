@@ -126,7 +126,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="styles.css?v=18" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="styles.css?v=19" media="print" onload="this.media='all'">
 
     <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
@@ -398,14 +398,38 @@
                     <div class="menu-tab-content active" id="pastries-tab">
                         <div class="menu-grid">
                             <div class="menu-item">
-                            <img src="images/pastries/cinnamon-roll.jpg" alt="Cinnamon Roll" loading="lazy" width="800" height="600" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                                <img src="images/pastries/cinnamon-roll.jpg" alt="Cinnamon Roll" loading="lazy" width="800" height="600" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                                <h4>Cinnamon Roll</h4>
+                                <p>Swirled cinnamon with cream cheese frosting</p>
+                                <div class="menu-item-footer">
+                                    <span class="price">$4</span>
+                                    <button class="btn-add-cart" data-name="Cinnamon Roll" data-price="4"><i class="fas fa-plus"></i> Add</button>
+                                </div>
                             </div>
                             <div class="menu-item">
+                                <h4>Scone</h4>
+                                <p>Buttery scone served with jam</p>
+                                <div class="menu-item-footer">
+                                    <span class="price">$4</span>
+                                    <button class="btn-add-cart" data-name="Scone" data-price="4"><i class="fas fa-plus"></i> Add</button>
+                                </div>
                             </div>
                             <div class="menu-item">
-                            <img src="images/pastries/cheese-danish.jpg" alt="Giant Cheese Danish" loading="lazy" width="800" height="600" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                                <img src="images/pastries/cheese-danish.jpg" alt="Giant Cheese Danish" loading="lazy" width="800" height="600" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                                <h4>Giant Cheese Danish</h4>
+                                <p>Large, flaky cheese-filled pastry</p>
+                                <div class="menu-item-footer">
+                                    <span class="price">$4</span>
+                                    <button class="btn-add-cart" data-name="Giant Cheese Danish" data-price="4"><i class="fas fa-plus"></i> Add</button>
+                                </div>
                             </div>
                             <div class="menu-item">
+                                <h4>Chocolate Chip Cookie</h4>
+                                <p>Warm, chewy homemade cookie</p>
+                                <div class="menu-item-footer">
+                                    <span class="price">$3</span>
+                                    <button class="btn-add-cart" data-name="Chocolate Chip Cookie" data-price="3"><i class="fas fa-plus"></i> Add</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -413,12 +437,30 @@
                     <div class="menu-tab-content" id="food-tab">
                         <div class="menu-grid">
                             <div class="menu-item">
-                            <img src="images/food/breakfast-sandwich.jpg" alt="Breakfast Sandwich" loading="lazy" width="800" height="600" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                                <img src="images/food/breakfast-sandwich.jpg" alt="Breakfast Sandwich" loading="lazy" width="800" height="600" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                                <h4>Breakfast Sandwich</h4>
+                                <p>Egg, cheese, and choice of bacon or sausage</p>
+                                <div class="menu-item-footer">
+                                    <span class="price">$8</span>
+                                    <button class="btn-add-cart" data-name="Breakfast Sandwich" data-price="8"><i class="fas fa-plus"></i> Add</button>
+                                </div>
                             </div>
                             <div class="menu-item">
+                                <h4>Grilled Cheese</h4>
+                                <p>Classic grilled cheese sandwich</p>
+                                <div class="menu-item-footer">
+                                    <span class="price">$5</span>
+                                    <button class="btn-add-cart" data-name="Grilled Cheese" data-price="5"><i class="fas fa-plus"></i> Add</button>
+                                </div>
                             </div>
                             <div class="menu-item">
-                            <img src="images/food/bagel.jpg" alt="Bagel & Cream Cheese" loading="lazy" width="800" height="600" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                                <img src="images/food/bagel.jpg" alt="Bagel & Cream Cheese" loading="lazy" width="800" height="600" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                                <h4>Bagel & Cream Cheese</h4>
+                                <p>Fresh bagel with cream cheese</p>
+                                <div class="menu-item-footer">
+                                    <span class="price">$5</span>
+                                    <button class="btn-add-cart" data-name="Bagel & Cream Cheese" data-price="5"><i class="fas fa-plus"></i> Add</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -427,21 +469,121 @@
                         <div class="menu-grid">
                             <div class="menu-category-header">Hot Coffee</div>
                             <div class="menu-item">
-                            <img src="images/coffee/hot-coffee.jpg" alt="Hot Coffee — Small" loading="lazy" width="800" height="600" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                                <img src="images/coffee/hot-coffee.jpg" alt="Hot Coffee — Small" loading="lazy" width="800" height="600" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                                <h4>Hot Coffee — Small</h4>
+                                <p>Freshly brewed hot coffee</p>
+                                <select class="flavor-select" aria-label="Hot Coffee Small flavor">
+                                    <option value="Regular">Regular</option>
+                                    <option value="Vanilla">Vanilla</option>
+                                    <option value="Caramel">Caramel</option>
+                                    <option value="Mocha">Mocha</option>
+                                    <option value="Pumpkin Spice">Pumpkin Spice</option>
+                                    <option value="Hazelnut">Hazelnut</option>
+                                    <option value="Andes">Andes</option>
+                                    <option value="Moose Track">Moose Track</option>
+                                    <option value="Peanut Butter Avalanche">Peanut Butter Avalanche</option>
+                                    <option value="Snow Cap">Snow Cap</option>
+                                    <option value="Oreo">Oreo</option>
+                                    <option value="Almond Joy">Almond Joy</option>
+                                </select>
+                                <div class="menu-item-footer">
+                                    <span class="price">$6</span>
+                                    <button class="btn-add-cart" data-name="Hot Coffee Small" data-price="6"><i class="fas fa-plus"></i> Add</button>
+                                </div>
                             </div>
                             <div class="menu-item">
-                            <img src="images/coffee/hot-coffee.jpg" alt="Hot Coffee — Medium" loading="lazy" width="800" height="600" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                                <img src="images/coffee/hot-coffee.jpg" alt="Hot Coffee — Medium" loading="lazy" width="800" height="600" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                                <h4>Hot Coffee — Medium</h4>
+                                <p>Freshly brewed hot coffee</p>
+                                <select class="flavor-select" aria-label="Hot Coffee Medium flavor">
+                                    <option value="Regular">Regular</option>
+                                    <option value="Vanilla">Vanilla</option>
+                                    <option value="Caramel">Caramel</option>
+                                    <option value="Mocha">Mocha</option>
+                                    <option value="Pumpkin Spice">Pumpkin Spice</option>
+                                    <option value="Hazelnut">Hazelnut</option>
+                                    <option value="Andes">Andes</option>
+                                    <option value="Moose Track">Moose Track</option>
+                                    <option value="Peanut Butter Avalanche">Peanut Butter Avalanche</option>
+                                    <option value="Snow Cap">Snow Cap</option>
+                                    <option value="Oreo">Oreo</option>
+                                    <option value="Almond Joy">Almond Joy</option>
+                                </select>
+                                <div class="menu-item-footer">
+                                    <span class="price">$7</span>
+                                    <button class="btn-add-cart" data-name="Hot Coffee Medium" data-price="7"><i class="fas fa-plus"></i> Add</button>
+                                </div>
                             </div>
                             <div class="menu-item">
-                            <img src="images/coffee/hot-coffee.jpg" alt="Hot Coffee — Large" loading="lazy" width="800" height="600" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                                <img src="images/coffee/hot-coffee.jpg" alt="Hot Coffee — Large" loading="lazy" width="800" height="600" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                                <h4>Hot Coffee — Large</h4>
+                                <p>Freshly brewed hot coffee</p>
+                                <select class="flavor-select" aria-label="Hot Coffee Large flavor">
+                                    <option value="Regular">Regular</option>
+                                    <option value="Vanilla">Vanilla</option>
+                                    <option value="Caramel">Caramel</option>
+                                    <option value="Mocha">Mocha</option>
+                                    <option value="Pumpkin Spice">Pumpkin Spice</option>
+                                    <option value="Hazelnut">Hazelnut</option>
+                                    <option value="Andes">Andes</option>
+                                    <option value="Moose Track">Moose Track</option>
+                                    <option value="Peanut Butter Avalanche">Peanut Butter Avalanche</option>
+                                    <option value="Snow Cap">Snow Cap</option>
+                                    <option value="Oreo">Oreo</option>
+                                    <option value="Almond Joy">Almond Joy</option>
+                                </select>
+                                <div class="menu-item-footer">
+                                    <span class="price">$8</span>
+                                    <button class="btn-add-cart" data-name="Hot Coffee Large" data-price="8"><i class="fas fa-plus"></i> Add</button>
+                                </div>
                             </div>
 
                             <div class="menu-category-header">Cold Coffee</div>
                             <div class="menu-item">
-                            <img src="images/coffee/iced-coffee.jpg" alt="Cold Coffee — Small" loading="lazy" width="800" height="600" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                                <img src="images/coffee/iced-coffee.jpg" alt="Cold Coffee — Small" loading="lazy" width="800" height="600" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                                <h4>Cold Coffee — Small</h4>
+                                <p>Refreshing cold brew coffee</p>
+                                <select class="flavor-select" aria-label="Cold Coffee Small flavor">
+                                    <option value="Regular">Regular</option>
+                                    <option value="Vanilla">Vanilla</option>
+                                    <option value="Caramel">Caramel</option>
+                                    <option value="Mocha">Mocha</option>
+                                    <option value="Pumpkin Spice">Pumpkin Spice</option>
+                                    <option value="Hazelnut">Hazelnut</option>
+                                    <option value="Andes">Andes</option>
+                                    <option value="Moose Track">Moose Track</option>
+                                    <option value="Peanut Butter Avalanche">Peanut Butter Avalanche</option>
+                                    <option value="Snow Cap">Snow Cap</option>
+                                    <option value="Oreo">Oreo</option>
+                                    <option value="Almond Joy">Almond Joy</option>
+                                </select>
+                                <div class="menu-item-footer">
+                                    <span class="price">$7</span>
+                                    <button class="btn-add-cart" data-name="Cold Coffee Small" data-price="7"><i class="fas fa-plus"></i> Add</button>
+                                </div>
                             </div>
                             <div class="menu-item">
-                            <img src="images/coffee/iced-coffee.jpg" alt="Cold Coffee — Large" loading="lazy" width="800" height="600" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                                <img src="images/coffee/iced-coffee.jpg" alt="Cold Coffee — Large" loading="lazy" width="800" height="600" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                                <h4>Cold Coffee — Large</h4>
+                                <p>Refreshing cold brew coffee</p>
+                                <select class="flavor-select" aria-label="Cold Coffee Large flavor">
+                                    <option value="Regular">Regular</option>
+                                    <option value="Vanilla">Vanilla</option>
+                                    <option value="Caramel">Caramel</option>
+                                    <option value="Mocha">Mocha</option>
+                                    <option value="Pumpkin Spice">Pumpkin Spice</option>
+                                    <option value="Hazelnut">Hazelnut</option>
+                                    <option value="Andes">Andes</option>
+                                    <option value="Moose Track">Moose Track</option>
+                                    <option value="Peanut Butter Avalanche">Peanut Butter Avalanche</option>
+                                    <option value="Snow Cap">Snow Cap</option>
+                                    <option value="Oreo">Oreo</option>
+                                    <option value="Almond Joy">Almond Joy</option>
+                                </select>
+                                <div class="menu-item-footer">
+                                    <span class="price">$9</span>
+                                    <button class="btn-add-cart" data-name="Cold Coffee Large" data-price="9"><i class="fas fa-plus"></i> Add</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -450,21 +592,67 @@
                         <div class="menu-grid">
                             <div class="menu-category-header">Standard Teas</div>
                             <div class="menu-item">
-                            <img src="images/tea/raspberry.jpg" alt="Raspberry Tea" loading="lazy" width="800" height="600" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                                <h4>Raspberry Tea</h4>
+                                <p>All teas available Hot or Cold</p>
+                                <select class="flavor-select" aria-label="Raspberry Tea type">
+                                    <option value="Hot">Hot — $4</option>
+                                    <option value="Cold">Cold — $6</option>
+                                </select>
+                                <div class="menu-item-footer">
+                                    <span class="price">$4</span>
+                                    <button class="btn-add-cart" data-name="Raspberry Tea" data-price="4"><i class="fas fa-plus"></i> Add</button>
+                                </div>
                             </div>
                             <div class="menu-item">
-                            <img src="images/tea/peppermint.jpg" alt="Peppermint Tea" loading="lazy" width="800" height="600" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                                <h4>Peppermint Tea</h4>
+                                <p>All teas available Hot or Cold</p>
+                                <select class="flavor-select" aria-label="Peppermint Tea type">
+                                    <option value="Hot">Hot — $4</option>
+                                    <option value="Cold">Cold — $6</option>
+                                </select>
+                                <div class="menu-item-footer">
+                                    <span class="price">$4</span>
+                                    <button class="btn-add-cart" data-name="Peppermint Tea" data-price="4"><i class="fas fa-plus"></i> Add</button>
+                                </div>
                             </div>
                             <div class="menu-item">
-                            <img src="images/tea/green.jpg" alt="Green Tea" loading="lazy" width="800" height="600" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                                <h4>Green Tea</h4>
+                                <p>All teas available Hot or Cold</p>
+                                <select class="flavor-select" aria-label="Green Tea type">
+                                    <option value="Hot">Hot — $4</option>
+                                    <option value="Cold">Cold — $6</option>
+                                </select>
+                                <div class="menu-item-footer">
+                                    <span class="price">$4</span>
+                                    <button class="btn-add-cart" data-name="Green Tea" data-price="4"><i class="fas fa-plus"></i> Add</button>
+                                </div>
                             </div>
 
                             <div class="menu-category-header">Premium Teas</div>
                             <div class="menu-item">
-                            <img src="images/tea/chai.jpg" alt="Chai Tea" loading="lazy" width="800" height="600" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                                <img src="images/tea/chai.jpg" alt="Chai Tea" loading="lazy" width="800" height="600" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                                <h4>Chai Tea</h4>
+                                <p>All teas available Hot or Cold</p>
+                                <select class="flavor-select" aria-label="Chai Tea type">
+                                    <option value="Hot">Hot — $8</option>
+                                    <option value="Cold">Cold — $7</option>
+                                </select>
+                                <div class="menu-item-footer">
+                                    <span class="price">$8</span>
+                                    <button class="btn-add-cart" data-name="Chai Tea" data-price="8"><i class="fas fa-plus"></i> Add</button>
+                                </div>
                             </div>
                             <div class="menu-item">
-                            <img src="images/tea/matcha.jpg" alt="Matcha Tea" loading="lazy" width="800" height="600" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                                <h4>Matcha Tea</h4>
+                                <p>All teas available Hot or Cold</p>
+                                <select class="flavor-select" aria-label="Matcha Tea type">
+                                    <option value="Hot">Hot — $8</option>
+                                    <option value="Cold">Cold — $7</option>
+                                </select>
+                                <div class="menu-item-footer">
+                                    <span class="price">$8</span>
+                                    <button class="btn-add-cart" data-name="Matcha Tea" data-price="8"><i class="fas fa-plus"></i> Add</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -472,19 +660,74 @@
                     <div class="menu-tab-content" id="smoothies-tab">
                         <div class="menu-grid">
                             <div class="menu-item">
-                            <img src="images/smoothies/strawberry.jpg" alt="Strawberry" loading="lazy" width="800" height="600" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                                <img src="images/smoothies/strawberry.jpg" alt="Strawberry" loading="lazy" width="800" height="600" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                                <h4>Strawberry</h4>
+                                <p>Classic strawberry smoothie</p>
+                                <select class="flavor-select" aria-label="Strawberry size">
+                                    <option value="Small">Small — $6</option>
+                                    <option value="Medium">Medium — $7</option>
+                                    <option value="Large">Large — $8</option>
+                                </select>
+                                <div class="menu-item-footer">
+                                    <span class="price">$6</span>
+                                    <button class="btn-add-cart" data-name="Strawberry Smoothie" data-price="6"><i class="fas fa-plus"></i> Add</button>
+                                </div>
                             </div>
                             <div class="menu-item">
-                            <img src="images/smoothies/strawberry.jpg" alt="Strawberry Banana" loading="lazy" width="800" height="600" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                                <img src="images/smoothies/strawberry.jpg" alt="Strawberry Banana" loading="lazy" width="800" height="600" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                                <h4>Strawberry Banana</h4>
+                                <p>Strawberry and banana blend</p>
+                                <select class="flavor-select" aria-label="Strawberry Banana size">
+                                    <option value="Small">Small — $6</option>
+                                    <option value="Medium">Medium — $7</option>
+                                    <option value="Large">Large — $8</option>
+                                </select>
+                                <div class="menu-item-footer">
+                                    <span class="price">$6</span>
+                                    <button class="btn-add-cart" data-name="Strawberry Banana Smoothie" data-price="6"><i class="fas fa-plus"></i> Add</button>
+                                </div>
                             </div>
                             <div class="menu-item">
-                            <img src="images/smoothies/peach.jpg" alt="Peach" loading="lazy" width="800" height="600" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                                <img src="images/smoothies/peach.jpg" alt="Peach" loading="lazy" width="800" height="600" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                                <h4>Peach</h4>
+                                <p>Creamy peach smoothie</p>
+                                <select class="flavor-select" aria-label="Peach size">
+                                    <option value="Small">Small — $6</option>
+                                    <option value="Medium">Medium — $7</option>
+                                    <option value="Large">Large — $8</option>
+                                </select>
+                                <div class="menu-item-footer">
+                                    <span class="price">$6</span>
+                                    <button class="btn-add-cart" data-name="Peach Smoothie" data-price="6"><i class="fas fa-plus"></i> Add</button>
+                                </div>
                             </div>
                             <div class="menu-item">
-                            <img src="images/smoothies/mango.jpg" alt="Mango" loading="lazy" width="800" height="600" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                                <img src="images/smoothies/mango.jpg" alt="Mango" loading="lazy" width="800" height="600" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                                <h4>Mango</h4>
+                                <p>Refreshing mango smoothie</p>
+                                <select class="flavor-select" aria-label="Mango size">
+                                    <option value="Small">Small — $6</option>
+                                    <option value="Medium">Medium — $7</option>
+                                    <option value="Large">Large — $8</option>
+                                </select>
+                                <div class="menu-item-footer">
+                                    <span class="price">$6</span>
+                                    <button class="btn-add-cart" data-name="Mango Smoothie" data-price="6"><i class="fas fa-plus"></i> Add</button>
+                                </div>
                             </div>
                             <div class="menu-item">
-                            <img src="images/smoothies/wildberry.jpg" alt="Wildberry" loading="lazy" width="800" height="600" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                                <img src="images/smoothies/wildberry.jpg" alt="Wildberry" loading="lazy" width="800" height="600" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                                <h4>Wildberry</h4>
+                                <p>Mixed wildberry blend</p>
+                                <select class="flavor-select" aria-label="Wildberry size">
+                                    <option value="Small">Small — $6</option>
+                                    <option value="Medium">Medium — $7</option>
+                                    <option value="Large">Large — $8</option>
+                                </select>
+                                <div class="menu-item-footer">
+                                    <span class="price">$6</span>
+                                    <button class="btn-add-cart" data-name="Wildberry Smoothie" data-price="6"><i class="fas fa-plus"></i> Add</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -492,10 +735,34 @@
                     <div class="menu-tab-content" id="merchandise-tab">
                         <div class="menu-grid">
                             <div class="menu-item">
+                                <h4>Hat</h4>
+                                <p>Rocky Mountain Cafe branded hat</p>
+                                <div class="menu-item-footer">
+                                    <span class="price">$20</span>
+                                    <button class="btn-add-cart" data-name="Hat" data-price="20"><i class="fas fa-plus"></i> Add</button>
+                                </div>
                             </div>
                             <div class="menu-item">
+                                <h4>T-Shirt</h4>
+                                <p>Rocky Mountain Cafe branded T-Shirt</p>
+                                <select class="flavor-select" aria-label="T-Shirt size">
+                                    <option value="M">Size: M</option>
+                                    <option value="L">Size: L</option>
+                                    <option value="XL">Size: XL</option>
+                                    <option value="2XL">Size: 2XL</option>
+                                </select>
+                                <div class="menu-item-footer">
+                                    <span class="price">$15</span>
+                                    <button class="btn-add-cart" data-name="T-Shirt" data-price="15"><i class="fas fa-plus"></i> Add</button>
+                                </div>
                             </div>
                             <div class="menu-item">
+                                <h4>Mug</h4>
+                                <p>Rocky Mountain Cafe branded mug</p>
+                                <div class="menu-item-footer">
+                                    <span class="price">$15</span>
+                                    <button class="btn-add-cart" data-name="Mug" data-price="15"><i class="fas fa-plus"></i> Add</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -503,12 +770,36 @@
                     <div class="menu-tab-content" id="coffee-bags-tab">
                         <div class="menu-grid">
                             <div class="menu-item">
+                                <h4>Black Mountains</h4>
+                                <p>Dark, bold, and unapologetic. A full-bodied roast that hits like the first light over a summit — commanding, rich, and impossible to ignore.</p>
+                                <div class="menu-item-footer">
+                                    <span class="price">$15.00</span>
+                                    <button class="btn-add-cart" data-name="Black Mountains Coffee Bag (8oz)" data-price="15.00"><i class="fas fa-plus"></i> Add</button>
+                                </div>
                             </div>
                             <div class="menu-item">
+                                <h4>Ethiopian Mountain</h4>
+                                <p>Trace the origins of coffee itself. Bright floral notes and natural sweetness from the highland soils of East Africa. A single-sip journey to where it all began.</p>
+                                <div class="menu-item-footer">
+                                    <span class="price">$15.00</span>
+                                    <button class="btn-add-cart" data-name="Ethiopian Mountain Coffee Bag (8oz)" data-price="15.00"><i class="fas fa-plus"></i> Add</button>
+                                </div>
                             </div>
                             <div class="menu-item">
+                                <h4>Caffeine River</h4>
+                                <p>Keep the current going. A smooth, medium roast built for momentum — clean on the palate, steady on the grind. Whether you're in a flow state or pushing through the afternoon.</p>
+                                <div class="menu-item-footer">
+                                    <span class="price">$15.00</span>
+                                    <button class="btn-add-cart" data-name="Caffeine River Coffee Bag (8oz)" data-price="15.00"><i class="fas fa-plus"></i> Add</button>
+                                </div>
                             </div>
                             <div class="menu-item">
+                                <h4>Organic Beans</h4>
+                                <p>Pure. Simple. Intentional. USDA-certified and sourced with purpose, giving you a clean cup with nothing to hide. No shortcuts, no compromises — just great coffee the way nature intended.</p>
+                                <div class="menu-item-footer">
+                                    <span class="price">$15.00</span>
+                                    <button class="btn-add-cart" data-name="Organic Beans Coffee Bag (8oz)" data-price="15.00"><i class="fas fa-plus"></i> Add</button>
+                                </div>
                             </div>
                         </div>
                         <div class="coffee-bags-note">
@@ -1179,7 +1470,7 @@
         </div>
     </footer>
 
-    <script src="script.js?v=18" defer></script>
+    <script src="script.js?v=19" defer></script>
 
 </body>
 </html>
