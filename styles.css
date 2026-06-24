@@ -438,6 +438,7 @@ html, body {
     max-width: 920px;
     padding: var(--space-lg);
     margin: 0 auto;
+    text-align: center;
     animation: fadeInUp 1s ease-out;
 }
 
