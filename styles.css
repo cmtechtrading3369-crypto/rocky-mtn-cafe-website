@@ -3268,14 +3268,17 @@ picture img {
 }
 
 /* Menu item images with WebP */
-.menu-item picture {
+.menu-item picture,
+.menu-item > img {
     width: 100%;
     margin-bottom: var(--space-md);
     border-radius: var(--radius-md);
     overflow: hidden;
+    display: block;
 }
 
-.menu-item picture img {
+.menu-item picture img,
+.menu-item > img {
     width: 100%;
     height: auto;
     display: block;
