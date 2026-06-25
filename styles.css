@@ -3053,7 +3053,7 @@ a {
     .social-feeds-section,
     .contact-section {
         padding-top: var(--space-xl);
-        padding-bottom: var(--space-xl);
+        padding-bottom: var(--space-2xl);
     }
 
     .section-header h2 {
@@ -3062,6 +3062,10 @@ a {
 
     .section-header p {
         font-size: 0.9rem;
+    }
+
+    .business-profile-wrapper {
+        margin-bottom: var(--space-xl);
     }
 }
 
@@ -3098,6 +3102,49 @@ a {
 
 .contact-form-wrapper .section-header h2 {
     font-size: clamp(1.75rem, 3vw, 2.25rem);
+}
+
+/* ===== FLOATING CART NOTIFICATION ===== */
+.floating-cart-notification {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--primary-color);
+    color: var(--white);
+    padding: var(--space-md) var(--space-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    z-index: 9999;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.3s ease-out;
+    pointer-events: none;
+}
+
+.floating-cart-notification.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.floating-cart-notification i {
+    font-size: 1.5rem;
+}
+
+.floating-cart-notification .notification-text {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+    .floating-cart-notification {
+        bottom: 20px;
+        right: 20px;
+        left: 20px;
+        justify-content: center;
+    }
 }
 
 /* ===== BUSINESS PROFILE WRAPPER ===== */
