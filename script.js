@@ -206,12 +206,16 @@ function initCartSystem() {
         });
     }
 
-    // Open cart modal (floating FAB)
+    // Open checkout modal (floating FAB)
     const cartFab = document.getElementById('cart-fab');
     if (cartFab) {
         cartFab.addEventListener('click', function(e) {
             e.preventDefault();
-            cartModal.classList.add('active');
+            if (cart.length > 0) {
+                openCheckoutModal();
+            } else {
+                cartModal.classList.add('active');
+            }
             document.body.style.overflow = 'hidden';
         });
     }
