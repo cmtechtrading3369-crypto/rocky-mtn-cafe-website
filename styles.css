@@ -2794,7 +2794,7 @@ img.lazy-loaded {
     }
 }
 
-.hero-cta-secondary .btn:nth-child(1)::before {
+.hero-cta-secondary .btn::before {
     display: block;
 }
 
@@ -2810,7 +2810,7 @@ img.lazy-loaded {
     }
 
     .hero-cta-secondary .btn::before {
-        display: none;
+        display: block;
     }
 }
 
@@ -2943,6 +2943,10 @@ a {
 }
 
 @media (max-width: 768px) {
+    .newsletter-section {
+        padding: var(--space-2xl) 0;
+    }
+
     .newsletter-content {
         grid-template-columns: 1fr;
         gap: var(--space-xl);
@@ -2952,14 +2956,65 @@ a {
         flex-direction: column;
     }
 
+    .section,
+    .why-us-section,
+    .about-section,
+    .reviews-section,
+    .updates-section,
+    .testimonials-section,
+    .social-feeds-section,
+    .contact-section,
     .newsletter-section {
-        padding: var(--space-2xl) 0;
+        padding-top: var(--space-2xl);
+        padding-bottom: var(--space-2xl);
+    }
+
+    .container {
+        padding-left: var(--space-sm);
+        padding-right: var(--space-sm);
+    }
+
+    .section-header h2 {
+        font-size: 1.75rem;
+    }
+
+    .section-header p {
+        font-size: 0.95rem;
+    }
+
+    .business-profile-wrapper {
+        padding: var(--space-lg);
+    }
+
+    .contact-section .container,
+    .contact-grid {
+        gap: var(--space-lg);
     }
 }
 
 @media (max-width: 480px) {
     .newsletter-section {
         padding: var(--space-xl) 0;
+    }
+
+    .section,
+    .why-us-section,
+    .about-section,
+    .reviews-section,
+    .updates-section,
+    .testimonials-section,
+    .social-feeds-section,
+    .contact-section {
+        padding-top: var(--space-xl);
+        padding-bottom: var(--space-xl);
+    }
+
+    .section-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .section-header p {
+        font-size: 0.9rem;
     }
 }
 
