@@ -4110,39 +4110,61 @@ body.offline form textarea {
 
 
 /* ===== FLOATING CART FAB ===== */
-#cart-fab {
-    position: fixed;
-    bottom: 24px;
-    right: 20px;
-    left: 20px;
-    background-color: #5a2d0c;
-    color: #fff;
-    text-align: center;
-    padding: 14px 20px;
-    border-radius: 50px;
-    font-size: 1rem;
-    font-weight: 600;
-    text-decoration: none;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
-    z-index: 999;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    opacity: 0;
-    transform: translateY(20px);
-    pointer-events: none;
+.cart-fab {
+  position: fixed;
+  bottom: 18px;
+  left: 12px;
+  right: 12px;
+  background-color: #5a2d0c;
+  color: #ffffff;
+  text-align: center;
+  padding: 15px 24px;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  opacity: 1;
+  transform: translateY(0);
+  white-space: nowrap;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-wrap: nowrap;
 }
 
-#cart-fab.visible {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
+.cart-fab.hidden {
+  opacity: 0;
+  transform: translateY(80px);
+  pointer-events: none;
 }
 
-@media (max-width: 768px) {
-    #cart-fab {
-        bottom: 24px;
-        right: 20px;
-        left: 20px;
-        padding: 16px 20px;
-    }
+.cart-fab-badge {
+  background: #ffffff;
+  color: #5a2d0c;
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 999px;
+  min-width: 22px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+@media (max-width: 480px) {
+  #cart-fab {
+    padding: 14px 18px;
+    font-size: 0.95rem;
+    left: 10px;
+    right: 10px;
+    bottom: 16px;
+    gap: 8px;
+  }
 }
 
