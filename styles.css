@@ -3178,11 +3178,13 @@ a {
         padding-bottom: var(--space-2xl);
     }
 
-    .section-header h2 {
+    .section-header h2,
+    .centered-heading {
         font-size: 1.5rem;
     }
 
-    .section-header p {
+    .section-header p,
+    .centered-text {
         font-size: 0.9rem;
     }
 
@@ -3208,6 +3210,13 @@ a {
         margin-right: auto;
         padding-left: 1.25rem;
         padding-right: 1.25rem;
+    }
+
+    .centered-heading,
+    .centered-text,
+    .contact-form-wrapper,
+    .business-profile-wrapper {
+        text-align: center;
     }
 }
 
@@ -4200,3 +4209,51 @@ body.offline form textarea {
   }
 }
 
+/* CONTACT + VISIT MOBILE FIX */
+@media (max-width: 480px) {
+  #contact,
+  #visit {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  #contact .container,
+  #visit .container {
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #contact .section-header,
+  #contact .contact-form-wrapper,
+  #visit .business-profile-wrapper,
+  #contact .contact-form {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+  #contact .contact-form,
+  #contact .form-group {
+    width: 100%;
+    max-width: 100%;
+  }
+  #contact input,
+  #contact textarea,
+  #contact button[type="submit"],
+  #visit .btn,
+  #visit a {
+    width: 100%;
+    max-width: 100%;
+    margin-inline: auto;
+    text-align: center;
+    display: block;
+  }
+  #visit .info-item {
+    text-align: center;
+    justify-items: center;
+  }
+  #visit .info-item > * {
+    text-align: center;
+  }
+  #visit a {
+    display: inline-block;
+  }
+}
