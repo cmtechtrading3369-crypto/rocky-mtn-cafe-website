@@ -114,6 +114,37 @@ html, body {
     overflow-x: hidden;
 }
 
+/* ===== MOBILE FORMATTING ===== */
+html {
+    scroll-padding-top: 90px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 var(--space-sm);
+    }
+
+    section,
+    .why-us-section,
+    .featured-section,
+    .updates-section,
+    .testimonials-section,
+    .professional-cta-bar,
+    .reviews-section,
+    .about-section,
+    .menu-section,
+    .contact-section {
+        padding-left: var(--space-sm);
+        padding-right: var(--space-sm);
+    }
+}
+
+@media (max-width: 480px) {
+    html {
+        scroll-padding-top: 80px;
+    }
+}
+
 .menu-content {
     display: flex;
     flex-direction: column;
@@ -2919,6 +2950,16 @@ a {
 
     .newsletter-input-group {
         flex-direction: column;
+    }
+
+    .newsletter-section {
+        padding: var(--space-2xl) 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .newsletter-section {
+        padding: var(--space-xl) 0;
     }
 }
 
