@@ -205,6 +205,16 @@ function initCartSystem() {
             document.body.style.overflow = 'hidden';
         });
     }
+
+    // Open cart modal (floating FAB)
+    const cartFab = document.getElementById('cart-fab');
+    if (cartFab) {
+        cartFab.addEventListener('click', function(e) {
+            e.preventDefault();
+            cartModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    }
     
     // Close cart modal
     if (closeCart) {
@@ -270,6 +280,12 @@ function initCartSystem() {
     }
     
     updateCartUI();
+}
+
+function updateFab() {
+    const fab = document.getElementById('cart-fab');
+    if (!fab) return;
+    try { fab.classList.add('visible'); } catch (e) {}
 }
 
 function addToCart(name, price) {

@@ -184,6 +184,30 @@ html {
     html {
         scroll-padding-top: 80px;
     }
+
+    body > * {
+        margin-inline: auto;
+    }
+
+    .info-section {
+        text-align: center;
+    }
+
+    .info-card {
+        width: 100%;
+        margin-inline: auto;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+
+    .info-card a,
+    .info-card button {
+        display: inline-block;
+        margin-inline: auto;
+    }
 }
 
 .menu-content {
@@ -3107,6 +3131,26 @@ a {
 
     .business-profile-wrapper {
         margin-bottom: var(--space-xl);
+        width: 100%;
+        max-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .contact-grid {
+        width: 100%;
+        max-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
+        grid-template-columns: 1fr;
+    }
+
+    .contact-section .container {
+        max-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
     }
 }
 
