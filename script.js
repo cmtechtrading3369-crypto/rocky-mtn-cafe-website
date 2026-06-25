@@ -234,6 +234,7 @@ function initCartSystem() {
             const selectedFlavor = flavorSelect ? flavorSelect.value : null;
             const cartName = selectedFlavor && selectedFlavor !== 'Regular' ? name + ' (' + selectedFlavor + ')' : name;
             addToCart(cartName, price);
+            updateFab();
 
             // Visual feedback on button
             this.innerHTML = '<i class="fas fa-check"></i> Added';
@@ -344,11 +345,27 @@ function updateCartUI() {
 
 function updateCartCount() {
     const cartCount = document.getElementById('cartCount');
+    const fabCount = document.getElementById('cart-count');
+    const fab = document.getElementById('cart-fab');
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
 
     if (cartCount) {
         cartCount.textContent = totalItems;
         cartCount.style.display = totalItems > 0 ? 'flex' : 'none';
+    }
+    if (fabCount) fabCount.textContent = totalItems;
+
+    // Show/hide floating cart FAB based on cart items
+    if (fab) {
+        if (totalItems > 0) {
+            fab.style.display = 'block';
+            requestAnimationFrame(() => fab.classList.add('visible'));
+        } else {
+            fab.classList.remove('visible');
+            setTimeout(() => {
+                if (cart.length === 0) fab.style.display = 'none';
+            }, 300);
+        }
     }
 }
 

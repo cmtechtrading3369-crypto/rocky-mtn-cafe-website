@@ -83,6 +83,11 @@ body {
     background: var(--light-bg);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 /* Skip to content link */
@@ -108,6 +113,13 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+main, section, form {
+    width: 100%;
+    box-sizing: border-box;
 }
 
 html, body {
@@ -122,6 +134,35 @@ html {
 @media (max-width: 768px) {
     .container {
         padding: 0 var(--space-sm);
+        max-width: 480px;
+        margin: 0 auto;
+    }
+
+    .container, main, section, form {
+        width: 100%;
+        max-width: 480px;
+        margin-inline: auto;
+        padding-inline: 1.25rem;
+        box-sizing: border-box;
+    }
+
+    h1, h2, h3, p, label {
+        text-align: center;
+    }
+
+    input, textarea, button {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .info-card, .business-info-card {
+        width: 100%;
+        margin-inline: auto;
+    }
+
+    .btn-small {
+        margin-inline: auto;
+        display: block;
     }
 
     section,
@@ -3147,6 +3188,34 @@ a {
     }
 }
 
+/* ===== FLOATING CART FAB ===== */
+#cart-fab {
+    position: fixed;
+    bottom: 24px;
+    right: 20px;
+    left: 20px;
+    background-color: #5a2d0c;
+    color: #fff;
+    text-align: center;
+    padding: 14px 20px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+    z-index: 999;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+}
+
+#cart-fab.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
 /* ===== BUSINESS PROFILE WRAPPER ===== */
 .business-profile-wrapper {
     animation: slideInFromRight 0.8s ease-out;
@@ -3966,6 +4035,45 @@ body.offline form textarea {
 
     .testimonials-carousel {
         grid-template-columns: 1fr;
+    }
+}
+
+
+
+/* ===== FLOATING CART FAB ===== */
+#cart-fab {
+    position: fixed;
+    bottom: 24px;
+    right: 20px;
+    left: 20px;
+    background-color: #5a2d0c;
+    color: #fff;
+    text-align: center;
+    padding: 14px 20px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+    z-index: 999;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+}
+
+#cart-fab.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+@media (max-width: 768px) {
+    #cart-fab {
+        bottom: 24px;
+        right: 20px;
+        left: 20px;
+        padding: 16px 20px;
     }
 }
 
