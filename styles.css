@@ -189,7 +189,39 @@ html {
         margin-inline: auto;
     }
 
-    .info-section {
+    .info-section, .contact-section, .contact-form-wrapper, .business-profile-wrapper, .business-info-card, .info-item {
+        text-align: center;
+    }
+
+    .contact-grid, .business-info-card, .info-item {
+        justify-items: center;
+    }
+
+    .contact-form, .form-group, .contact-form-wrapper, .business-info-card, .info-item, .info-item div, .info-item p, .info-item a, .info-item h4, .info-card, .link-arrow, .btn, .btn-secondary, .btn-small {
+        width: 100%;
+        max-width: 100%;
+        text-align: center;
+        margin-inline: auto;
+    }
+
+    .contact-section h2, .contact-section p, .business-profile-wrapper h3, .info-item h4, .info-item p, .info-item a, .info-card h3, .info-card p, .link-arrow {
+        text-align: center;
+    }
+
+    input, textarea, .form-field, .input-field, button[type="submit"], .submit-btn, .send-btn, .btn, .btn-primary, .btn-secondary, .btn-small {
+        width: 100%;
+        box-sizing: border-box;
+        max-width: 100%;
+        text-align: center;
+        margin-inline: auto;
+    }
+
+    .info-item a, .info-item button, .link-arrow {
+        display: inline-block;
+        margin-inline: auto;
+    }
+}
+
         text-align: center;
     }
 
