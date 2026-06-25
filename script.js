@@ -235,7 +235,7 @@ function initCartSystem() {
             const cartName = selectedFlavor && selectedFlavor !== 'Regular' ? name + ' (' + selectedFlavor + ')' : name;
             addToCart(cartName, price);
 
-            // Visual feedback
+            // Visual feedback on button
             this.innerHTML = '<i class="fas fa-check"></i> Added';
             this.style.background = '#27ae60';
 
@@ -243,6 +243,9 @@ function initCartSystem() {
                 this.innerHTML = '<i class="fas fa-plus"></i> Add';
                 this.style.background = '';
             }, 1000);
+
+            // Show floating cart notification
+            showCartNotification();
         });
     });
     
@@ -342,11 +345,22 @@ function updateCartUI() {
 function updateCartCount() {
     const cartCount = document.getElementById('cartCount');
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-    
+
     if (cartCount) {
         cartCount.textContent = totalItems;
         cartCount.style.display = totalItems > 0 ? 'flex' : 'none';
     }
+}
+
+function showCartNotification() {
+    const notification = document.getElementById('floatingCartNotification');
+    if (!notification) return;
+
+    notification.classList.add('show');
+
+    setTimeout(() => {
+        notification.classList.remove('show');
+    }, 2000);
 }
 
 // ===== CHECKOUT SYSTEM =====
