@@ -911,6 +911,22 @@ html {
     background: var(--white);
 }
 
+@media (max-width: 768px) {
+    .info-section {
+        padding: var(--space-xl) 0;
+    }
+
+    .info-grid {
+        gap: var(--space-lg);
+    }
+}
+
+@media (max-width: 480px) {
+    .info-section {
+        padding: var(--space-lg) 0;
+    }
+}
+
 .info-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -2546,7 +2562,6 @@ img.lazy-loaded {
 @media print {
     .navbar,
     .cart-modal,
-    .cart-button,
     .theme-toggle,
     .hero-cta {
         display: none;
