@@ -365,6 +365,38 @@ html {
     transition: all var(--transition-base);
 }
 
+/* Make cart button more visible on mobile */
+@media (max-width: 768px) {
+    .cart-button {
+        width: 56px;
+        height: 56px;
+        font-size: 1.3rem;
+        box-shadow: 0 6px 18px rgba(90, 51, 34, 0.35);
+        border: 3px solid var(--accent-color);
+    }
+
+    .cart-button:hover {
+        transform: scale(1.08);
+        box-shadow: 0 10px 24px rgba(90, 51, 34, 0.45);
+    }
+
+    .cart-count {
+        width: 26px;
+        height: 26px;
+        font-size: 0.8rem;
+        top: -6px;
+        right: -6px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cart-button {
+        width: 60px;
+        height: 60px;
+        font-size: 1.4rem;
+    }
+}
+
 .cart-button:hover {
     background: var(--secondary-color);
     transform: scale(1.05);
