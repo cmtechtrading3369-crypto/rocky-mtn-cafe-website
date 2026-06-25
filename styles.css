@@ -3247,12 +3247,18 @@ a {
 }
 
 .contact-form-wrapper .section-header {
-    text-align: left;
+    text-align: center;
     margin-bottom: var(--space-xl);
 }
 
 .contact-form-wrapper .section-header h2 {
     font-size: clamp(1.75rem, 3vw, 2.25rem);
+}
+
+@media (max-width: 480px) {
+    .contact-form-wrapper .section-header {
+        text-align: center;
+    }
 }
 
 /* ===== FLOATING CART NOTIFICATION ===== */
@@ -4256,4 +4262,22 @@ body.offline form textarea {
   #visit a {
     display: inline-block;
   }
+}
+
+.centered-heading,
+.centered-text {
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+
+@media (max-width: 480px) {
+    .contact-grid {
+        display: block;
+    }
+    .contact-form-wrapper {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
 }
