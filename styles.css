@@ -1195,6 +1195,21 @@ section {
     z-index: 1;
 }
 
+.coffee-bags-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xs);
+    padding: var(--space-sm) var(--space-lg);
+    border-radius: var(--radius-md);
+    background: #d94b1b;
+    color: #fff;
+    font-weight: 700;
+    font-size: clamp(1rem, 2.2vw, 1.15rem);
+    text-decoration: none;
+    margin-bottom: var(--space-lg);
+}
+
 .menu-tabs {
     display: flex;
     justify-content: center;
