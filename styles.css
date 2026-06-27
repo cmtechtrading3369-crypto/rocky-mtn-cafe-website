@@ -575,8 +575,8 @@ html {
     position: absolute;
     inset: 0;
     background:
-        radial-gradient(ellipse at center, transparent 0%, rgba(20, 12, 6, 0.25) 70%, rgba(20, 12, 6, 0.65) 100%),
-        linear-gradient(180deg, rgba(20, 12, 6, 0.55) 0%, rgba(55, 35, 20, 0.45) 50%, rgba(80, 50, 30, 0.55) 100%);
+        radial-gradient(ellipse at center, transparent 0%, rgba(20, 12, 6, 0.15) 70%, rgba(20, 12, 6, 0.15) 100%),
+        linear-gradient(180deg, rgba(20, 12, 6, 0.18) 0%, rgba(55, 35, 20, 0.08) 50%, rgba(80, 50, 30, 0.18) 100%);
     z-index: 1;
     pointer-events: none;
 }
