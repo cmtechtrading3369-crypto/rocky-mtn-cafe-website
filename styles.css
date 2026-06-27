@@ -1233,6 +1233,15 @@ section {
     color: var(--text-muted);
 }
 
+.order-hint {
+    text-align: center;
+    font-size: clamp(1.25rem, 3vw, 1.6rem);
+    font-weight: 700;
+    color: #d94b1b;
+    margin: var(--space-lg) 0 var(--space-xl);
+    letter-spacing: 0.02em;
+}
+
 .menu-tab {
     background: var(--white);
     border: 2px solid var(--border-color);
