@@ -146,7 +146,7 @@
         body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
         .navbar { position: fixed; top: 0; left: 0; right: 0; background: #fff; z-index: 1000; }
         .hero { position: relative; min-height: 700px; }
-        .hero-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(30, 20, 10, 0.72); }
+        .hero-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.15); }
         .hero-content { position: relative; z-index: 1; text-align: center; color: #fff; padding: 2rem; }
     </style>
 </head>
@@ -274,80 +274,6 @@
     </section>
 
     <main>
-        <!-- ============================================
-             WHY CHOOSE US
-             ============================================ -->
-        <section id="why-us" class="why-us-section">
-            <div class="container">
-                <div class="section-header reveal">
-                    <h2>Why Choose Rocky Mountain Cafe?</h2>
-                    <p>Discover what makes us LaPorte's favorite community gathering place</p>
-                </div>
-
-                <div class="why-us-grid">
-                    <div class="why-us-card">
-                        <div class="stat-number">14+</div>
-                        <i class="fas fa-award"></i>
-                        <h3>Years of Excellence</h3>
-                        <p>Serving the LaPorte community with consistent quality and care.</p>
-                    </div>
-                    <div class="why-us-card">
-                        <div class="stat-number">4.9★</div>
-                        <i class="fas fa-star"></i>
-                        <h3>Highly Rated</h3>
-                        <p>84+ verified reviews with 4.9-star average rating from satisfied customers.</p>
-                    </div>
-                    <div class="why-us-card">
-                        <div class="stat-number">100%</div>
-                        <i class="fas fa-leaf"></i>
-                        <h3>Fresh & Local</h3>
-                        <p>Premium pastries baked fresh daily and ethically-sourced coffee beans.</p>
-                    </div>
-                    <div class="why-us-card">
-                        <div class="stat-number">♪</div>
-                        <i class="fas fa-music"></i>
-                        <h3>Live Music Events</h3>
-                        <p>Regular live performances featuring local artists and musicians.</p>
-                    </div>
-                    <div class="why-us-card">
-                        <div class="stat-number">👥</div>
-                        <i class="fas fa-handshake"></i>
-                        <h3>Community Focused</h3>
-                        <p>A welcoming space where neighbors meet, students study, and friends gather.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============================================
-             LOCATION & HOURS
-             ============================================ -->
-        <section id="visit" class="info-section">
-            <div class="container">
-                <div class="info-grid reveal">
-                    <div class="info-card">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <h3>Location</h3>
-                        <p>209 Lincolnway<br>LaPorte, IN 46350</p>
-                        <a href="https://maps.google.com/?q=209+Lincolnway+LaPorte+Indiana" target="_blank" class="link-arrow">Get Directions →</a>
-                    </div>
-                    
-                    <div class="info-card">
-                        <i class="fas fa-clock"></i>
-                        <h3>Hours</h3>
-                        <p>6:00 AM – 5:00 PM<br>7 Days a Week</p>
-                        <p class="text-muted">Closed major holidays</p>
-                    </div>
-                    
-                    <div class="info-card">
-                        <i class="fas fa-envelope"></i>
-                        <h3>Contact</h3>
-                        <p><a href="mailto:rockymountaincoffee@yahoo.com">rockymountaincoffee@yahoo.com</a></p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
         <!-- ============================================
              MENU SECTION
              ============================================ -->
@@ -518,7 +444,6 @@
                                     <option value="Moose Track">Moose Track</option>
                                     <option value="Peanut Butter Avalanche">Peanut Butter Avalanche</option>
                                     <option value="Snow Cap">Snow Cap</option>
-
                                     <option value="Almond Joy">Almond Joy</option>
                                 </select>
                                 <div class="menu-item-footer">
@@ -541,7 +466,6 @@
                                     <option value="Moose Track">Moose Track</option>
                                     <option value="Peanut Butter Avalanche">Peanut Butter Avalanche</option>
                                     <option value="Snow Cap">Snow Cap</option>
-
                                     <option value="Almond Joy">Almond Joy</option>
                                 </select>
                                 <div class="menu-item-footer">
@@ -564,7 +488,6 @@
                                     <option value="Moose Track">Moose Track</option>
                                     <option value="Peanut Butter Avalanche">Peanut Butter Avalanche</option>
                                     <option value="Snow Cap">Snow Cap</option>
-
                                     <option value="Almond Joy">Almond Joy</option>
                                 </select>
                                 <div class="menu-item-footer">
@@ -727,7 +650,7 @@
                                 </div>
                             </div>
                             <div class="menu-item">
-                                <img src="images/coming-soon.jpg" alt="Picture Coming Soon" loading="lazy" width="800" height="600" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                                <img src="images/coming-soon.jpg" alt="Picture ComingSoon" loading="lazy" width="800" height="600" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                                 <h4>Green Tea</h4>
                                 <p>All teas available Hot or Cold</p>
                                 <select class="flavor-select" aria-label="Green Tea type">
@@ -849,32 +772,8 @@
                         <div class="menu-grid">
                             <div class="menu-item">
                                 <img src="images/coming-soon.jpg" alt="Picture Coming Soon" loading="lazy" width="800" height="600" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-                                <h4>Hat</h4>
-                                <p>Rocky Mountain Cafe branded hat</p>
-                                <div class="menu-item-footer">
-                                    <span class="price">$20</span>
-                                    <button class="btn-add-cart" data-name="Hat" data-price="20"><i class="fas fa-plus"></i> Add</button>
-                                </div>
-                            </div>
-                            <div class="menu-item">
-                                <img src="images/coming-soon.jpg" alt="Picture Coming Soon" loading="lazy" width="800" height="600" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-                                <h4>T-Shirt</h4>
-                                <p>Rocky Mountain Cafe branded T-Shirt</p>
-                                <select class="flavor-select" aria-label="T-Shirt size">
-                                    <option value="M">Size: M</option>
-                                    <option value="L">Size: L</option>
-                                    <option value="XL">Size: XL</option>
-                                    <option value="2XL">Size: 2XL</option>
-                                </select>
-                                <div class="menu-item-footer">
-                                    <span class="price">$15</span>
-                                    <button class="btn-add-cart" data-name="T-Shirt" data-price="15"><i class="fas fa-plus"></i> Add</button>
-                                </div>
-                            </div>
-                            <div class="menu-item">
-                                <img src="images/coming-soon.jpg" alt="Picture Coming Soon" loading="lazy" width="800" height="600" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                                 <h4>Mug</h4>
-                                <p>Rocky Mountain Cafe branded mug</p>
+                                <p>Rocky Mountain branded coffee mug</p>
                                 <div class="menu-item-footer">
                                     <span class="price">$15</span>
                                     <button class="btn-add-cart" data-name="Mug" data-price="15"><i class="fas fa-plus"></i> Add</button>
@@ -931,6 +830,80 @@
             </div>
         </section>
 
+        <!-- ============================================
+             WHY CHOOSE US
+             ============================================ -->
+        <section id="why-us" class="why-us-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2>Why Choose Rocky Mountain Cafe?</h2>
+                    <p>Discover what makes us LaPorte's favorite community gathering place</p>
+                </div>
+
+                <div class="why-us-grid">
+                    <div class="why-us-card">
+                        <div class="stat-number">14+</div>
+                        <i class="fas fa-award"></i>
+                        <h3>Years of Excellence</h3>
+                        <p>Serving the LaPorte community with consistent quality and care.</p>
+                    </div>
+                    <div class="why-us-card">
+                        <div class="stat-number">4.9★</div>
+                        <i class="fas fa-star"></i>
+                        <h3>Highly Rated</h3>
+                        <p>84+ verified reviews with 4.9-star average rating from satisfied customers.</p>
+                    </div>
+                    <div class="why-us-card">
+                        <div class="stat-number">100%</div>
+                        <i class="fas fa-leaf"></i>
+                        <h3>Fresh & Local</h3>
+                        <p>Premium pastries baked fresh daily and ethically-sourced coffee beans.</p>
+                    </div>
+                    <div class="why-us-card">
+                        <div class="stat-number">♪</div>
+                        <i class="fas fa-music"></i>
+                        <h3>Live Music Events</h3>
+                        <p>Regular live performances featuring local artists and musicians.</p>
+                    </div>
+                    <div class="why-us-card">
+                        <div class="stat-number">👥</div>
+                        <i class="fas fa-handshake"></i>
+                        <h3>Community Focused</h3>
+                        <p>A welcoming space where neighbors meet, students study, and friends gather.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             LOCATION & HOURS
+             ============================================ -->
+        <section id="visit" class="info-section">
+            <div class="container">
+                <div class="info-grid reveal">
+                    <div class="info-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Location</h3>
+                        <p>209 Lincolnway<br>LaPorte, IN 46350</p>
+                        <a href="https://maps.google.com/?q=209+Lincolnway+LaPorte+Indiana" target="_blank" class="link-arrow">Get Directions →</a>
+                    </div>
+                    
+                    <div class="info-card">
+                        <i class="fas fa-clock"></i>
+                        <h3>Hours</h3>
+                        <p>6:00 AM – 5:00 PM<br>7 Days a Week</p>
+                        <p class="text-muted">Closed major holidays</p>
+                    </div>
+                    
+                    <div class="info-card">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Contact</h3>
+                        <p><a href="mailto:rockymountaincoffee@yahoo.com">rockymountaincoffee@yahoo.com</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
         <!-- ============================================
              PRODUCT GALLERY
              ============================================ -->
