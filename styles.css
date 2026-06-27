@@ -1196,7 +1196,7 @@ section {
 }
 
 .coffee-bags-link {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     gap: var(--space-xs);
@@ -1207,7 +1207,8 @@ section {
     font-weight: 700;
     font-size: clamp(1rem, 2.2vw, 1.15rem);
     text-decoration: none;
-    margin-bottom: var(--space-lg);
+    margin: 0 auto var(--space-lg);
+    max-width: 420px;
 }
 
 .menu-tabs {
