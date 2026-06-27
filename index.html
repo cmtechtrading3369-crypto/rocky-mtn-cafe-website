@@ -125,7 +125,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" >
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="styles.css?v=30" >
+    <link rel="stylesheet" href="styles.css?v=31" >
 
     <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
@@ -401,11 +401,11 @@
                             </div>
                             <div class="menu-item">
                                 <img src="images/coming-soon.jpg" alt="Picture Coming Soon" loading="lazy" width="800" height="600" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-                                <h4>Scone</h4>
+                                <h4>Freshly Baked Scone</h4>
                                 <p>Buttery scone served with jam</p>
                                 <div class="menu-item-footer">
                                     <span class="price">$4</span>
-                                    <button class="btn-add-cart" data-name="Scone" data-price="4"><i class="fas fa-plus"></i> Add</button>
+                                    <button class="btn-add-cart" data-name="Freshly Baked Scone" data-price="4"><i class="fas fa-plus"></i> Add</button>
                                 </div>
                             </div>
                             <div class="menu-item">
@@ -419,11 +419,11 @@
                             </div>
                             <div class="menu-item">
                                 <img src="images/coming-soon.jpg" alt="Picture Coming Soon" loading="lazy" width="800" height="600" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-                                <h4>Chocolate Chip Cookie</h4>
+                                <h4>Homemade Cookies</h4>
                                 <p>Warm, chewy homemade cookie</p>
                                 <div class="menu-item-footer">
                                     <span class="price">$3</span>
-                                    <button class="btn-add-cart" data-name="Chocolate Chip Cookie" data-price="3"><i class="fas fa-plus"></i> Add</button>
+                                    <button class="btn-add-cart" data-name="Homemade Cookies" data-price="3"><i class="fas fa-plus"></i> Add</button>
                                 </div>
                             </div>
                         </div>
@@ -435,6 +435,16 @@
                                 <img src="images/food/breakfast-sandwich.jpg" alt="Breakfast Sandwich" loading="lazy" width="800" height="600" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                                 <h4>Breakfast Sandwich</h4>
                                 <p>Egg, cheese, and choice of bacon or sausage</p>
+                                <select class="flavor-select" aria-label="Breakfast Sandwich style">
+                                    <option value="Ciabatta Bacon Egg & Cheese">Ciabatta Bacon Egg & Cheese</option>
+                                    <option value="Ciabatta Sausage Egg & Cheese">Ciabatta Sausage Egg & Cheese</option>
+                                    <option value="Ciabatta Turkey Egg & Cheese">Ciabatta Turkey Egg & Cheese</option>
+                                    <option value="Asiago Cheddar Bagel">Asiago Cheddar Bagel</option>
+                                    <option value="Plain Bagel">Plain Bagel</option>
+                                    <option value="Everything Bagel">Everything Bagel</option>
+                                    <option value="English Muffin">English Muffin</option>
+                                    <option value="Croissant">Croissant</option>
+                                </select>
                                 <div class="menu-item-footer">
                                     <span class="price">$8</span>
                                     <button class="btn-add-cart" data-name="Breakfast Sandwich" data-price="8"><i class="fas fa-plus"></i> Add</button>
@@ -453,6 +463,25 @@
                                 <img src="images/food/bagel.jpg" alt="Bagel & Cream Cheese" loading="lazy" width="800" height="600" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                                 <h4>Bagel & Cream Cheese</h4>
                                 <p>Fresh bagel with cream cheese</p>
+                                <select class="flavor-select" aria-label="Bagel & Cream Cheese style">
+                                    <option value="Everything Veggie">Everything Veggie</option>
+                                    <option value="Everything Plain">Everything Plain</option>
+                                    <option value="Everything Strawberry">Everything Strawberry</option>
+                                    <option value="Everything Peanut Butter">Everything Peanut Butter</option>
+                                    <option value="Everything Butter">Everything Butter</option>
+                                    <option value="Plain Bagel Plain Cream">Plain Bagel Plain Cream</option>
+                                    <option value="Plain Bagel Strawberry Cream">Plain Bagel Strawberry Cream</option>
+                                    <option value="Plain Bagel Peanut Butter Cream">Plain Bagel Peanut Butter Cream</option>
+                                    <option value="Plain Bagel Butter Cream">Plain Bagel Butter Cream</option>
+                                    <option value="Asiago Cheddar Plain">Asiago Cheddar Plain</option>
+                                    <option value="Asiago Cheddar Strawberry">Asiago Cheddar Strawberry</option>
+                                    <option value="Asiago Cheddar Peanut Butter">Asiago Cheddar Peanut Butter</option>
+                                    <option value="Asiago Cheddar Butter">Asiago Cheddar Butter</option>
+                                    <option value="Cinnamon Raisin Plain">Cinnamon Raisin Plain</option>
+                                    <option value="Cinnamon Raisin Strawberry">Cinnamon Raisin Strawberry</option>
+                                    <option value="Cinnamon Raisin Peanut Butter">Cinnamon Raisin Peanut Butter</option>
+                                    <option value="Cinnamon Raisin Butter">Cinnamon Raisin Butter</option>
+                                </select>
                                 <div class="menu-item-footer">
                                     <span class="price">$5</span>
                                     <button class="btn-add-cart" data-name="Bagel & Cream Cheese" data-price="5"><i class="fas fa-plus"></i> Add</button>
@@ -1349,7 +1378,7 @@
         </div>
     </footer>
 
-    <script src="script.js?v=30" defer></script>
+    <script src="script.js?v=31" defer></script>
 
 <!-- Floating cart FAB -->
 <a href="#" id="cart-fab" aria-label="View Cart" style="display:none;">
