@@ -1235,11 +1235,17 @@ section {
 
 .order-hint {
     text-align: center;
-    font-size: clamp(1.25rem, 3vw, 1.6rem);
+    font-size: clamp(1.35rem, 3.2vw, 1.8rem);
     font-weight: 700;
     color: #d94b1b;
     margin: var(--space-lg) 0 var(--space-xl);
     letter-spacing: 0.02em;
+}
+
+.section-header p.order-hint {
+    color: #d94b1b;
+    font-size: clamp(1.35rem, 3.2vw, 1.8rem);
+    max-width: none;
 }
 
 .menu-tab {
