@@ -559,7 +559,7 @@ html {
 .hero {
     position: relative;
     min-height: 100vh;
-    background: url('images/IMG_4567.png') center center / cover no-repeat fixed;
+    background: url('images/rmc-collage-v3-bright.jpg') center top / cover no-repeat fixed;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -575,8 +575,8 @@ html {
     position: absolute;
     inset: 0;
     background:
-        radial-gradient(ellipse at center, transparent 0%, rgba(20, 12, 6, 0.15) 70%, rgba(20, 12, 6, 0.15) 100%),
-        linear-gradient(180deg, rgba(20, 12, 6, 0.18) 0%, rgba(55, 35, 20, 0.08) 50%, rgba(80, 50, 30, 0.18) 100%);
+        radial-gradient(ellipse at center, transparent 0%, rgba(20, 12, 6, 0.1) 70%, rgba(20, 12, 6, 0.12) 100%),
+        linear-gradient(180deg, rgba(20, 12, 6, 0.12) 0%, rgba(55, 35, 20, 0.08) 50%, rgba(80, 50, 30, 0.12) 100%);
     z-index: 1;
     pointer-events: none;
 }
@@ -587,9 +587,9 @@ html {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.15);
+    background: rgba(0, 0, 0, 0.08);
     z-index: 0;
-    backdrop-filter: blur(0.5px);
+    backdrop-filter: none;
 }
 
 .hero-content {
