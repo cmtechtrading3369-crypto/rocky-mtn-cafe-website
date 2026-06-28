@@ -2319,15 +2319,23 @@ section {
         margin-top: var(--space-md);
     }
 
+    .nav-menu-cart {
+        display: block;
+        margin-top: var(--space-lg);
+    }
+
     .nav-menu-cta .btn {
         width: 100%;
         max-width: 280px;
         justify-content: center;
     }
 
-    .nav-menu-cart {
-        display: block;
-        margin-top: var(--space-lg);
+    .nav-menu-active-text {
+        display: inline-block;
+    }
+
+    .nav-menu-text {
+        display: none;
     }
 
     .hero {
@@ -2335,7 +2343,8 @@ section {
         min-height: 100dvh;
         min-height: 100vh;
         background-attachment: scroll;
-        background-size: contain;
+        background-size: cover;
+        background-position: center top;
         padding-top: 56px;
     }
 
