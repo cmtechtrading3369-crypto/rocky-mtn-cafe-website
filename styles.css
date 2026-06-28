@@ -2346,7 +2346,7 @@ section {
         background-attachment: scroll;
         background-size: cover;
         background-position: center top;
-        padding-top: 56px;
+        padding-top: 0px;
     }
 
     .hero-content {
