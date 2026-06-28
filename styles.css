@@ -2342,10 +2342,10 @@ section {
         min-height: 600px;
         min-height: 100dvh;
         min-height: 100vh;
-        background-image: url('images/rmc-collage-mobile-premium.jpg');
+        background-image: url('images/rmc-mobile-collage-editorial.jpg');
         background-attachment: scroll;
         background-size: cover;
-        background-position: center center;
+        background-position: top center;
         padding-top: 0px;
     }
 
