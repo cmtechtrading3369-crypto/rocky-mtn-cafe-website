@@ -2345,12 +2345,13 @@ section {
         background-image: url('images/rmc-mobile-collage-editorial.jpg');
         background-attachment: scroll;
         background-size: cover;
-        background-position: center center;
-        padding-top: 96px;
+        background-position: center 10%;
+        padding-top: 0px;
     }
 
     .hero-content {
         padding: var(--space-md);
+        margin-top: 90px;
     }
 
     .hero-brand-text {
