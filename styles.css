@@ -1224,6 +1224,28 @@ section {
         gap: var(--space-xs);
         margin-bottom: var(--space-xl);
     }
+
+    /* Ensure merchandise tab items display properly on mobile */
+    #merchandise-tab .menu-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #merchandise-tab .menu-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    #merchandise-tab .menu-item img {
+        max-width: 200px;
+        height: auto;
+    }
+
+    #merchandise-tab .menu-item-footer {
+        width: 100%;
+        justify-content: space-between;
+    }
 }
 
 .menu-full-image {
